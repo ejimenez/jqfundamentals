@@ -1,15 +1,16 @@
-# jQuery Fundamentals Training Material #
-This repository contains evolving content to be used as teaching material for a jQuery Fundamentals class, including exercises, solutions, and a web-based book.
+# Fundamentos de jQuery: Material de aprendizaje #
+Este repositorio contiene material didáctico en constante evolución para poder aprender los Fundamentos de jQuery. Dicho material incluye un libro web con ejercicios y soluciones.
 
-If you're looking for the latest release of the book, visit <http://jqfundamentals.com/book/>.
+Si esta buscando la última versión del libro (en inglés), puede encontrarla visitando <http://jqfundamentals.com/book/>.
 
-## Contributing ##
-This material is licensed under the Creative Commons Attribution-Share Alike 3.0 US license because I am eager to see other people contribute to it. Pull requests are welcome and encouraged! Check out the Issues page for the project to see the most recent list of things that still need to be done.
+# Derechos de autor & licencia #
+Material licenciado por Rebecca Murphey bajo la licencia [Creative Commons Attribution-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-sa/3.0/us/). Usted es libre de copiarlo, distribuirlo, transmitirlo y modificarlo, siempre y cuando haga referencia a [este repositorio](http://github.com/rmurphey/jqfundamentals) y atribuya la autoría original a Rebecca Murphey. Si altera, transforma o crea una obra derivada, deberá distribuir el resultado bajo una licencia igual, similar o compatible. Cualquiera de las condiciones mencionadas pueden no aplicarse si obtiene permisos del autor. Para cualquier reutilización o distribución, deberá dejar en claro la licencia la mejor manera para hacerlo es a través de un enlace hacia la licencia [Creative Commons Attribution-Share Alike 3.0 United States](http://creativecommons.org/licenses/by-sa/3.0/us/).
 
-Want to contribute? Fork the repo, make your changes, and submit a pull request. The source for the book itself is in `/book/html/`.
+# Comentarios de la autora original #
+## Contribución ##
+El material se encuentra bajo la licencia Creative Commons Attribution-Share Alike 3.0 US ya que deseo ver a otras personas contribuyendo, por lo tanto, las solicitudes de cambios son bienvenidas! Además puedes visitar la sección de Problemas para ver el listado más reciente de las cosas que aún quedan por hacer.
 
-## Using This Material ##
-Per the license, you are welcome to use this material; if you're using it to teach a class, I'd love for you to let me know about it.
+¿Deseas contribuir? Copia el repositorio, realiza tus cambios y envíame una petición para aprobarlos. El código fuente del libro es el mismo HTML alojado en `/book/html/`.
 
-# Copyright & Licensing #
-This material is licensed by Rebecca Murphey under the [Creative Commons Attribution-Share Alike 3.0 United States license](http://creativecommons.org/licenses/by-sa/3.0/us/). You are free to copy, distribute, transmit, and remix this work, provided you attribute the work to Rebecca Murphey as the original author and reference [this repository](http://github.com/rmurphey/jqfundamentals). If you alter, transform, or build upon this work, you may distribute the resulting work only under the same, similar or a compatible license. Any of the above conditions can be waived if you get permission from the copyright holder. For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to the [Creative Commons Attribution-Share Alike 3.0 United States license](http://creativecommons.org/licenses/by-sa/3.0/us/).
+## Utilización de este material ##
+Por la licencia que posee el material, eres bienvenido para utilizarlo; y si lo estas haciendo para enseñar en una clase, me encantaría saberlo.
