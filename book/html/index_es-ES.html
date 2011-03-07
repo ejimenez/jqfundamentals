@@ -1487,34 +1487,33 @@ if (Object.prototype.toString.call(myArray) === '[object Array]') {
               jQuery ofrece m&eacute;todos para ayudar a determinar el tipo de un determinado valor. Estos m&eacute;todos ser&aacute;n vistos m&aacute;s adelante.
             </p>
           </div>
-		  <!--Traducir-->
-          <!--<h2 class="title">
-            The <code class="code">this</code> keyword
+          <h2 class="title">
+            La palabra clave <code class="code">this</code>
           </h2>
           <p>
-            In JavaScript, as in most object-oriented programming languages, <code class="code">this</code> is a special keyword that is used within methods to refer to the object on which a method is being invoked. The value of <code class="code">this</code> is determined using a simple series of steps:
+            En JavaScript, as&iacute; como en la mayoría de los lenguajes de programación orientados a objetos, <code class="code">this</code> es una palabra clave especial que hace referencia al objeto en donde el método está siendo invocado. El valor de <code class="code">this</code> es determinado utilizando una serie de simples pasos:
           </p>
           <div class="orderedlist">
             <ol class="orderedlist">
-              <li>If the function is invoked using <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call" class="ulink">Function.call</a> or <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply" class="ulink">Function.apply</a>, <code class="code">this</code> will be set to the first argument passed to call/apply. If the first argument passed to call/apply is <code class="code">null</code> or <code class="code">undefined</code>, <code class="code">this</code> will refer to the global object (which is the <code class="code">window</code> object in Web browsers).
+              <li>Si la función es invocada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call" class="ulink">Function.call</a> ó <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply" class="ulink">Function.apply</a>, <code class="code">this</code> tendrá el valor del primer argumento pasado al m&eacute;todo. Si el argumento es nulo (<span class="emphasis"><em>null</em></span>) ó indefinido (<span class="emphasis"><em>undefined</em></span>), <code class="code">this</code> hará referencia el objeto global (el objeto <code class="code">window</code>);
               </li>
-              <li>If the function being invoked was created using <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, <code class="code">this</code> will be the first argument that was passed to bind at the time the function was created.
+              <li>Si la función a invocar es creada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, <code class="code">this</code> será el primer argumento que es pasado a la función en el momento en que se la crea;
               </li>
-              <li>If the function is being invoked as a method of an object, <code class="code">this</code> will refer to that object.
+              <li>Si la función es invocada como un método de un objeto, <code class="code">this</code> referenciará a dicho objeto;
               </li>
-              <li>Otherwise, the function is being invoked as a standalone function not attached to any object, and <code class="code">this</code> will refer to the global object.
+              <li>De lo contrario, si la función es invocada como una función independiente, no unida a algún objeto, <code class="code">this</code> referenciará al objeto global.
               </li>
             </ol>
           </div>
           <div class="example">
             <p class="title">
-              <b>A function invoked using Function.call</b>
+              <b>Una función invocada utilizando Function.call</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
 var myObject = {
     sayHello : function() {
-        console.log('Hi! My name is ' + this.myName);
+        console.log('Hola, mi nombre es ' + this.myName);
     },
 
     myName : 'Rebecca'
@@ -1524,21 +1523,21 @@ var secondObject = {
     myName : 'Colin'
 };
 
-myObject.sayHello();                  // logs 'Hi! My name is Rebecca'
-myObject.sayHello.call(secondObject); // logs 'Hi! My name is Colin'
+myObject.sayHello();                  // registra 'Hola, mi nombre es Rebecca'
+myObject.sayHello.call(secondObject); // registra 'Hola, mi nombre es Colin'
 </pre>
             </div>
           </div>
           <div class="example">
             <p class="title">
-              <b>A function created using Function.bind</b>
+              <b>Una función creada utilizando Function.bind</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
-var myName = 'the global object',
+var myName = 'el objeto global',
 
     sayHello = function () {
-        console.log('Hi! My name is ' + this.myName);
+        console.log('Hola, mi nombre es ' + this.myName);
     },
 
     myObject = {
@@ -1547,21 +1546,21 @@ var myName = 'the global object',
 
 var myObjectHello = sayHello.bind(myObject);
 
-sayHello();       // logs 'Hi! My name is the global object'
-myObjectHello();  // logs 'Hi! My name is Rebecca'
+sayHello();       // registra 'Hola, mi nombre es el objeto global'
+myObjectHello();  // registra 'Hola, mi nombre es Rebecca'
 </pre>
             </div>
           </div>
           <div class="example">
             <p class="title">
-              <b>A function being attached to an object at runtime</b>
+              <b>Una función vinculada a un objeto</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
-var myName = 'the global object',
+var myName = 'el objeto global',
 
     sayHello = function() {
-        console.log('Hi! My name is ' + this.myName);
+        console.log('Hola, mi nombre es ' + this.myName);
     },
 
     myObject = {
@@ -1575,9 +1574,9 @@ var myName = 'the global object',
 myObject.sayHello = sayHello;
 secondObject.sayHello = sayHello;
 
-sayHello();               // logs 'Hi! My name is the global object'
-myObject.sayHello();      // logs 'Hi! My name is Rebecca'
-secondObject.sayHello();  // logs 'Hi! My name is Colin'
+sayHello();               // registra 'Hola, mi nombre es el objeto global'
+myObject.sayHello();      // registra 'Hola, mi nombre es Rebecca'
+secondObject.sayHello();  // registra 'Hola, mi nombre es Colin'
 </pre>
             </div>
           </div>
@@ -1586,13 +1585,13 @@ secondObject.sayHello();  // logs 'Hi! My name is Colin'
             Nota
           </h3>
           <p>
-            When invoking a function deep within a long namespace, it is often tempting to reduce the amount of code you need to type by storing a reference to the actual function as a single, shorter variable. It is important not to do this with instance methods as this will cause the value of <code class="code">this</code> within the function to change, leading to incorrect code operation. For instance:
+            En algunas oportunidades, cuando se invoca una función que se encuentra dentro de un espacio de nombres (en ingl&eacute;s <span class="emphasis"><em>namespace</em></span>) amplio, puede ser una tentación guardar la referencia a la función actual en una variable más corta y accesible. Sin embargo, es importante no realizarlo en instancias de métodos, ya que puede llevar a la ejecución de código incorrecto. Por ejemplo:
           </p>
           <pre class="brush: js">
 var myNamespace = {
     myObject : {
         sayHello : function() {
-            console.log('Hi! My name is ' + this.myName);
+            console.log('Hola, mi nombre es ' + this.myName);
         },
 
         myName : 'Rebecca'
@@ -1601,16 +1600,16 @@ var myNamespace = {
 
 var hello = myNamespace.myObject.sayHello;
 
-hello();  // logs 'Hi! My name is undefined'
+hello();  // registra 'Hola, mi nombre es undefined'
 </pre>
           <p>
-            You can, however, safely reduce everything up to the object on which the method is invoked:
+            Para que no ocurran estos errores, es necesario hacer referencia en la variable al objeto en donde el método es invocado:
           </p>
           <pre class="brush: js">
 var myNamespace = {
     myObject : {
         sayHello : function() {
-            console.log('Hi! My name is ' + this.myName);
+            console.log('Hola, mi nombre es ' + this.myName);
         },
 
         myName : 'Rebecca'
@@ -1619,10 +1618,9 @@ var myNamespace = {
 
 var obj = myNamespace.myObject;
 
-obj.sayHello();  // logs 'Hi! My name is Rebecca'
+obj.sayHello();  // registra 'Hola, mi nombre es Rebecca'
 </pre>
-          </div>-->
-		  <!--Fin Traducir-->
+          </div>
           <div title="Alcance" class="section">
             <h2 class="title">
               Alcance
