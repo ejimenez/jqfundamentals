@@ -45,7 +45,7 @@
           <div>
             <div class="othercredit">
               <h3 class="othercredit">
-                <span class="orgname">Traducido a español por <a href="http://dzign.us/" class="ulink">Leandro D'Onofrio.</a></span>
+                <span class="orgname">Traducido a espa&ntilde;ol por <a href="http://dzign.us/" class="ulink">Leandro D'Onofrio.</a></span>
               </h3>
             </div>
           </div>
@@ -53,7 +53,7 @@
           <div>
             <div class="othercredit">
               <h3 class="othercredit">
-                <span class="orgname">Correcciones por <a href="#" class="ulink">Gustavo Raúl Aragón</a> y <a href="#" class="ulink">Pablo Maronna</a>.</span>
+                <span class="orgname">Correcciones por <a href="#" class="ulink">Gustavo Ra&uacute;l Arag&oacute;n</a> y <a href="#" class="ulink">Pablo Maronna</a>.</span>
               </h3>
             </div>
           </div>
@@ -1491,23 +1491,23 @@ if (Object.prototype.toString.call(myArray) === '[object Array]') {
             La palabra clave <code class="code">this</code>
           </h2>
           <p>
-            En JavaScript, as&iacute; como en la mayoría de los lenguajes de programación orientados a objetos, <code class="code">this</code> es una palabra clave especial que hace referencia al objeto en donde el método está siendo invocado. El valor de <code class="code">this</code> es determinado utilizando una serie de simples pasos:
+            En JavaScript, as&iacute; como en la mayor&iacute;a de los lenguajes de programaci&oacute;n orientados a objetos, <code class="code">this</code> es una palabra clave especial que hace referencia al objeto en donde el m&eacute;todo est&aacute; siendo invocado. El valor de <code class="code">this</code> es determinado utilizando una serie de simples pasos:
           </p>
           <div class="orderedlist">
             <ol class="orderedlist">
-              <li>Si la función es invocada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call" class="ulink">Function.call</a> ó <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply" class="ulink">Function.apply</a>, <code class="code">this</code> tendrá el valor del primer argumento pasado al m&eacute;todo. Si el argumento es nulo (<span class="emphasis"><em>null</em></span>) ó indefinido (<span class="emphasis"><em>undefined</em></span>), <code class="code">this</code> hará referencia el objeto global (el objeto <code class="code">window</code>);
+              <li>Si la funci&oacute;n es invocada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call" class="ulink">Function.call</a> &oacute; <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply" class="ulink">Function.apply</a>, <code class="code">this</code> tendr&aacute; el valor del primer argumento pasado al m&eacute;todo. Si el argumento es nulo (<span class="emphasis"><em>null</em></span>) &oacute; indefinido (<span class="emphasis"><em>undefined</em></span>), <code class="code">this</code> har&aacute; referencia el objeto global (el objeto <code class="code">window</code>);
               </li>
-              <li>Si la función a invocar es creada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, <code class="code">this</code> será el primer argumento que es pasado a la función en el momento en que se la crea;
+              <li>Si la funci&oacute;n a invocar es creada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, <code class="code">this</code> ser&aacute; el primer argumento que es pasado a la funci&oacute;n en el momento en que se la crea;
               </li>
-              <li>Si la función es invocada como un método de un objeto, <code class="code">this</code> referenciará a dicho objeto;
+              <li>Si la funci&oacute;n es invocada como un m&eacute;todo de un objeto, <code class="code">this</code> referenciar&aacute; a dicho objeto;
               </li>
-              <li>De lo contrario, si la función es invocada como una función independiente, no unida a algún objeto, <code class="code">this</code> referenciará al objeto global.
+              <li>De lo contrario, si la funci&oacute;n es invocada como una funci&oacute;n independiente, no unida a alg&uacute;n objeto, <code class="code">this</code> referenciar&aacute; al objeto global.
               </li>
             </ol>
           </div>
           <div class="example">
             <p class="title">
-              <b>Una función invocada utilizando Function.call</b>
+              <b>Una funci&oacute;n invocada utilizando Function.call</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
@@ -1530,7 +1530,7 @@ myObject.sayHello.call(secondObject); // registra 'Hola, mi nombre es Colin'
           </div>
           <div class="example">
             <p class="title">
-              <b>Una función creada utilizando Function.bind</b>
+              <b>Una funci&oacute;n creada utilizando Function.bind</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
@@ -1553,7 +1553,7 @@ myObjectHello();  // registra 'Hola, mi nombre es Rebecca'
           </div>
           <div class="example">
             <p class="title">
-              <b>Una función vinculada a un objeto</b>
+              <b>Una funci&oacute;n vinculada a un objeto</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
@@ -1585,7 +1585,7 @@ secondObject.sayHello();  // registra 'Hola, mi nombre es Colin'
             Nota
           </h3>
           <p>
-            En algunas oportunidades, cuando se invoca una función que se encuentra dentro de un espacio de nombres (en ingl&eacute;s <span class="emphasis"><em>namespace</em></span>) amplio, puede ser una tentación guardar la referencia a la función actual en una variable más corta y accesible. Sin embargo, es importante no realizarlo en instancias de métodos, ya que puede llevar a la ejecución de código incorrecto. Por ejemplo:
+            En algunas oportunidades, cuando se invoca una funci&oacute;n que se encuentra dentro de un espacio de nombres (en ingl&eacute;s <span class="emphasis"><em>namespace</em></span>) amplio, puede ser una tentaci&oacute;n guardar la referencia a la funci&oacute;n actual en una variable m&aacute;s corta y accesible. Sin embargo, es importante no realizarlo en instancias de m&eacute;todos, ya que puede llevar a la ejecuci&oacute;n de c&oacute;digo incorrecto. Por ejemplo:
           </p>
           <pre class="brush: js">
 var myNamespace = {
@@ -1603,7 +1603,7 @@ var hello = myNamespace.myObject.sayHello;
 hello();  // registra 'Hola, mi nombre es undefined'
 </pre>
           <p>
-            Para que no ocurran estos errores, es necesario hacer referencia en la variable al objeto en donde el método es invocado:
+            Para que no ocurran estos errores, es necesario hacer referencia en la variable al objeto en donde el m&eacute;todo es invocado:
           </p>
           <pre class="brush: js">
 var myNamespace = {
