@@ -1,0 +1,437 @@
+        <div title="Mejores Pr&aacute;cticas para Aumentar el Rendimiento" class="chapter">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title">
+                  Mejores Pr&aacute;cticas para Aumentar el Rendimiento
+                </h2>
+              </div>
+            </div>
+          </div>
+          <p>
+            Este cap&iacute;tulo cubre numerosas mejores pr&aacute;cticas de JavaScript y jQuery, sin un orden en particular. Muchas de estas pr&aacute;cticas est&aacute;n basadas en la presentaci&oacute;n <a href="http://paulirish.com/perf" class="ulink">jQuery Anti-Patterns for Performance</a> (en ingl&eacute;s) de Paul Irish.
+          </p>
+          <div title="Guardar la Longitud en Bucles" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Guardar la Longitud en Bucles
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              En un bucle, no es necesario acceder a la longitud de un arreglo cada vez que se eval&uacute;a la condici&oacute;n; dicho valor se puede guardar previamente en una variable.
+            </p>
+            <pre class="brush: js">
+var myLength = myArray.length;
+
+for (var i = 0; i &lt; myLength; i++) {
+    // do stuff
+}
+</pre>
+          </div>
+          <div title="A&ntilde;adir Nuevo Contenido por Fuera de un Bucle" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    A&ntilde;adir Nuevo Contenido por Fuera de un Bucle
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              Si va a insertar muchos elementos en el DOM, h&aacute;galo todo de una sola vez, no de una por vez.
+            </p>
+            <pre class="brush: js">
+// mal
+$.each(myArray, function(i, item) {
+   var newListItem = '&lt;li&gt;' + item + '&lt;/li&gt;';
+   $('#ballers').append(newListItem);
+});
+
+// mejor: realizar esto
+var frag = document.createDocumentFragment();
+
+$.each(myArray, function(i, item) {
+    var newListItem = '&lt;li&gt;' + item + '&lt;/li&gt;';
+    frag.appendChild(newListItem);
+});
+$('#ballers')[0].appendChild(frag);
+
+// o esto:
+var myHtml = '';
+
+$.each(myArray, function(i, item) {
+    html += '&lt;li&gt;' + item + '&lt;/li&gt;';
+});
+$('#ballers').html(myHtml);
+</pre>
+          </div>
+          <div title="No Repetirse" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    No Repetirse
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              No se repita; realice las cosas una vez y s&oacute;lo una, caso contrario lo estar&aacute; haciendo mal.
+            </p>
+            <pre class="brush: js">
+// MAL
+if ($eventfade.data('currently') != 'showing') {
+    $eventfade.stop();
+}
+
+if ($eventhover.data('currently') != 'showing') {
+    $eventhover.stop();
+}
+
+if ($spans.data('currently') != 'showing') {
+    $spans.stop();
+}
+
+// BIEN
+var $elems = [$eventfade, $eventhover, $spans];
+$.each($elems, function(i,elem) {
+    if (elem.data('currently') != 'showing') {
+        elem.stop();
+    }
+});
+</pre>
+          </div>
+          <div title="Cuidado con las Funciones An&oacute;nimas" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Cuidado con las Funciones An&oacute;nimas
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              No es aconsejable utilizar de sobremanera las funciones an&oacute;nimas. Estas son dif&iacute;ciles de depurar, mantener, probar o reutilizar. En su lugar, utilice un objeto literal para organizar y nombrar sus controladores y funciones de devoluci&oacute;n de llamada.
+            </p>
+            <pre class="brush: js">
+// MAL
+$(document).ready(function() {
+    $('#magic').click(function(e) {
+        $('#yayeffects').slideUp(function() {
+            // ...
+        });
+    });
+
+    $('#happiness').load(url + ' #unicorns', function() {
+        // ...
+    });
+});
+
+// MEJOR
+var PI = {
+    onReady : function() {
+        $('#magic').click(PI.candyMtn);
+        $('#happiness').load(PI.url + ' #unicorns', PI.unicornCb);
+    },
+
+    candyMtn : function(e) {
+        $('#yayeffects').slideUp(PI.slideCb);
+    },
+
+    slideCb : function() { ... },
+
+    unicornCb : function() { ... }
+};
+
+$(document).ready(PI.onReady);
+</pre>
+          </div>
+          <div title="Optimizaci&oacute;n de Selectores" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Optimizaci&oacute;n de Selectores
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              La optimizaci&oacute;n de selectores es menos importante de lo que sol&iacute;a ser, debido a la implementaci&oacute;n en algunos navegadores de <code class="code">document.querySelectorAll()</code>, pasando la carga de jQuery hacia el navegador. Sin embargo, existen algunos consejos que debe tener en cuenta.
+            </p>
+            <div title="Selectores basados en ID" class="sect2">
+              <div class="titlepage">
+                <h3 class="title">
+                  Selectores basados en ID
+                </h3>
+              </div>
+              <p>
+                Siempre es mejor comenzar las selecciones con un ID.
+              </p>
+              <pre class="brush: js">
+// r&aacute;pido
+$('#container div.robotarm');
+
+// super-r&aacute;pido
+$('#container').find('div.robotarm');
+</pre>
+              <p>
+                El ejemplo que utiliza <code class="code">$.fn.find</code> es m&aacute;s r&aacute;pido debido a que la primera selecci&oacute;n utiliza el motor de selecci&oacute;n interno <a href="http://sizzlejs.com/" class="ulink">Sizzle</a> — mientras que la selecci&oacute;n realizada &uacute;nicamente por ID utiliza <code class="code">document.getElementById()</code>(), el cual es extremadamente r&aacute;pido debido a que es una funci&oacute;n nativa del navegador.
+              </p>
+            </div>
+            <div title="Especificidad" class="sect2">
+              <div class="titlepage">
+                <h3 class="title">
+                  Especificidad
+                </h3>
+              </div>
+              <p>
+                Trate de ser especifico para el lado derecho de la selecci&oacute;n y menos especifico para el izquierdo.
+              </p>
+              <pre class="brush: js">
+// no optimizado
+$('div.data .gonzalez');
+
+// optimizado
+$('.data td.gonzalez');
+</pre>
+              <p>
+                Use en lo posible <code class="code">etiqueta.clase</code> del lado derecho de la selecci&oacute;n, y solo <code class="code">etiqueta</code> &oacute; <code class="code">.clase</code> en la parte izquierda.
+              </p>
+              <p>
+                Evite especificidad excesiva.
+              </p>
+              <pre class="brush: js">
+$('.data table.attendees td.gonzalez');
+
+// mucho mejor: eliminar la parte media de ser posibl
+$('.data td.gonzalez');
+</pre>
+              <p>
+                La segunda selecci&oacute;n tiene mejor rendimiento debido a que atraviesa menos capas para buscar el elemento.
+              </p>
+            </div>
+            <div title="Evitar el Selector Universal" class="sect2">
+              <div class="titlepage">
+                <h3 class="title">
+                  Evitar el Selector Universal
+                </h3>
+              </div>
+              <p>
+                Selecciones en donde se especifica de forma impl&iacute;cita o explicita una selecci&oacute;n universal puede resultar muy lento.
+              </p>
+              <pre class="brush: js">
+$('.buttons &gt; *');      // muy lento
+$('.buttons').children();  // mucho mejor
+
+$('.gender :radio');       // selecci&oacute;n universal implicita
+$('.gender *:radio');      // misma forma, pero de forma explicita
+$('.gender input:radio');  // mucho mejor
+</pre>
+            </div>
+          </div>
+          <div title="Utilizar la Delegaci&oacute;n de Eventos" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Utilizar la Delegaci&oacute;n de Eventos
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              La delegaci&oacute;n de eventos permite vincular un controlador de evento a un elemento contenedor (por ejemplo, una lista desordenada) en lugar de m&uacute;ltiples elementos contenidos (por ejemplo, los &iacute;tems de una lista). jQuery realiza este trabajo f&aacute;cil a trav&eacute;s de <code class="code">$.fn.live</code> y <code class="code">$.fn.delegate</code>. En lo posible, es recomendable utilizar $.fn.delegate en lugar de <code class="code">$.fn.live</code>, ya que elimina la necesidad de una selecci&oacute;n y su contexto explicito reduce la carga en aproximadamente un 80%.
+            </p>
+            <p>
+              Adem&aacute;s, la delegaci&oacute;n de eventos permite a&ntilde;adir nuevos elementos contenedores a la p&aacute;gina sin tener que volver a vincular sus controladores de eventos.
+            </p>
+            <pre class="brush: js">
+// mal (si existen muchos items en la lista)
+$('li.trigger').click(handlerFn);
+
+// mejor: delegaci&oacute;n de eventos con $.fn.live
+$('li.trigger').live('click', handlerFn);
+
+// mucho mejor: delegaci&oacute;n de eventos con $.fn.delegate
+// permite especificar un contexto de forma facil
+$('#myList').delegate('li.trigger', 'click', handlerFn);
+</pre>
+          </div>
+          <div title="Separar Elementos para Trabajar con Ellos" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Separar Elementos para Trabajar con Ellos
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              En lo posible, hay que evitar la manipulaci&oacute;n del DOM. Para ayudar con este prop&oacute;sito, a partir de la versi&oacute;n 1.4, jQuery introduce <code class="code">$.fn.detach</code> el cual permite trabajar elementos de forma separada del DOM para luego insertarlos.
+            </p>
+            <pre class="brush: js">
+var $table = $('#myTable');
+var $parent = $table.parent();
+
+$table.detach();
+// ... se a&ntilde;aden muchas celdas a la tabla
+$parent.append(table);
+</pre>
+          </div>
+          <div title="Utilizar Estilos en Cascada para Cambios de CSS en Varios Elementos" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Utilizar Estilos en Cascada para Cambios de CSS en Varios Elementos
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              Si va a cambiar el CSS en m&aacute;s de 20 elementos utilizando <code class="code">$.fn.css</code>, considere realizar los cambios de estilos a&ntilde;adi&eacute;ndolos en una etiqueta <span class="emphasis"><em>style</em></span>. De esta forma se incrementa un 60% el rendimiento.
+            </p>
+            <pre class="brush: js">
+// correcto hasta 20 elementos, lento en m&aacute;s elementos
+$('a.swedberg').css('color', '#asd123');
+$('&lt;style type="text/css"&gt;a.swedberg { color : #asd123 }&lt;/style&gt;')
+    .appendTo('head');
+</pre>
+          </div>
+          <div title="Utilizar $.data en Lugar de $.fn.data" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Utilizar <code class="code">$.data</code> en Lugar de <code class="code">$.fn.data</code>
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              Utilizar <code class="code">$.data</code> en un elemento del DOM en lugar de <code class="code">$.fn.data</code> en una selecci&oacute;n puede ser hasta 10 veces m&aacute;s r&aacute;pido. Antes de realizarlo, este seguro de comprender la diferencia entre un elemento DOM y una selecci&oacute;n jQuery.
+            </p>
+            <pre class="brush: js">
+// regular
+$(elem).data(key,value);
+
+// 10 veces m&aacute;s r&aacute;pido
+$.data(elem,key,value);
+</pre>
+          </div>
+          <div title="No Actuar en Elementos no Existentes" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    No Actuar en Elementos no Existentes
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              jQuery no le dir&aacute; si esta tratando de ejecutar c&oacute;digo en una selecci&oacute;n vac&iacute;a — esta se ejecutar&aacute; como si nada estuviera mal. Depender&aacute; de usted comprobar si la selecci&oacute;n contiene elementos.
+            </p>
+            <pre class="brush: js">
+// MAL: el codigo a continuaci&oacute;n ejecuta tres funciones
+// sin comprobar si existen elementos
+// en la selecci&oacute;n
+$('#nosuchthing').slideUp();
+
+// Mejor
+var $mySelection = $('#nosuchthing');
+if ($mySelection.length) { $mySelection.slideUp(); }
+
+// MUCHO MEJOR: a&ntilde;adir una extensi&oacute;n doOnce
+jQuery.fn.doOnce = function(func){
+    this.length &amp;&amp; func.apply(this);
+    return this;
+
+}
+
+
+$('li.cartitems').doOnce(function(){
+
+    // realizar algo
+
+});
+</pre>
+            <p>
+              Este consejo es especialmente aplicable para widgets de jQuery UI, los cuales poseen mucha carga incluso cuando la selecci&oacute;n no contiene elementos.
+            </p>
+          </div>
+          <div title="Definici&oacute;n de Variables" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Definici&oacute;n de Variables
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              Las variables pueden ser definidas en una sola declaraci&oacute;n en lugar de varias.
+            </p>
+            <pre class="brush: js">
+// antiguo
+var test = 1;
+var test2 = function() { ... };
+var test3 = test2(test);
+
+// mejor forma
+var test = 1,
+    test2 = function() { ... },
+    test3 = test2(test);
+</pre>
+            <p>
+              En funciones autoejecutables, las definiciones de variables pueden pasarse todas juntas.
+            </p>
+            <pre class="brush: js">
+(function(foo, bar) { ... })(1, 2);
+</pre>
+          </div>
+          <div title="Condicionales" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    Condicionales
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <pre class="brush: js">
+// antiguo
+if (type == 'foo' || type == 'bar') { ... }
+
+// mejor
+if (/^(foo|bar)$/.test(type)) { ... }
+
+// b&uacute;squeda en objeto literal
+if (({ foo : 1, bar : 1 })[type]) { ... }
+</pre>
+          </div>
+          <div title="No Tratar a jQuery como si fuera una Caja Negra" class="sect1">
+            <div class="titlepage">
+              <div>
+                <div>
+                  <h2 class="title">
+                    No Tratar a jQuery como si fuera una Caja Negra
+                  </h2>
+                </div>
+              </div>
+            </div>
+            <p>
+              Utilice el c&oacute;digo fuente de la librer&iacute;a como su documentaci&oacute;n — guarde como marcador <a href="http://bit.ly/jqsource" class="ulink">http://bit.ly/jqsource</a> para tener de referencia.
+            </p>
+          </div>
+        </div>

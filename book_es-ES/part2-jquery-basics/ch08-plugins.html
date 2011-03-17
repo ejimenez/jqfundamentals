@@ -1,0 +1,678 @@
+        <div title="Extensiones" class="chapter">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title">
+                  Extensiones
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div title="¿Qu&eacute; es una Extensi&oacute;n?" class="section">
+            <h2 class="title">
+              ¿Qu&eacute; es una Extensi&oacute;n?
+            </h2>
+            <p>
+              Una extensi&oacute;n de jQuery es simplemente un nuevo m&eacute;todo que se utilizar&aacute; para extender el prototipo (<span class="emphasis"><em>prototype</em></span>) del objeto jQuery. Cuando se extiende el prototipo, todos los objetos jQuery hereden los m&eacute;todos a&ntilde;adidos. Por lo tanto, cuando se realiza una llamada <code class="code">jQuery()</code>, es creado un nuevo objeto jQuery con todos los m&eacute;todos heredados.
+            </p>
+            <p>
+              El objetivo de una extensi&oacute;n es realizar una acci&oacute;n utilizando una colecci&oacute;n de elementos, de la misma forma que lo hacen, por ejemplo, los m&eacute;todos <code class="code">fadeOut</code> o <code class="code">addClass</code> de la librer&iacute;a.
+            </p>
+            <p>
+              Usted puede realizar sus propias extensiones y utilizarlas de forma privada en su proyecto o tambi&eacute;n puede publicarlas para que otras personas le saquen provecho.
+            </p>
+          </div>
+          <div title="Crear una Extensi&oacute;n B&aacute;sica" class="section">
+            <h2 class="title">
+              Crear una Extensi&oacute;n B&aacute;sica
+            </h2>
+            <p>
+              El c&oacute;digo para realizar una extensi&oacute;n b&aacute;sica es la siguiente:
+            </p>
+            <pre class="brush: js">
+(function($){
+    $.fn.myNewPlugin = function() {
+        return this.each(function(){
+            // realizar algo
+        });
+    };
+}(jQuery));
+</pre>
+            <p>
+              La extensi&oacute;n del prototipo del objeto jQuery ocurre en la siguiente l&iacute;nea:
+            </p>
+            <pre class="brush: js">
+$.fn.myNewPlugin = function() { //...
+</pre>
+            <p>
+              La cual es encerrada en una funci&oacute;n autoejecutable:
+            </p>
+            <pre class="brush: js">
+(function($){
+    //...
+}(jQuery));
+</pre>
+            <p>
+              Esta posee la ventaja de crear un alcance "privado", permitiendo utilizar el signo dolar sin tener la preocupaci&oacute;n de que otra librer&iacute;a tambi&eacute;n este utilizando dicho signo.
+            </p>
+            <p>
+              Por ahora, internamente la extensi&oacute;n queda:
+            </p>
+            <pre class="brush: js">
+$.fn.myNewPlugin = function() {
+    return this.each(function(){
+        // realizar algo
+    });
+};
+</pre>
+            <p>
+              Dentro de ella, la palabra clave <code class="code">this</code> hace referencia al objeto jQuery en donde la extensi&oacute;n es llamada.
+            </p>
+            <pre class="brush: js">
+var somejQueryObject = $('#something');
+
+$.fn.myNewPlugin = function() {
+    alert(this === somejQueryObject);
+};
+
+somejQueryObject.myNewPlugin(); // muestra un alerta con 'true'
+</pre>
+            <p>
+              El objeto jQuery, normalmente, contendr&aacute; referencias a varios elementos DOM, es por ello que a menudo se los refiere como una colecci&oacute;n.
+            </p>
+            <p>
+              Para interactuar con la colecci&oacute;n de elementos, es necesario realizar un bucle, el cual se logra f&aacute;cilmente con el m&eacute;todo <code class="code">each()</code>:
+            </p>
+            <pre class="brush: js">
+$.fn.myNewPlugin = function() {
+    return this.each(function(){
+
+    });
+};
+</pre>
+            <p>
+              Al igual que otros m&eacute;todos, <code class="code">each()</code> devuelve un objeto jQuery, permitiendo utilizar el encadenado de m&eacute;todos (<code class="code">$(...).css().attr()...</code>). Para no romper esta convensi&oacute;n, la extensi&oacute;n a crear deber&aacute; devolver el objeto <code class="code">this</code>, para permitir seguir con el encadenamiento. A continuaci&oacute;n se muestra un peque&ntilde;o ejemplo:
+            </p>
+            <pre class="brush: js">
+(function($){
+    $.fn.showLinkLocation = function() {
+        return this.filter('a').each(function(){
+            $(this).append(
+                ' (' + $(this).attr('href') + ')'
+            );
+        });
+    };
+}(jQuery));
+
+// Ejemplo de utilizaci&oacute;n:
+$('a').showLinkLocation();
+</pre>
+            <p>
+              La extensi&oacute;n modificar&aacute; todos los enlaces dentro de la colecci&oacute;n de elementos y les a&ntilde;adir&aacute; el valor de su atributo <code class="code">href</code> entre par&eacute;ntesis.
+            </p>
+            <pre class="brush: js">
+&lt;!-- Antes que la extensi&oacute;n sea llamada: --&gt;
+&lt;a href="page.html"&gt;Foo&lt;/a&gt;
+
+&lt;!-- Despu&eacute;s que la extensi&oacute;n es llamada: --&gt;
+&lt;a href="page.html"&gt;Foo (page.html)&lt;/a&gt;
+</pre>
+            <p>
+              Tambi&eacute;n es posible optimizar la extensi&oacute;n:
+            </p>
+            <pre class="brush: js">
+(function($){
+    $.fn.showLinkLocation = function() {
+        return this.filter('a').append(function(){
+              return ' (' + this.href + ')';
+        });
+    };
+}(jQuery));
+</pre>
+            <p>
+              El m&eacute;todo <code class="code">append</code> permite especificar una funci&oacute;n de devoluci&oacute;n de llamada, y el valor devuelto determinar&aacute; que es lo que se a&ntilde;adir&aacute; a cada elemento. Note tambi&eacute;n que no se utiliza el m&eacute;todo <code class="code">attr</code>, debido a que la API nativa del DOM permite un f&aacute;cil acceso a la propiedad <code class="code">href</code>.
+            </p>
+            <p>
+              A continuaci&oacute;n se muestra otro ejemplo de extensi&oacute;n. En este caso, no se requiere realizar un bucle en cada elemento ya que se delega la funcionalidad directamente en otro m&eacute;todo jQuery:
+            </p>
+            <pre class="brush: js">
+(function($){
+    $.fn.fadeInAndAddClass = function(duration, className) {
+        return this.fadeIn(duration, function(){
+            $(this).addClass(className);
+        });
+    };
+}(jQuery));
+
+// Ejemplo de utilizaci&oacute;n:
+$('a').fadeInAndAddClass(400, 'finishedFading');
+</pre>
+          </div>
+          <div title="Encontrar y Evaluar Extensiones" class="section">
+            <h2 class="title">
+              Encontrar y Evaluar Extensiones
+            </h2>
+            <p>
+              Uno de los aspectos m&aacute;s populares de jQuery es la diversidad de extensiones que existen.
+            </p>
+            <p>
+              Sin embargo, la calidad entre extensiones puede variar enormemente. Muchas son intensivamente probadas y bien mantenidas, pero otras son creadas de forma apresurada y luego ignoradas, sin seguir buenas pr&aacute;cticas.
+            </p>
+            <p>
+              Google es la mejor herramienta para encontrar extensiones (aunque el equipo de jQuery este trabajando para mejorar su repositorio de extensiones). Una vez encontrada la extensi&oacute;n, posiblemente quiera consultar la lista de correos de jQuery o el canal IRC #jquery para obtener la opini&oacute;n de otras personas sobre dicha extensi&oacute;n.
+            </p>
+            <p>
+              Aseg&uacute;rese que la extensi&oacute;n este bien documentada, y que se ofrecen ejemplos de su utilizaci&oacute;n. Tambi&eacute;n tenga cuidado con las extensiones que realizan m&aacute;s de lo que necesita, estas pueden llegar a sobrecargar su p&aacute;gina. Para m&aacute;s consejos sobre como detectar una extensi&oacute;n mediocre, puede leer el art&iacute;culo (en ingl&eacute;s) <a href="http://remysharp.com/2010/06/03/signs-of-a-poorly-written-jquery-plugin/" class="ulink">Signs of a poorly written jQuery plugin</a> por Remy Sharp.
+            </p>
+            <p>
+              Una vez seleccionada la extensi&oacute;n, necesitar&aacute; a&ntilde;adirla a su p&aacute;gina. Primero, descargue la extensi&oacute;n, descomprimala (si es necesario) y mu&eacute;vala a la carpeta de su aplicaci&oacute;n. Finalmente insertela utilizando el elemento script (luego de la inclusi&oacute;n de jQuery).
+            </p>
+          </div>
+          <div title="Escribir Extensiones" class="section">
+            <h2 class="title">
+              Escribir Extensiones
+            </h2>
+            <p>
+              A veces, desee realizar una funcionalidad disponible en todo el c&oacute;digo, por ejemplo, un m&eacute;todo que pueda ser llamado desde una selecci&oacute;n el cual realice una serie de operaciones.
+            </p>
+            <p>
+              La mayor&iacute;a de las extensiones son m&eacute;todos creados dentro del espacio de nombres <code class="code">$.fn</code>. jQuery garantiza que un m&eacute;todo llamado sobre el objeto jQuery sea capaz de acceder a dicho objeto a trav&eacute;s de <code class="code">this</code>. En contrapartida, la extensi&oacute;n debe garantizar de devolver el mismo objeto recibido (a menos que se explicite lo contrario).
+            </p>
+            <p>
+              A continuaci&oacute;n se muestra un ejemplo:
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Crear una extensi&oacute;n para a&ntilde;adir y remover una clase en un elemento al suceder el evento hover</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+// definici&oacute;n de la extensi&oacute;n
+(function($){
+    $.fn.hoverClass = function(c) {
+        return this.hover(
+            function() { $(this).toggleClass(c); }
+        );
+    };
+})(jQuery);
+
+// utilizar la extensi&oacute;n
+$('li').hoverClass('hover');
+</pre>
+              </div>
+            </div>
+            <p>
+              Para m&aacute;s informaci&oacute;n sobre el desarrollo de extensiones, puede consultar el art&iacute;culo (en ingl&eacute;s) <a href="http://www.learningjquery.com/2007/10/a-plugin-development-pattern" class="ulink">A Plugin Development Pattern</a> de Mike Alsup. En dicho art&iacute;culo, se desarrolla una extensi&oacute;n llamada <code class="code">$.fn.hilight</code>, la cual provee soporte para la extensi&oacute;n <a href="http://plugins.jquery.com/project/metadata" class="ulink">metadata</a> (en caso de estar presente) y provee un m&eacute;todo descentralizado para establecer opciones globales o de instancias de la extensi&oacute;n.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>El patr&oacute;n de desarrollo de extensiones para jQuery explicado por Mike Alsup</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+//
+// crear una clausura
+//
+(function($) {
+  //
+  // definici&oacute;n de la extensi&oacute;n
+  //
+  $.fn.hilight = function(options) {
+    debug(this);
+    // generaci&oacute;n de las opciones principales antes de interactuar
+    var opts = $.extend({}, $.fn.hilight.defaults, options);
+    // se iteractua y formatea cada elemento
+    return this.each(function() {
+      $this = $(this);
+      // generaci&oacute;n de las opciones especificas de cada elemento
+      var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+      // actualizaci&oacute;n de los estilos de cada elemento
+      $this.css({
+        backgroundColor: o.background,
+        color: o.foreground
+      });
+      var markup = $this.html();
+      // se llama a la funci&oacute;n de formateo
+      markup = $.fn.hilight.format(markup);
+      $this.html(markup);
+    });
+  };
+  //
+  // funci&oacute;n privada para realizar depuraci&oacute;n
+  //
+  function debug($obj) {
+    if (window.console &amp;&amp; window.console.log)
+      window.console.log('hilight selection count: ' + $obj.size());
+  };
+  //
+  // definir y exponer la funci&oacute;n de formateo
+  //
+  $.fn.hilight.format = function(txt) {
+    return '&lt;strong&gt;' + txt + '&lt;/strong&gt;';
+  };
+  //
+  // opciones predeterminadas
+  //
+  $.fn.hilight.defaults = {
+    foreground: 'red',
+    background: 'yellow'
+  };
+//
+// fin de la clausura
+//
+})(jQuery);
+</pre>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">
+            Escribir Extensiones con Mantenimiento de Estado Utilizando Widget Factory de jQuery UI
+          </h2>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Esta secci&oacute;n esta basada, con permiso del autor, en el art&iacute;culo <a href="http://blog.nemikor.com/2010/05/15/building-stateful-jquery-plugins/" class="ulink">Building Stateful jQuery Plugins</a> de Scott Gonzalez.
+          </p>
+          </div>
+          <p>
+            Mientras que la mayor&iacute;a de las extensiones para jQuery son sin mantenimiento de estado (en ingl&eacute;s <span class="emphasis"><em>stateless</em></span>) — es decir, extensiones que se ejecutan solamente sobre un elemento, siendo esa su &uacute;nica interacci&oacute;n — existe un gran conjunto de funcionalidades que no se aprovechan en el patr&oacute;n b&aacute;sico con que se desarrollan las extensiones.
+          </p>
+          <p>
+            Con el fin de llenar ese vac&iacute;o, jQuery UI (<a href="http://jqueryui.com/" class="ulink">jQuery User Interface</a>) ha implementado un sistema m&aacute;s avanzado de extensiones. Este sistema permite manejar estados y admite m&uacute;ltiples funciones para ser expuestas en una &uacute;nica extensi&oacute;n. Dicho sistema es llamado <span class="emphasis"><em>widget factory</em></span> y forma parte de la versi&oacute;n 1.8 de jQuery UI a trav&eacute;s de <code class="code">jQuery.widget</code>, aunque tambi&eacute;n puede ser utilizado sin depender de jQuery UI.
+          </p>
+          <p>
+            Para demostrar las capacidades de <span class="emphasis"><em>widget factory</em></span>, se crear&aacute; una extensi&oacute;n que tendr&aacute; como funcionalidad ser una barra de progreso.
+          </p>
+          <p>
+            Por ahora, la extensi&oacute;n solo permitir&aacute; establecer el valor de la barra de progreso una sola vez. Esto se realizar&aacute; llamando a <code class="code">jQuery.widget</code> con dos par&aacute;metros: el nombre de la extensi&oacute;n a crear y un objeto literal que contendr&aacute; las funciones soportadas por la extensi&oacute;n. Cuando la extensi&oacute;n es llamada, una instancia de ella es creada y todas las funciones se ejecutaran en el contexto de esa instancia.
+          </p>
+          <p>
+            Existen dos importantes diferencias en comparaci&oacute;n con una extensi&oacute;n est&aacute;ndar de jQuery: En primer lugar, el contexto es un objeto, no un elemento DOM. En segundo lugar, el contexto siempre es un &uacute;nico objeto, nunca una colecci&oacute;n.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Una simple extensi&oacute;n con mantenimiento de estado utilizando widget factory de jQuery UI</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$.widget("nmk.progressbar", {
+    _create: function() {
+        var progress = this.options.value + "%";
+        this.element
+            .addClass("progressbar")
+            .text(progress);
+    }
+});
+</pre>
+            </div>
+          </div>
+          <p>
+            El nombre de la extensi&oacute;n debe contener un espacio de nombres, en este caso se utiliza <code class="code">nmk</code>. Los espacios de nombres tienen una limitaci&oacute;n de un solo nivel de profundidad — es decir que por ejemplo, no es posible utilizar <code class="code">nmk.foo</code>. Como se puede ver en el ejemplo, <span class="emphasis"><em>widget factory</em></span> provee dos propiedades para ser utilizadas. La primera, <code class="code">this.element</code> es un objeto jQuery que contiene exactamente un elemento. En caso que la extensi&oacute;n sea ejecutada en m&aacute;s de un elemento, una instancia separada de la extensi&oacute;n ser&aacute; creada por cada elemento y cada una tendr&aacute; su propio <code class="code">this.element</code>. La segunda propiedad, <code class="code">this.options</code>, es un conjunto de pares clave/valor con todas las opciones de la extensi&oacute;n. Estas opciones pueden pasarse a la extensi&oacute;n como se muestra a continuaci&oacute;n:
+          </p>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Cuando est&eacute; realizando sus propias extensiones es recomendable utilizar su propio espacio de nombres, ya que deja en claro de donde proviene la extensi&oacute;n y si es parte de una colecci&oacute;n mayor. Por otro lado, el espacio de nombres <code class="code">ui</code> est&aacute; reservado para las extensiones oficiales de jQuery UI.
+          </p>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Pasar opciones al widget</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$("&lt;div&gt;&lt;/div&gt;")
+    .appendTo( "body" )
+    .progressbar({ value: 20 });
+</pre>
+            </div>
+          </div>
+          <p>
+            Cuando se llama a <code class="code">jQuery.widget</code> se extiende a jQuery a&ntilde;adiendo el m&eacute;todo a <code class="code">jQuery.fn</code> (de la misma forma que cuando se crea una extensi&oacute;n est&aacute;ndar). El nombre de la funci&oacute;n que se a&ntilde;ade esta basado en el nombre que se pasa a <code class="code">jQuery.widget</code>, sin el espacio de nombres (en este caso el nombre ser&aacute; <code class="code">jQuery.fn.progressbar</code>).
+          </p>
+          <p>
+            Como se muestra a continuaci&oacute;n, es posible especificar valores predeterminados para cualquier opci&oacute;n. Estos valores deber&iacute;an basarse en la utilizaci&oacute;n m&aacute;s com&uacute;n de la extensi&oacute;n.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Establecer opciones predeterminadas para un widget</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$.widget("nmk.progressbar", {
+    // opciones predeterminadas
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        var progress = this.options.value + "%";
+        this.element
+            .addClass( "progressbar" )
+            .text( progress );
+    }
+});
+</pre>
+            </div>
+          </div>
+          <div class="titlepage">
+            <h3 class="title">
+              A&ntilde;adir M&eacute;todos a un Widget
+            </h3>
+          </div>
+          <p>
+            Ahora que es posible inicializar la extensi&oacute;n, es necesario a&ntilde;adir la habilidad de realizar acciones a trav&eacute;s de m&eacute;todos definidos en la extensi&oacute;n. Para definir un m&eacute;todo en la extensi&oacute;n es necesario incluir la funci&oacute;n en el objeto literal que se pasa a <code class="code">jQuery.widget</code>. Tambi&eacute;n es posible definir m&eacute;todos "privados" anteponiendo un gui&oacute;n bajo al nombre de la funci&oacute;n.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Crear m&eacute;todos en el Widget</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$.widget("nmk.progressbar", {
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        var progress = this.options.value + "%";
+        this.element
+            .addClass("progressbar")
+            .text(progress);
+    },
+
+    // crear un m&eacute;todo p&uacute;blico
+    value: function(value) {
+        // no se pasa ning&uacute;n valor, entonces act&uacute;a como m&eacute;todo obtenedor
+        if (value === undefined) {
+            return this.options.value;
+        // se pasa un valor, entonces act&uacute;a como m&eacute;todo establecedor
+        } else {
+            this.options.value = this._constrain(value);
+            var progress = this.options.value + "%";
+            this.element.text(progress);
+        }
+    },
+
+    // crear un m&eacute;todo privado
+    _constrain: function(value) {
+        if (value &gt; 100) {
+            value = 100;
+        }
+        if (value &lt; 0) {
+            value = 0;
+        }
+        return value;
+    }
+});
+</pre>
+            </div>
+          </div>
+          <p>
+            Para llamar a un m&eacute;todo en una instancia de la extensi&oacute;n, se debe pasar el nombre de dicho m&eacute;todo a la extensi&oacute;n. En caso que se llame a un m&eacute;todo que acepta par&aacute;metros, estos se deben pasar a continuaci&oacute;n del nombre del m&eacute;todo.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Llamar a m&eacute;todos en una instancia de extensi&oacute;n</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var bar = $("&lt;div&gt;&lt;/div&gt;")
+    .appendTo("body")
+    .progressbar({ value: 20 });
+
+// obtiene el valor actual
+alert(bar.progressbar("value"));
+
+// actualiza el valor
+bar.progressbar("value", 50);
+
+// obtiene el valor nuevamente
+alert(bar.progressbar("value"));
+</pre>
+            </div>
+          </div>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Ejecutar m&eacute;todos pasando el nombre del m&eacute;todo a la misma funci&oacute;n jQuery que se utiliza para inicializar la extensi&oacute;n puede parecer extra&ntilde;o, sin embargo es realizado as&iacute; para prevenir la "contaminaci&oacute;n" del espacio de nombres de jQuery manteniendo al mismo tiempo la capacidad de llamar a m&eacute;todos en cadena.
+          </p>
+          </div>
+          <div title="Trabajar con las Opciones del Widget" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Trabajar con las Opciones del Widget
+              </h3>
+            </div>
+            <p>
+              Uno de los m&eacute;todos disponibles autom&aacute;ticamente para la extensi&oacute;n es <code class="code">option</code>. Este m&eacute;todo permite obtener y establecer opciones despu&eacute;s de la inicializaci&oacute;n y funciona exactamente igual que los m&eacute;todos <span class="emphasis"><em>attr</em></span> y <span class="emphasis"><em>css</em></span> de jQuery: pasando &uacute;nicamente un nombre como argumento el m&eacute;todo funciona como obtenedor, mientras que pasando uno o m&aacute;s conjuntos de nombres y valores el m&eacute;todo funciona como establecedor. Cuando es utilizado como m&eacute;todo obtenedor, la extensi&oacute;n devolver&aacute; el valor actual de la opci&oacute;n correspondiente al nombre pasado como argumento. Por otro lado, cuando es utilizado como un m&eacute;todo establecedor, el m&eacute;todo <code class="code">_setOption</code> de la extensi&oacute;n ser&aacute; llamado por cada opci&oacute;n que se desea establecer.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Responder cuando una opci&oacute;n es establecida</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$.widget("nmk.progressbar", {
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        this.element.addClass("progressbar");
+        this._update();
+    },
+
+    _setOption: function(key, value) {
+        this.options[key] = value;
+        this._update();
+    },
+
+    _update: function() {
+        var progress = this.options.value + "%";
+        this.element.text(progress);
+    }
+});
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="A&ntilde;adir Funciones de Devoluci&oacute;n de Llamada" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                A&ntilde;adir Funciones de Devoluci&oacute;n de Llamada
+              </h3>
+            </div>
+            <p>
+              Uno de las maneras m&aacute;s f&aacute;ciles de extender una extensi&oacute;n es a&ntilde;adir funciones de devoluci&oacute;n de llamada, para que de esta forma el usuario puede reaccionar cuando el estado de la extensi&oacute;n cambie. A continuaci&oacute;n se mostrar&aacute; como a&ntilde;adir una funci&oacute;n de devoluci&oacute;n de llamada a la extensi&oacute;n creada para indicar cuando la barra de progreso haya alcanzado el 100%. El m&eacute;todo <code class="code">_trigger</code> obtiene tres par&aacute;metros: el nombre de la funci&oacute;n de devoluci&oacute;n, el objeto de evento nativo que inicializa la funci&oacute;n de devoluci&oacute;n y un conjunto de informaci&oacute;n relevante al evento. El nombre de la funci&oacute;n de devoluci&oacute;n es el &uacute;nico par&aacute;metro obligatorio, pero los otros pueden ser muy &uacute;tiles si el usuario desea implementar funcionalidades personalizadas.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Proveer funciones de devoluci&oacute;n de llamada</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$.widget("nmk.progressbar", {
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        this.element.addClass("progressbar");
+        this._update();
+    },
+
+    _setOption: function(key, value) {
+        this.options[key] = value;
+        this._update();
+    },
+
+    _update: function() {
+        var progress = this.options.value + "%";
+        this.element.text(progress);
+        if (this.options.value == 100) {
+            this._trigger("complete", null, { value: 100 });
+        }
+    }
+});
+</pre>
+              </div>
+            </div>
+            <p>
+              Las funciones de devoluci&oacute;n son esencialmente s&oacute;lo opciones adicionales, por lo cual, pueden ser establecidas como cualquier otra opci&oacute;n. Cada vez que una funci&oacute;n de devoluci&oacute;n es ejecutada, un evento correspondiente se activa tambi&eacute;n. El tipo de evento se determina mediante la concatenaci&oacute;n del nombre de la extensi&oacute;n y el nombre de la funci&oacute;n de devoluci&oacute;n. Dicha funci&oacute;n y evento reciben dos mismos par&aacute;metros: un objeto de evento y un conjunto de informaci&oacute;n relevante al evento.
+            </p>
+            <p>
+              Si la extensi&oacute;n tendr&aacute; alguna funcionalidad que podr&aacute; ser cancelada por el usuario, la mejor manera de hacerlo es creando funciones de devoluci&oacute;n cancelables. El usuario podr&aacute; cancelar una funci&oacute;n de devoluci&oacute;n o su evento asociado de la misma manera que se cancela cualquier evento nativo: llamando a <code class="code">event.preventDefault()</code> o utilizando <code class="code">return false</code>.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Vincular a eventos del widget</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var bar = $("&lt;div&gt;&lt;/div&gt;")
+    .appendTo("body")
+    .progressbar({
+        complete: function(event, data) {
+            alert( "Funci&oacute;n de devoluci&oacute;n" );
+        }
+    })
+    .bind("progressbarcomplete", function(event, data) {
+        alert("El valor de la barra de progreso es " + data.value);
+    });
+
+bar.progressbar("option", "value", 100);
+</pre>
+              </div>
+            </div>
+            <div title="En profundidad: Widget Factory" class="sidebar">
+              <p class="title">
+                <b>En profundidad: Widget Factory</b>
+              </p>
+              <p>
+                Cuando se llama a <code class="code">jQuery.widget</code>, &eacute;sta crea una funci&oacute;n constructora para la extensi&oacute;n y establece el objeto literal que se pasa como el prototipo para todas las instancias de la extensi&oacute;n. Todas las funcionalidades que autom&aacute;ticamente se a&ntilde;aden a la extensi&oacute;n provienen del prototipo base del widget, el cual es definido como <code class="code">jQuery.Widget.prototype</code>. Cuando una instancia de la extensi&oacute;n es creada, es guardada en el elemento DOM original utilizando <code class="code">jQuery.data</code>, con el nombre de la extensi&oacute;n como palabra clave.
+              </p>
+              <p>
+                Debido a que la instancia de la extensi&oacute;n esta directamente vinculada al elemento DOM, es posible acceder a la instancia de la extensi&oacute;n de forma directa. Esto permite llamar a m&eacute;todos directamente en la instancia de la extensi&oacute;n en lugar de pasar el nombre del m&eacute;todo como una cadena de caracteres, dando la posibilidad de acceder a las propiedades de la extensi&oacute;n.
+              </p>
+              <pre class="brush: js">
+var bar = $("&lt;div&gt;&lt;/div&gt;")
+    .appendTo("body")
+    .progressbar()
+    .data("progressbar" );
+
+// llamar a un m&eacute;todo directamente en la instancia de la extensi&oacute;n
+bar.option("value", 50);
+
+// acceder a propiedades en la instancia de la extensi&oacute;n
+alert(bar.options.value);
+</pre>
+              <p>
+                Uno de los mayores beneficios de tener un constructor y un prototipo para una extensi&oacute;n es la facilidad de extender la extensi&oacute;n. El hecho de a&ntilde;adir o cambiar m&eacute;todos en el prototipo de la extensi&oacute;n, permite tambi&eacute;n modificarlos en todas las instancias de la extensi&oacute;n. Por ejemplo, si deseamos a&ntilde;adir un m&eacute;todo a la extensi&oacute;n de barra de progreso para permitir restablecer el progreso a 0%, es posible hacerlo a&ntilde;adiendo este m&eacute;todo al prototipo y autom&aacute;ticamente estar&aacute; disponible para ser llamada desde cualquier instancia de la extensi&oacute;n.
+              </p>
+              <pre class="brush: js">
+$.nmk.progressbar.prototype.reset = function() {
+    this._setOption("value", 0);
+};
+</pre>
+            </div>
+          </div>
+          <div title="Limpieza" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Limpieza
+              </h3>
+            </div>
+            <p>
+              En algunos casos, tendr&aacute; sentido permitir a los usuarios aplicar y desaplicar la extensi&oacute;n. Esto es posible hacerlo a trav&eacute;s del m&eacute;todo <code class="code">destroy</code>. Con dicho m&eacute;todo, es posible deshacer todo lo realizado con la extensi&oacute;n. Tambi&eacute;n &eacute;ste es llamado autom&aacute;ticamente si el elemento vinculado a la extensi&oacute;n es eliminado del DOM (por lo cual tambi&eacute;n es posible utilizarlo para la "recolecci&oacute;n de basura"). El m&eacute;todo <code class="code">destroy</code> predeterminado remueve el v&iacute;nculo entre el elemento DOM y la instancia de la extensi&oacute;n
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>A&ntilde;adir un m&eacute;todo destroy al widget</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$.widget( "nmk.progressbar", {
+    options: {
+        value: 0
+    },
+
+    _create: function() {
+        this.element.addClass("progressbar");
+        this._update();
+    },
+
+    _setOption: function(key, value) {
+        this.options[key] = value;
+        this._update();
+    },
+
+    _update: function() {
+        var progress = this.options.value + "%";
+        this.element.text(progress);
+        if (this.options.value == 100 ) {
+            this._trigger("complete", null, { value: 100 });
+        }
+    },
+
+    destroy: function() {
+        this.element
+            .removeClass("progressbar")
+            .text("");
+
+        // llama a la funci&oacute;n base destroy
+        $.Widget.prototype.destroy.call(this);
+    }
+});
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Conclusi&oacute;n" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Conclusi&oacute;n
+              </h3>
+            </div>
+            <p>
+              La utilizaci&oacute;n de <span class="emphasis"><em>Widget factory</em></span> es solo una manera de crear extensiones con mantenimiento de estado. Existen algunos modelos diferentes que pueden ser utilizados y cada uno posee sus ventajas y desventajas. <span class="emphasis"><em>Widget factory</em></span> resuelve muchos problemas comunes, mejora significativamente la productividad y la reutilizaci&oacute;n de c&oacute;digo.
+            </p>
+          </div>
+          <div title="Ejercicios" class="section">
+            <h2 class="title">
+              Ejercicios
+            </h2>
+            <div title="Realizar una Tabla Ordenable" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Realizar una Tabla Ordenable
+                </h3>
+              </div>
+              <p>
+                Para este ejercicio, la tarea es identificar, descargar e implementar una extensi&oacute;n que permita ordenar la tabla existente en la p&aacute;gina index.html. Cuando este listo, todas las columnas de la tabla deben poder ser ordenables.
+              </p>
+            </div>
+            <div title="Escribir una Extensi&oacute;n Para Cambiar el Color de Fondo en Tablas" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Escribir una Extensi&oacute;n Para Cambiar el Color de Fondo en Tablas
+                </h3>
+              </div>
+              <p>
+                Abra el archivo <code class="filename">/exercises/index.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/stripe.js</code>. La tarea es escribir una extensi&oacute;n llamada "stripe" la cual podr&aacute; ser llamada desde cualquier elemento table y deber&aacute; cambiar el color de fondo de las filas impares en el cuerpo de la tabla. El color podr&aacute; ser especificado como par&aacute;metro de la extensi&oacute;n.
+              </p>
+              <pre class="brush: js">
+$('#myTable').stripe('#cccccc');
+</pre>
+              <p>
+                No olvide de devolver la tabla para que otros m&eacute;todos puedan ser encadenados luego de la llamada a la extensi&oacute;n.
+              </p>
+            </div>
+          </div>
+        </div>

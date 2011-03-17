@@ -1,0 +1,1480 @@
+        <div title="Conceptos B&aacute;sicos de JavaScript" class="chapter">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title">
+                  Conceptos B&aacute;sicos de JavaScript
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div title="Introducci&oacute;n" class="section">
+            <h2 class="title">
+              Introducci&oacute;n
+            </h2>
+            <p>
+              jQuery se encuentra escrito en JavaScript, un lenguaje de programaci&oacute;n muy rico y expresivo. 
+            </p>
+            <p>
+              El cap&iacute;tulo est&aacute; orientado a personas sin experiencia en el lenguaje, abarcando conceptos b&aacute;sicos y problemas frecuentes que pueden presentarse al trabajar con el mismo. Por otro lado, la secci&oacute;n puede ser beneficiosa en quienes utilicen otros lenguajes de programaci&oacute;n para entender las peculiaridades de JavaScript.
+            </p>
+            <p>
+              Si usted esta interesado en aprender el lenguaje m&aacute;s en profundidad, puede leer el libro <em class="citetitle">JavaScript: The Good Parts</em> escrito por Douglas Crockford.
+            </p>
+          </div>
+          <div title="Sintaxis B&aacute;sica" class="section">
+            <h2 class="title">
+              Sintaxis B&aacute;sica
+            </h2>
+            <p>
+              Comprensi&oacute;n de declaraciones, nombres de variables, espacios en blanco, y otras sintaxis b&aacute;sicas de JavaScript.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Declaraci&oacute;n simple de variable</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = 'hello world';
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Los espacios en blanco no tienen valor fuera de las comillas</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo =         'hello world';
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Los par&eacute;ntesis indican prioridad</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+2 * 3 + 5;    // es igual a 11; la multiplicaci&oacute;n ocurre primero
+2 * (3 + 5);  // es igual a 16; por lo parentesis, la suma ocurre primero
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>La tabulaci&oacute;n mejora la lectura del c&oacute;digo, pero no posee ning&uacute;n significado especial</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = function() {
+    console.log('hello');
+};
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Operadores" class="section">
+            <h2 class="title">
+              Operadores
+            </h2>
+            <div title="Operadores B&aacute;sicos" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Operadores B&aacute;sicos
+                </h3>
+              </div>
+              <p>
+                Los operadores b&aacute;sicos permiten manipular valores.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Concatenaci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var foo = 'hello';
+var bar = 'world';
+
+console.log(foo + ' ' + bar); // la consola de depuraci&oacute;n muestra 'hello world'
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Multiplicaci&oacute;n y divisi&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+2 * 3;
+2 / 3;
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Incrementaci&oacute;n y decrementaci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var i = 1;
+
+var j = ++i;  // incrementaci&oacute;n previa:  j es igual a 2; i es igual a 2
+var k = i++;  // incrementaci&oacute;n posterior: k es igual a 2; i es igual a 3
+</pre>
+                </div>
+              </div>
+            </div>
+            <div title="Operaciones con N&uacute;meros y Cadenas de Caracteres" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Operaciones con N&uacute;meros y Cadenas de Caracteres
+                </h3>
+              </div>
+              <p>
+                En JavaScript, las operaciones con n&uacute;meros y cadenas de caracteres (en ingl&eacute;s <span class="emphasis"><em>strings</em><span>) pueden ocasionar resultados no esperados.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Suma vs. concatenaci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var foo = 1;
+var bar = '2';
+
+console.log(foo + bar);  // error: La consola de depuraci&oacute;n muestra 12
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Forzar a una cadena de caracteres actuar como un n&uacute;mero</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var foo = 1;
+var bar = '2';
+
+// el constructor 'Number' obliga a la cadena comportarse como un n&uacute;mero
+console.log(foo + Number(bar));  // la consola de depuraci&oacute;n muestra 3
+</pre>
+                </div>
+              </div>
+              <p>
+                El constructor <em class="firstterm">Number</em>, cuando es llamado como una funci&oacute;n (como se muestra en el ejemplo) obliga a su argumento a comportarse como un n&uacute;mero. Tambi&eacute;n es posible utilizar el operador de <span class="emphasis"><em>suma unaria</em></span>, entregando el mismo resultado:
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Forzar a una cadena de caracteres actuar como un n&uacute;mero (utilizando el operador de suma unaria)</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+console.log(foo + +bar);
+</pre>
+                </div>
+              </div>
+            </div>
+            <div class="titlepage">
+              <h3 class="title">
+                Operadores L&oacute;gicos
+              </h3>
+            </div>
+            <p>
+              Los operadores l&oacute;gicos permiten evaluar una serie de operandos utilizando operaciones AND y OR.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Operadores l&oacute;gicos AND y OR</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = 1;
+var bar = 0;
+var baz = 2;
+
+foo || bar;   // devuelve 1, el cual es verdadero (true)
+bar || foo;   // devuelve 1, el cual es verdadero (true)
+
+foo &amp;&amp; bar;   // devuelve 0, el cual es falso (false)
+foo &amp;&amp; baz;   // devuelve 2, el cual es verdadero (true)
+baz &amp;&amp; foo;   // devuelve 1, el cual es verdadero (true)
+</pre>
+              </div>
+            </div>
+            <p>
+              El operador <code class="code">||</code> (OR l&oacute;gico) devuelve el valor del primer operando, si &eacute;ste es verdadero; caso contrario devuelve el segundo operando. Si ambos operandos son falsos devuelve falso (<span class="emphasis"><em>false</em></span>). El operador <code class="code">&&</code> (AND l&oacute;gico) devuelve el valor del primer operando si &eacute;ste es falso; caso contrario devuelve el segundo operando. Cuando ambos valores son verdaderos devuelve verdadero (<span class="emphasis"><em>true</em></span>), sino devuelve falso.
+            </p>
+            <p>
+			  Puede consultar la secci&oacute;n <a title="Elementos Verdaderos y Falsos" href="#javascript-basics.sections.truthy-falsy" class="xref">"Elementos Verdaderos y Falsos"</a> para m&aacute;s detalles sobre que valores se eval&uacute;an como <code class="code">true</code> y cuales se eval&uacute;an como <code class="code">false</code>.
+            </p>
+            <div class="note">
+            <h3 class="title">
+              Nota
+            </h3>
+            <p>
+              Puede que a veces note que algunos desarrolladores utilizan esta l&oacute;gica en flujos de control en lugar de utilizar la declaraci&oacute;n <code class="code">if</code>. Por ejemplo:
+            </p>
+            <pre class="brush: js">
+// realizar algo con foo si foo es verdadero
+foo &amp;&amp; doSomething(foo);
+
+// establecer bar igual a baz si baz es verdadero;
+// caso contrario, establecer a bar igual al
+// valor de createBar()
+var bar = baz || createBar();
+</pre>
+            <p>
+              Este estilo de declaraci&oacute;n es muy elegante y conciso; pero puede ser dif&iacute;cil para leer (sobretodo para principiantes). Por eso se explicita, para reconocerlo cuando este leyendo c&oacute;digo. Sin embargo su utilizaci&oacute;n no es recomendable a menos que est&eacute; c&oacute;modo con el concepto y su comportamiento.
+            </p>
+            </div>
+            <div title="Operadores de Comparaci&oacute;n" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Operadores de Comparaci&oacute;n
+                </h3>
+              </div>
+              <p>
+                Los operadores de comparaci&oacute;n permiten comprobar si determinados valores son equivalentes o id&eacute;nticos.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Operadores de Comparaci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var foo = 1;
+var bar = 0;
+var baz = '1';
+var bim = 2;
+
+foo == bar;   // devuelve falso (false)
+foo != bar;   // devuelve verdadero (true)
+foo == baz;   <span class="bold"><strong>// devuelve verdadero (true); tenga cuidado</strong></span>
+
+foo === baz;             // devuelve falso (false)
+foo !== baz;             // devuelve verdadero (true)
+foo === parseInt(baz);   // devuelve verdadero (true)
+
+foo &gt; bim;    // devuelve falso (false)
+bim &gt; baz;    // devuelve verdadero (true)
+foo &lt;= baz;   // devuelve verdadero (true)
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">
+            C&oacute;digo Condicional
+          </h2>
+          <p>
+            A veces se desea ejecutar un bloque de c&oacute;digo bajo ciertas condiciones. Los flujos de control — a trav&eacute;s de la utilizaci&oacute;n de las declaraciones <code class="code">if</code> y <code class="code">else</code> permiten hacerlo.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Flujos de control</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var foo = true;
+var bar = false;
+
+if (bar) {
+    // este c&oacute;digo nunca se ejecutar&aacute;
+    console.log('hello!');
+}
+
+if (bar) {
+    // este c&oacute;digo no se ejecutar&aacute;
+} else {
+    if (foo) {
+        // este c&oacute;digo se ejecutar&aacute;
+    } else {
+        // este c&oacute;digo se ejecutar&aacute; si foo y bar son falsos (false)
+    }
+}
+</pre>
+            </div>
+          </div>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            En una l&iacute;nea singular, cuando se escribe una declaraci&oacute;n <code class="code">if</code>, las llaves no son estrictamente necesarias; sin embargo es recomendable su utilizaci&oacute;n, ya que hace que el c&oacute;digo sea mucho m&aacute;s legible.
+          </p>
+          <p>
+            Debe tener en cuenta de no definir funciones con el mismo nombre m&uacute;ltiples veces dentro de declaraciones <code class="code">if</code>/<code class="code">else</code>, ya que puede obtener resultados no esperados.
+          </p>
+          </div>
+
+          <div title="Elementos Verdaderos y Falsos" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Elementos Verdaderos y Falsos
+              </h3>
+            </div>
+            <p>
+              En orden de utilizar los flujos de control correctamente, es importante entender qu&eacute; tipos de valores son "verdaderos" y cuales "falsos". A veces, algunos valores pueden parecer una cosa pero al final terminan siendo otra.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Valores que devuelven <code class="code">verdadero (true)</code></b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+'0';
+'any string'; // cualquier cadena
+[];  // un arreglo vac&iacute;o
+{};  // un objeto vac&iacute;o
+1;   // cualquier n&uacute;mero distinto a cero
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Valores que devuelven <code class="code">falso (false)</code></b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+0;
+'';  // una cadena vac&iacute;a
+NaN; // la variable JavaScript "not-a-number" (No es un n&uacute;mero)
+null; // un valor nulo
+undefined;  // tenga cuidado -- indefinido (undefined) puede ser redefinido
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Variables Condicionales Utilizando el Operador Ternario" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Variables Condicionales Utilizando el Operador Ternario
+              </h3>
+            </div>
+            <p>
+              A veces se desea establecer el valor de una variable dependiendo de cierta condici&oacute;n. Para hacerlo se puede utilizar una declaraci&oacute;n <code class="code">if</code>/<code class="code">else</code>, sin embargo en muchos casos es m&aacute;s conveniente utilizar el operador ternario. <span class="termdef">[Definici&oacute;n: El <em class="firstterm">operador ternario</em> eval&uacute;a una condici&oacute;n; si la condici&oacute;n es verdadera, devuelve cierto valor, caso contrario devuelve un valor diferente.]</span>
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>El operador ternario</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+// establecer a foo igual a 1 si bar es verdadero;
+// caso contrario, establecer a foo igual a 0
+var foo = bar ? 1 : 0;
+</pre>
+              </div>
+            </div>
+            <p>
+              El operador ternario puede ser utilizado sin devolver un valor a la variable, sin embargo este uso generalmente es desaprobado.
+            </p>
+          </div>
+          <div title="Declaraci&oacute;n Switch" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Declaraci&oacute;n Switch
+              </h3>
+            </div>
+            <p>
+              En lugar de utilizar una serie de declaraciones if/else/else if/else, a veces puede ser &uacute;til la utilizaci&oacute;n de la declaraci&oacute;n switch. <span class="termdef">[Definici&oacute;n: La declaraci&oacute;n <em class="firstterm">Switch</em> eval&uacute;a el valor de una variable &oacute; expresi&oacute;n, y ejecuta diferentes bloques de c&oacute;digo dependiendo de ese valor.]</span>
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Una declaraci&oacute;n Switch</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+switch (foo) {
+
+    case 'bar':
+        alert('el valor es bar');
+    break;
+
+    case 'baz':
+        alert('el valor es baz');
+    break;
+
+    default:
+        alert('de forma predeterminada se ejecutar&aacute; este c&oacute;digo');
+    break;
+
+}
+</pre>
+              </div>
+            </div>
+            <p>
+              Las declaraciones switch son poco utilizadas en JavaScript, debido a que el mismo comportamiento es posible obtenerlo creando un objeto, el cual posee m&aacute;s potencial ya que es posible reutilizarlo, usarlo para realizar pruebas, etc. Por ejemplo:
+            </p>
+            <pre class="brush: js">
+var stuffToDo = {
+    'bar' : function() {
+        alert('el valor es bar');
+    },
+
+    'baz' : function() {
+        alert('el valor es baz');
+    },
+
+    'default' : function() {
+        alert('de forma predeterminada se ejecutar&aacute; este c&oacute;digo');
+    }
+};
+
+if (stuffToDo[foo]) {
+    stuffToDo[foo]();
+} else {
+    stuffToDo['default']();
+}
+</pre>
+            <p>
+              M&aacute;s adelante se abarcar&aacute; el concepto de objetos.
+            </p>
+          </div>
+          <div title="Bucles" class="section">
+            <h2 class="title">
+              Bucles
+            </h2>
+            <p>
+              Los bucles (en ingl&eacute;s <span class="emphasis"><em>loops</em></span>) permiten ejecutar un bloque de c&oacute;digo un determinado n&uacute;mero de veces.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Bucles</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+// muestra en la consola 'intento 0', 'intento 1', ..., 'intento 4'
+for (var i=0; i&lt;5; i++) {
+    console.log('intento ' + i);
+}
+</pre>
+              </div>
+            </div>
+            <p>
+              <em><span class="remark">Note que en el ejemplo </span></em> <em>se utiliza la palabra <span class="token">var</span> antes de la variable <code class="varname">i</code>, esto hace que dicha variable quede dentro del "alcance" (en ingl&eacute;s <span class="emphasis"><em>scope</em></span>) del bucle. M&aacute;s adelante en este cap&iacute;tulo se examinar&aacute; en profundidad el concepto de alcance.</em>
+            </p>
+            <div title="Bucles Utilizando For" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Bucles Utilizando For
+                </h3>
+              </div>
+              <p>
+                Un bucle utilizando <code class="code">for</code> se compone de cuatro estados y posee la siguiente estructura:
+              </p>
+              <pre class="brush: js">
+for ([expresi&oacute;nInicial]; [condici&oacute;n]; [incrementoDeLaExpresi&oacute;n])
+ [cuerpo]
+</pre>
+              <p>
+                El estado <span class="emphasis"><em>expresi&oacute;nInicial</em></span> es ejecutado una sola vez, antes que el bucle comience. &eacute;ste otorga la oportunidad de preparar o declarar variables.
+              </p>
+              <p>
+				El estado <span class="emphasis"><em>condici&oacute;n</em></span> es ejecutado antes de cada repetici&oacute;n, y retorna un valor que decide si el bucle debe continuar ejecut&aacute;ndose o no. Si el estado condicional eval&uacute;a un valor falso el bucle se detiene.
+              </p>
+              <p>
+				El estado <span class="emphasis"><em>incrementoDeLaExpresi&oacute;n</em></span> es ejecutado al final de cada repetici&oacute;n y otorga la oportunidad de cambiar el estado de importantes variables. Por lo general, este estado implica la incrementaci&oacute;n o decrementaci&oacute;n de un contador.
+              </p>
+              <p>
+                El <span class="emphasis"><em>cuerpo</em></span> es el c&oacute;digo a ejecutar en cada repetici&oacute;n del bucle.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Un t&iacute;pico bucle utilizando <code class="code">for</code></b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+for (var i = 0, limit = 100; i &lt; limit; i++) {
+    // Este bloque de c&oacute;digo ser&aacute; ejecutado 100 veces
+    console.log('Currently at ' + i);
+    // Nota: el &uacute;ltimo registro que se mostrar&aacute; en la consola ser&aacute; "Actualmente en 99"
+}
+</pre>
+                </div>
+              </div>
+            </div>
+            <div title="Bucles Utilizando While" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Bucles Utilizando While
+                </h3>
+              </div>
+              <p>
+				Un bucle utilizando <code class="code">while</code> es similar a una declaraci&oacute;n condicional <code class="code">if</code>, excepto que el cuerpo va a continuar ejecut&aacute;ndose hasta que la condici&oacute;n a evaluar sea falsa.
+              </p>
+              <pre class="brush: js">
+while ([condici&oacute;n]) [cuerpo]
+</pre>
+              <div class="example">
+                <p class="title">
+                  <b>Un t&iacute;pico bucle utilizando <code class="code">while</code></b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var i = 0;
+while (i &lt; 100) {
+
+    // Este bloque de c&oacute;digo se ejecutar&aacute; 100 veces
+    console.log('Actualmente en ' + i);
+
+    i++; // incrementa la variable i
+
+}
+</pre>
+                </div>
+              </div>
+              <p>
+                Puede notar que en el ejemplo se incrementa el contador dentro del cuerpo del bucle, pero tambi&eacute;n es posible combinar la condici&oacute;n y la incrementaci&oacute;n, como se muestra a continuaci&oacute;n:
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Bucle utilizando <code class="code">while</code> con la combinaci&oacute;n de la condici&oacute;n y la incrementaci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var i = -1;
+while (++i &lt; 100) {
+    // Este bloque de c&oacute;digo se ejecutar&aacute; 100 veces
+    console.log('Actualmente en ' + i);
+}
+</pre>
+                </div>
+              </div>
+              <p>
+				Se comienza en <code class="code">-1</code> y luego se utiliza la incrementaci&oacute;n previa (<code class="code">++i</code>).
+              </p>
+            </div>
+            <div title="Bucles Utilizando Do-while" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Bucles Utilizando Do-while
+                </h3>
+              </div>
+              <p>
+                Este bucle es exactamente igual que el bucle utilizando <code class="code">while</code> excepto que el cuerpo es ejecutado al menos una vez antes que la condici&oacute;n sea evaluada.
+              </p>
+              <pre class="brush: js">
+do [cuerpo] while ([condici&oacute;n])
+</pre>
+              <div class="example">
+                <p class="title">
+                  <b>Un bucle utilizando <code class="code">do-while</code></b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+do {
+
+    // Incluso cuando la condici&oacute;n sea falsa
+    // el cuerpo del bucle se ejecutar&aacute; al menos una vez.
+
+    alert('Hello');
+
+} while (false);
+</pre>
+                </div>
+              </div>
+              <p>
+                Este tipo de bucles son bastantes at&iacute;picos ya que en pocas ocasiones de necesita un bucle que se ejecute al menos una vez. De cualquier forma debe estar al tanto de ellos.
+              </p>
+            </div>
+            <div title="Break y Continue" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Break y Continue
+                </h3>
+              </div>
+              <p>
+				Usualmente, el fin de la ejecuci&oacute;n de un bucle resultar&aacute; cuando la condici&oacute;n no siga evaluando un valor verdadero, sin embargo tambi&eacute;n es posible parar un bucle utilizando la declaraci&oacute;n <code class="code">break</code> dentro del cuerpo.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Detener un bucle con break</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+for (var i = 0; i &lt; 10; i++) {
+    if (something) {
+        break;
+    }
+}
+</pre>
+                </div>
+              </div>
+              <p>
+				Tambi&eacute;n puede suceder que quiera continuar con el bucle sin tener que ejecutar m&aacute;s sentencias del cuerpo del mismo bucle. Esto puede realizarse utilizando la declaraci&oacute;n <code class="code">continue</code>.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Saltar a la siguiente iteraci&oacute;n de un bucle</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+for (var i = 0; i &lt; 10; i++) {
+
+    if (something) {
+        continue;
+    }
+
+    // La siguiente declaraci&oacute;n ser&aacute; ejecutada
+    // si la condici&oacute;n 'something' no se cumple
+    console.log('Hello');
+
+}
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div title="Palabras Reservadas" class="section">
+            <h2 class="title">
+              Palabras Reservadas
+            </h2>
+            <p>
+              JavaScript posee un n&uacute;mero de "palabras reservadas", o palabras que son especiales dentro del mismo lenguaje. Debe utilizar estas palabras cuando las necesite para su uso espec&iacute;fico.
+            </p>
+            <ul>
+              <li>
+                <code class="code">break</code>
+              </li>
+              <li>
+                <code class="code">case</code>
+              </li>
+              <li>
+                <code class="code">catch</code>
+              </li>
+              <li>
+                <code class="code">continue</code>
+              </li>
+              <li>
+                <code class="code">default</code>
+              </li>
+              <li>
+                <code class="code">delete</code>
+              </li>
+              <li>
+                <code class="code">do</code>
+              </li>
+              <li>
+                <code class="code">else</code>
+              </li>
+              <li>
+                <code class="code">finally</code>
+              </li>
+              <li>
+                <code class="code">for</code>
+              </li>
+              <li>
+                <code class="code">function</code>
+              </li>
+              <li>
+                <code class="code">if</code>
+              </li>
+              <li>
+                <code class="code">in</code>
+              </li>
+              <li>
+                <code class="code">instanceof</code>
+              </li>
+              <li>
+                <code class="code">new</code>
+              </li>
+              <li>
+                <code class="code">return</code>
+              </li>
+              <li>
+                <code class="code">switch</code>
+              </li>
+              <li>
+                <code class="code">this</code>
+              </li>
+              <li>
+                <code class="code">throw</code>
+              </li>
+              <li>
+                <code class="code">try</code>
+              </li>
+              <li>
+                <code class="code">typeof</code>
+              </li>
+              <li>
+                <code class="code">var</code>
+              </li>
+              <li>
+                <code class="code">void</code>
+              </li>
+              <li>
+                <code class="code">while</code>
+              </li>
+              <li>
+                <code class="code">with</code>
+              </li>
+              <li>
+                <code class="code">abstract</code>
+              </li>
+              <li>
+                <code class="code">boolean</code>
+              </li>
+              <li>
+                <code class="code">byte</code>
+              </li>
+              <li>
+                <code class="code">char</code>
+              </li>
+              <li>
+                <code class="code">class</code>
+              </li>
+              <li>
+                <code class="code">const</code>
+              </li>
+              <li>
+                <code class="code">debugger</code>
+              </li>
+              <li>
+                <code class="code">double</code>
+              </li>
+              <li>
+                <code class="code">enum</code>
+              </li>
+              <li>
+                <code class="code">export</code>
+              </li>
+              <li>
+                <code class="code">extends</code>
+              </li>
+              <li>
+                <code class="code">final</code>
+              </li>
+              <li>
+                <code class="code">float</code>
+              </li>
+              <li>
+                <code class="code">goto</code>
+              </li>
+              <li>
+                <code class="code">implements</code>
+              </li>
+              <li>
+                <code class="code">import</code>
+              </li>
+              <li>
+                <code class="code">int</code>
+              </li>
+              <li>
+                <code class="code">interface</code>
+              </li>
+              <li>
+                <code class="code">long</code>
+              </li>
+              <li>
+                <code class="code">native</code>
+              </li>
+              <li>
+                <code class="code">package</code>
+              </li>
+              <li>
+                <code class="code">private</code>
+              </li>
+              <li>
+                <code class="code">protected</code>
+              </li>
+              <li>
+                <code class="code">public</code>
+              </li>
+              <li>
+                <code class="code">short</code>
+              </li>
+              <li>
+                <code class="code">static</code>
+              </li>
+              <li>
+                <code class="code">super</code>
+              </li>
+              <li>
+                <code class="code">synchronized</code>
+              </li>
+              <li>
+                <code class="code">throws</code>
+              </li>
+              <li>
+                <code class="code">transient</code>
+              </li>
+              <li>
+                <code class="code">volatile</code>
+              </li>
+            </ul>
+          </div>
+          <div title="Arreglos" class="section">
+            <h2 class="title">
+              Arreglos
+            </h2>
+            <p>
+			  Los arreglos (en ingl&eacute;s <span class="emphasis"><em>arrays</em></span>) son listas de valores con &iacute;ndice-cero (en ingl&eacute;s <span class="emphasis"><em>zero-index</em></span>), es decir, que el primer elemento del arreglo est&aacute; en el &iacute;ndice 0. &eacute;stos son una forma pr&aacute;ctica de almacenar un conjunto de datos relacionados (como cadenas de caracteres), aunque en realidad, un arreglo puede incluir m&uacute;ltiples tipos de datos, incluso otros arreglos.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Un arreglo simple</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'hello', 'world' ];
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Acceder a los &iacute;tems del arreglo a trav&eacute;s de su &iacute;ndice</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'hello', 'world', 'foo', 'bar' ];
+console.log(myArray[3]);   // muestra en la consola 'bar'
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Obtener la cantidad de &iacute;tems del arreglo</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'hello', 'world' ];
+console.log(myArray.length);   // muestra en la consola 2
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Cambiar el valor de un &iacute;tem de un arreglo</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'hello', 'world' ];
+myArray[1] = 'changed';
+</pre>
+              </div>
+            </div>
+            <p class="remark">
+              <i><span class="remark">Como se muestra en el ejemplo</span> "Cambiar el valor de un &iacute;tem de un arreglo" es posible cambiar el valor de un &iacute;tem de un arreglo, sin embargo, por lo general, no es aconsejable.</i>
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>A&ntilde;adir elementos a un arreglo</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'hello', 'world' ];
+myArray.push('new');
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Trabajar con arreglos</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myArray = [ 'h', 'e', 'l', 'l', 'o' ];
+var myString = myArray.join('');   // 'hello'
+var mySplit = myString.split('');  // [ 'h', 'e', 'l', 'l', 'o' ]
+</pre>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">
+            Objetos
+          </h2>
+          <p>
+            Los objetos son elementos que pueden contener cero o m&aacute;s conjuntos de pares de nombres claves y valores asociados a dicho objeto. Los nombres claves pueden ser cualquier palabra &oacute; n&uacute;mero v&aacute;lido. El valor puede ser cualquier tipo de valor: un n&uacute;mero, una cadena, un arreglo, una funci&oacute;n, incluso otro objeto.
+          </p>
+          <p>
+            <span class="termdef">[Definici&oacute;n: Cuando uno de los valores de un objeto es una funci&oacute;n, &eacute;sta es nombrada como un <em class="firstterm">m&eacute;todo</em> del objeto.]</span> De lo contrario, se los llama <em class="firstterm">propiedades</em>.
+          </p>
+          <p>
+            Curiosamente, en JavaScript, casi todo es un objeto — arreglos, funciones, n&uacute;meros, incluso cadenas — y todos poseen propiedades y m&eacute;todos.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Creaci&oacute;n de un "objeto literal"</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var myObject = {
+    sayHello : function() {
+        console.log('hello');
+    },
+
+    myName : 'Rebecca'
+};
+
+myObject.sayHello();            // se llama al m&eacute;todo sayHello, el cual muestra en la consola 'hello'
+console.log(myObject.myName);   // se llama a la propiedad myName, la cual muestra en la consola 'Rebecca'
+</pre>
+            </div>
+          </div>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Notar que cuando se crean objetos literales, el nombre de la propiedad puede ser cualquier identificador JavaScript, una cadena de caracteres (encerrada entre comillas) &oacute; un n&uacute;mero:
+          </p>
+          <pre class="brush: js">
+var myObject = {
+    validIdentifier: 123,
+    'some string': 456,
+    99999: 789
+};
+</pre>
+          <p>
+            Los objetos literales pueden ser muy &uacute;tiles para la organizaci&oacute;n del c&oacute;digo, para m&aacute;s informaci&oacute;n puede leer el art&iacute;culo (en ingl&eacute;s) <a href="http://blog.rebeccamurphey.com/2009/10/15/using-objects-to-organize-your-code/" class="ulink">Using Objects to Organize Your Code</a> por Rebecca Murphey.
+          </p>
+          </div>
+          <div title="Funciones" class="section">
+            <h2 class="title">
+              Funciones
+            </h2>
+            <p>
+              Las funciones contienen bloques de c&oacute;digo que se ejecutaran repetidamente. A las mismas se le pueden pasar argumentos, y opcionalmente la funci&oacute;n puede devolver un valor.
+            </p>
+            <p>
+              Las funciones pueden ser creadas de varias formas:
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Declaraci&oacute;n de una funci&oacute;n</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+function foo() { /* hacer algo */ }
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Declaraci&oacute;n de una funci&oacute;n nombrada</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = function() { /* hacer algo */ }
+</pre>
+              </div>
+            </div>
+            <p class="remark">
+			  <i><span class="remark">Es preferible el m&eacute;todo de funci&oacute;n nombrada debido a algunas</span></i> <i><a href="http://yura.thinkweb2.com/named-function-expressions/" class="ulink">profundas razones t&eacute;cnicas</a>. Igualmente, es probable encontrar a los dos m&eacute;todos cuando se revise c&oacute;digo JavaScript.</i>
+            </p>
+            <div title="Utilizaci&oacute;n de Funciones" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Utilizaci&oacute;n de Funciones
+                </h3>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Una funci&oacute;n simple</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var greet = function(person, greeting) {
+    var text = greeting + ', ' + person;
+    console.log(text); 
+};
+
+
+greet('Rebecca', 'Hello');  // muestra en la consola 'Hello, Rebecca'
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Una funci&oacute;n que devuelve un valor</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var greet = function(person, greeting) {
+    var text = greeting + ', ' + person;
+    return text;
+};
+
+console.log(greet('Rebecca','hello'));  // la funci&oacute;n devuelve 'Hello, Rebecca', la cual se muestra en la consola
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Una funci&oacute;n que devuelve otra funci&oacute;n</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var greet = function(person, greeting) {
+    var text = greeting + ', ' + person;
+    return function() { console.log(text); };
+};
+
+
+var greeting = greet('Rebecca', 'Hello');
+greeting();  // se muestra en la consola 'Hello, Rebecca'
+</pre>
+                </div>
+              </div>
+            </div>
+            <div title="Self-Executing Anonymous Functions" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Funciones An&oacute;nimas Autoejecutables
+                </h3>
+              </div>
+              <p>
+				Un patr&oacute;n com&uacute;n en JavaScript son las funciones an&oacute;nimas autoejecutables. Este patr&oacute;n consiste en crear una expresi&oacute;n de funci&oacute;n e inmediatamente ejecutarla. El mismo es muy &uacute;til para casos en que no se desea intervenir espacios de nombres globales, debido a que ninguna variable declarada dentro de la funci&oacute;n es visible desde afuera.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Funci&oacute;n an&oacute;nima autoejecutable</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+(function(){
+    var foo = 'Hello world';
+})();
+
+
+console.log(foo);   // indefinido (undefined)
+</pre>
+                </div>
+              </div>
+            </div>
+            <div title="Funciones como Argumentos" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Funciones como Argumentos
+                </h3>
+              </div>
+              <p>
+				En JavaScript, las funciones son "ciudadanos de primera clase" &mdash pueden ser asignadas a variables o pasadas a otras funciones como argumentos. En jQuery, pasar funciones como argumentos es una pr&aacute;ctica muy com&uacute;n.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Pasar una funci&oacute;n an&oacute;nima como un argumento</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var myFn = function(fn) {
+    var result = fn();
+    console.log(result);
+};
+
+myFn(function() { return 'hello world'; });   // muestra en la consola 'hello world'
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Pasar una funci&oacute;n nombrada como un argumento</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+var myFn = function(fn) {
+    var result = fn();
+    console.log(result);
+};
+
+var myOtherFn = function() {
+    return 'hello world';
+};
+
+myFn(myOtherFn);   // muestra en la consola 'hello world'
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div title="Determinaci&oacute;n del Tipo de Variable" class="section">
+            <h2 class="title">
+              Determinaci&oacute;n del Tipo de Variable
+            </h2>
+            <p>
+			  JavaScript ofrece una manera de poder comprobar el "tipo" (en ingl&eacute;s <span class="emphasis"><em>type</em></span>) de una variable. 
+			  Sin embargo, el resultado puede ser confuso &mdash; por ejemplo, el tipo de un arreglo es "object".
+            </p>
+            <p>
+			  Por eso, es una pr&aacute;ctica com&uacute;n utilizar el operador <code class="code">typeof</code> cuando se trata de determinar el tipo de un valor espec&iacute;fico.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Determinar el tipo en diferentes variables</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myFunction = function() {
+    console.log('hello');
+};
+
+var myObject = {
+    foo : 'bar'
+};
+
+var myArray = [ 'a', 'b', 'c' ];
+
+var myString = 'hello';
+
+var myNumber = 3;
+
+typeof myFunction;   // devuelve 'function'
+typeof myObject;     // devuelve 'object'
+typeof myArray;      // devuelve 'object' -- tenga cuidado
+typeof myString;     // devuelve 'string'
+typeof myNumber;     // devuelve 'number'
+
+typeof null;         // devuelve 'object' -- tenga cuidado
+
+
+if (myArray.push &amp;&amp; myArray.slice &amp;&amp; myArray.join) {
+    // probablemente sea un arreglo
+    // (este estilo es llamado, en ingl&eacute;s, "duck typing")
+}
+
+if (Object.prototype.toString.call(myArray) === '[object Array]') {
+    // definitivamente es un arreglo;
+    // esta es considerada la forma m&aacute;s robusta
+    // de determinar si un valor es un arreglo.
+}
+</pre>
+              </div>
+            </div>
+            <p>
+              jQuery ofrece m&eacute;todos para ayudar a determinar el tipo de un determinado valor. Estos m&eacute;todos ser&aacute;n vistos m&aacute;s adelante.
+            </p>
+          </div>
+          <h2 class="title">
+            La palabra clave <code class="code">this</code>
+          </h2>
+          <p>
+            En JavaScript, as&iacute; como en la mayor&iacute;a de los lenguajes de programaci&oacute;n orientados a objetos, <code class="code">this</code> es una palabra clave especial que hace referencia al objeto en donde el m&eacute;todo est&aacute; siendo invocado. El valor de <code class="code">this</code> es determinado utilizando una serie de simples pasos:
+          </p>
+          <div class="orderedlist">
+            <ol class="orderedlist">
+              <li>Si la funci&oacute;n es invocada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/call" class="ulink">Function.call</a> &oacute; <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/apply" class="ulink">Function.apply</a>, <code class="code">this</code> tendr&aacute; el valor del primer argumento pasado al m&eacute;todo. Si el argumento es nulo (<span class="emphasis"><em>null</em></span>) &oacute; indefinido (<span class="emphasis"><em>undefined</em></span>), <code class="code">this</code> har&aacute; referencia el objeto global (el objeto <code class="code">window</code>);
+              </li>
+              <li>Si la funci&oacute;n a invocar es creada utilizando <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, <code class="code">this</code> ser&aacute; el primer argumento que es pasado a la funci&oacute;n en el momento en que se la crea;
+              </li>
+              <li>Si la funci&oacute;n es invocada como un m&eacute;todo de un objeto, <code class="code">this</code> referenciar&aacute; a dicho objeto;
+              </li>
+              <li>De lo contrario, si la funci&oacute;n es invocada como una funci&oacute;n independiente, no unida a alg&uacute;n objeto, <code class="code">this</code> referenciar&aacute; al objeto global.
+              </li>
+            </ol>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Una funci&oacute;n invocada utilizando Function.call</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var myObject = {
+    sayHello : function() {
+        console.log('Hola, mi nombre es ' + this.myName);
+    },
+
+    myName : 'Rebecca'
+};
+
+var secondObject = {
+    myName : 'Colin'
+};
+
+myObject.sayHello();                  // registra 'Hola, mi nombre es Rebecca'
+myObject.sayHello.call(secondObject); // registra 'Hola, mi nombre es Colin'
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Una funci&oacute;n creada utilizando Function.bind</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var myName = 'el objeto global',
+
+    sayHello = function () {
+        console.log('Hola, mi nombre es ' + this.myName);
+    },
+
+    myObject = {
+        myName : 'Rebecca'
+    };
+
+var myObjectHello = sayHello.bind(myObject);
+
+sayHello();       // registra 'Hola, mi nombre es el objeto global'
+myObjectHello();  // registra 'Hola, mi nombre es Rebecca'
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Una funci&oacute;n vinculada a un objeto</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var myName = 'el objeto global',
+
+    sayHello = function() {
+        console.log('Hola, mi nombre es ' + this.myName);
+    },
+
+    myObject = {
+        myName : 'Rebecca'
+    },
+
+    secondObject = {
+        myName : 'Colin'
+    };
+
+myObject.sayHello = sayHello;
+secondObject.sayHello = sayHello;
+
+sayHello();               // registra 'Hola, mi nombre es el objeto global'
+myObject.sayHello();      // registra 'Hola, mi nombre es Rebecca'
+secondObject.sayHello();  // registra 'Hola, mi nombre es Colin'
+</pre>
+            </div>
+          </div>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            En algunas oportunidades, cuando se invoca una funci&oacute;n que se encuentra dentro de un espacio de nombres (en ingl&eacute;s <span class="emphasis"><em>namespace</em></span>) amplio, puede ser una tentaci&oacute;n guardar la referencia a la funci&oacute;n actual en una variable m&aacute;s corta y accesible. Sin embargo, es importante no realizarlo en instancias de m&eacute;todos, ya que puede llevar a la ejecuci&oacute;n de c&oacute;digo incorrecto. Por ejemplo:
+          </p>
+          <pre class="brush: js">
+var myNamespace = {
+    myObject : {
+        sayHello : function() {
+            console.log('Hola, mi nombre es ' + this.myName);
+        },
+
+        myName : 'Rebecca'
+    }
+};
+
+var hello = myNamespace.myObject.sayHello;
+
+hello();  // registra 'Hola, mi nombre es undefined'
+</pre>
+          <p>
+            Para que no ocurran estos errores, es necesario hacer referencia en la variable al objeto en donde el m&eacute;todo es invocado:
+          </p>
+          <pre class="brush: js">
+var myNamespace = {
+    myObject : {
+        sayHello : function() {
+            console.log('Hola, mi nombre es ' + this.myName);
+        },
+
+        myName : 'Rebecca'
+    }
+};
+
+var obj = myNamespace.myObject;
+
+obj.sayHello();  // registra 'Hola, mi nombre es Rebecca'
+</pre>
+          </div>
+          <div title="Alcance" class="section">
+            <h2 class="title">
+              Alcance
+            </h2>
+            <p>
+			  El "alcance" (en ingl&eacute;s <span class="emphasis"><em>scope</em></span>) se refiere a las variables que est&aacute;n disponibles en un bloque de c&oacute;digo en un tiempo determinado. La falta de comprensi&oacute;n de este concepto puede llevar a una frustrante experiencia de depuraci&oacute;n.
+            </p>
+            <p>
+			  Cuando una variable es declarada dentro de una funci&oacute;n utilizando la palabra clave <code
+              class="code">var</code>, &eacute;sta &uacute;nicamente esta disponible para el c&oacute;digo dentro de la funci&oacute;n &mdash; todo el c&oacute;digo fuera de dicha funci&oacute;n no puede acceder a la variable. Por otro lado, las funciones definidas <span class="emphasis"><em>dentro</em></span> de la funci&oacute;n <span class="emphasis"><em>podr&aacute;n</em></span> acceder a la variable declarada.
+            </p>
+            <p>
+			  Las variables que son declaradas dentro de la funci&oacute;n sin la palabra clave <code class="code">var</code> no quedan dentro del &aacute;mbito de la misma funci&oacute;n &mdash; JavaScript buscar&aacute; el lugar en donde la variable fue previamente declarada, y en caso de no haber sido declarada, es definida dentro del alcance global, lo cual puede ocasionar consecuencias inesperadas;
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Funciones tienen acceso a variables definidas dentro del mismo alcance</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = 'hello';
+
+var sayHello = function() {
+    console.log(foo);
+};
+
+sayHello();         // muestra en la consola 'hello'
+console.log(foo);   // tambi&eacute;n muestra en la consola 'hello'
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>El c&oacute;digo de afuera no tiene acceso a la variable definida dentro de la funci&oacute;n</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var sayHello = function() {
+    var foo = 'hello';
+    console.log(foo);
+};
+
+sayHello();         // muestra en la consola 'hello'
+console.log(foo);   // no muestra nada en la consola
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Variables con nombres iguales pero valores diferentes pueden existir en diferentes alcances</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var foo = 'world';
+
+var sayHello = function() {
+    var foo = 'hello';
+    console.log(foo);
+};
+
+sayHello();         // muestra en la consola 'hello'
+console.log(foo);   // muestra en la consola 'world'
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Las funciones pueden "ver" los cambios en las variables antes de que la funci&oacute;n sea definida</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var myFunction = function() {
+    var foo = 'hello';
+
+    var myFn = function() {
+        console.log(foo);
+    };
+
+    foo = 'world';
+
+    return myFn;
+};
+
+var f = myFunction();
+f();  // registra 'mundo' -- error
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Alcance</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+// una funci&oacute;n anonima autoejecutable
+(function() {
+    var baz = 1;
+    var bim = function() { alert(baz); };
+    bar = function() { alert(baz); };
+})();
+
+console.log(baz);  // La consola no muestra nada, ya que baz esta definida dentro del alcance de la funci&oacute;n anonima
+
+bar();  // bar esta definido fuera de la funci&oacute;n anonima
+        // ya que fue declarada sin la palabra clave var; adem&aacute;s,
+        // como fue definida dentro del mismo alcance que baz,
+        // se puede consultar el valor de baz a pesar que 
+        // &eacute;sta este definida dentro del alcance de la funci&oacute;n anonima
+
+bim();  // bim no esta definida para ser accesible fuera de la funci&oacute;n anonima,
+        // por lo cual se mostrar&aacute; un error
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Clausuras" class="section">
+            <h2 class="title">
+              Clausuras
+            </h2>
+            <p>
+			  Las clausuras (en ingl&eacute;s <span class="emphasis"><em>closures</em></span>) son una extensi&oacute;n del concepto de alcance (<span class="emphasis"><em>scope</em></span>) — funciones que tienen acceso a las variables que est&aacute;n disponibles dentro del &aacute;mbito en donde se cre&oacute; la funci&oacute;n. Si este concepto es confuso, no debe preocuparse: se entiende mejor a trav&eacute;s de ejemplos.
+            </p>
+            <p>
+			  En el ejemplo "Las funciones pueden "ver" los cambios en las variables antes de que la funci&oacute;n sea definida” se muestra la forma en que funciones tienen acceso a cambiar el valor de las variables. El mismo comportamiento sucede en funciones creadas dentro de bucles &mdash; la funci&oacute;n "observa" el cambio en la variable, incluso despu&eacute;s de que la funci&oacute;n sea definida, resultando que en todos los clicks aparezca un alerta mostrando el valor 5.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>¿C&oacute;mo establecer el valor de <code class="code">i</code>?</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+/* esto no se comporta como se desea; */
+/* cada click mostrar&aacute; un alert con el valor 5 */
+for (var i=0; i&lt;5; i++) {
+    $('&lt;p&gt;hacer click&lt;/p&gt;').appendTo('body').click(function() {
+        alert(i);
+    });
+}
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Establecer el valor de <code class="code">i</code> utilizando un Closure</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+/* soluci&oacute;n: “clausurar” el valor de i dentro de crearFuncion, de esta forma no cambia */
+var createFunction = function(i) {
+    return function() { alert(i); };
+};
+
+for (var i=0; i&lt;5; i++) {
+    $('&lt;p&gt;hacer click&lt;/p&gt;').appendTo('body').click(createFunction(i));
+}
+</pre>
+              </div>
+            </div>
+			<!--Traducir-->
+			<!--
+            <p>
+              Closures can also be used to resolve issues with the <code class="code">this</code> keyword, which is unique to each scope:
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Using a closure to access inner and outer object instances simultaneously</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var outerObj = {
+    myName : 'outer',
+    outerFunction : function () {
+
+        // provide a reference to outerObj through innerFunction's closure
+        var self = this;
+
+        var innerObj = {
+            myName : 'inner',
+            innerFunction : function () {
+                console.log(self.myName, this.myName); // logs 'outer inner'
+            }
+        };
+
+        innerObj.innerFunction();
+
+        console.log(this.myName); // logs 'outer'
+    }
+};
+
+outerObj.outerFunction();
+</pre>
+              </div>
+            </div>
+            <p>
+              This mechanism can be particularly useful when dealing with callbacks, though in those cases, it is often better to use <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, which will avoid any overhead associated with scope traversal.
+            </p>-->
+			<!--Fin Traducir-->
+          </div>
+        </div>

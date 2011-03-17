@@ -1,0 +1,1169 @@
+        <div title="Conceptos B&aacute;sicos de jQuery" class="chapter">
+          <div class="titlepage">
+            <div>
+              <div>
+                <h2 class="title">
+                  Conceptos B&aacute;sicos de jQuery
+                </h2>
+              </div>
+            </div>
+          </div>
+          <div title="$(document).ready()" class="section">
+            <h2 class="title">
+              $(document).ready()
+            </h2>
+            <p>
+              No es posible interactuar con el contenido de una p&aacute;gina hasta que el documento no se encuentre preparado para su manipulaci&oacute;n. jQuery permite detectar dicho estado a trav&eacute;s de la declaraci&oacute;n <code class="code">$(document).ready()</code> de forma tal que el bloque se ejecutar&aacute; s&oacute;lo una vez que la p&aacute;gina este disponible.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>El bloque $(document).ready()</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$(document).ready(function() {
+    console.log('el documento est&aacute; preparado');
+});
+</pre>
+              </div>
+            </div>
+            <p>
+              Existe una forma abreviada para <code class="code">$(document).ready()</code> la cual podr&aacute; encontrar algunas veces; sin embargo, es recomendable no utilizarla en caso que este escribiendo c&oacute;digo para gente que no conoce jQuery.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Forma abreviada para $(document).ready()</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$(function() {
+    console.log('el documento est&aacute; preparado');
+});
+</pre>
+              </div>
+            </div>
+            <p>
+			  Adem&aacute;s es posible pasarle a <code class="code">$(document).ready()</code> una funci&oacute;n nombrada en lugar de una an&oacute;nima:
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Pasar una funci&oacute;n nombrado en lugar de una funci&oacute;n an&oacute;nima</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+function readyFn() {
+    // c&oacute;digo a ejecutar cuando el documento este listo
+}
+
+
+$(document).ready(readyFn);
+</pre>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">
+            Selecci&oacute;n de Elementos
+          </h2>
+          <p>
+			El concepto m&aacute;s b&aacute;sico de jQuery es el de "seleccionar algunos elementos y realizar acciones con ellos". La librer&iacute;a soporta gran parte de los selectores CSS3 y varios m&aacute;s no estandarizados. En <a href="http://api.jquery.com/category/selectors/" class="ulink">http://api.jquery.com/category/selectors/</a> se puede encontrar una completa referencia sobre los selectores de la librer&iacute;a.
+          </p>
+          <p>
+            A continuaci&oacute;n se muestran algunos ejemplos con t&eacute;cnicas de selecci&oacute;n de elementos:
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Selecci&oacute;n de elementos en base a su ID</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('#myId'); // notar que los IDs deben ser &uacute;nicos por p&aacute;gina
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Selecci&oacute;n de elementos en base al nombre de clase</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('div.myClass'); // si se especifica el tipo de elemento, se mejora el rendimiento de la selecci&oacute;n
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Selecci&oacute;n de elementos por su atributo</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('input[name=first_name]'); // tenga cuidado, que puede ser muy lento
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Selecci&oacute;n de elementos en forma de selector CSS</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('#contents ul.people li');
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Pseudo-selectores</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('a.external:first');  // seleccionar el primer elemento &lt;a&gt; con la clase 'external'
+$('tr:odd');            // seleccionar todos los elementos &lt;tr&gt; impares de una tabla
+$('#myForm :input');    // seleccionar todos los elementos del tipo input
+$('div:visible');       // seleccionar todos los divs visibles
+$('div:gt(2)');         // seleccionar todos los elementos excepto los tres primeros
+$('div:animated');      // seleccionar todos los elementos actualmente animados
+</pre>
+            </div>
+          </div>
+          <div>
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+			Cuando se utilizan los pseudo-selectores <code class="code">:visible</code> y <code class="code">:hidden</code>, jQuery comprueba la visibilidad actual del elemento pero no si &eacute;ste posee asignados los estilos CSS <code class="code">visibility</code> o <code class="code">display</code> — en otras palabras, verifica si <span class="emphasis"><em>el alto y ancho f&iacute;sico del elemento</em></span> es mayor a cero. Sin embargo, esta comprobaci&oacute;n no funciona con los elementos <code class="code">&lt;tr&gt;</code>; en este caso, jQuery comprueba si se est&aacute; aplicando el estilo <code class="code">display</code> y va a considerar al elemento como oculto si posee asignado el valor <code class="code">none</code>. Adem&aacute;s, los elementos que a&uacute;n no fueron a&ntilde;adidos al DOM er&aacute;n tratados como ocultos, incluso si tienen aplicados estilos indicando que deben ser visibles (En la secci&oacute;n Manipulaci&oacute;n de este manual, se explica como crear y a&ntilde;adir elementos al DOM)
+          </p>
+          <p>
+			Como referencia, este es el fragmento de c&oacute;digo que utiliza jQuery para determinar cuando un elemento es visible o no. Se incorporaron los comentarios para que quede m&aacute;s claro su entendimiento:
+          </p>
+          <pre class="brush: js">
+jQuery.expr.filters.hidden = function( elem ) {
+    var width = elem.offsetWidth, height = elem.offsetHeight,
+        skip = elem.nodeName.toLowerCase() === "tr";
+
+    // ¿el elemento posee alto 0, ancho 0 y no es un &lt;tr&gt;?
+    return width === 0 &amp;&amp; height === 0 &amp;&amp; !skip ?
+
+        // entonces debe estar oculto (hidden)
+        true :
+
+        // pero si posee ancho y alto
+		// y no es un &lt;tr&gt;
+        width &gt; 0 &amp;&amp; height &gt; 0 &amp;&amp; !skip ?
+
+            // entonces debe estar visible
+            false :
+
+            // si nos encontramos aqu&iacute;, es porque el elemento posee ancho
+            // y alto, pero adem&aacute;s es un &lt;tr&gt;,
+            // entonces se verifica el valor del estilo display aplicado a trav&eacute;s de CSS
+            // para decidir si est&aacute; oculto o no
+            jQuery.curCSS(elem, "display") === "none";
+};
+
+jQuery.expr.filters.visible = function( elem ) {
+    return !jQuery.expr.filters.hidden( elem );
+};
+</pre>
+          </div>
+          <div title="Elecci&oacute;n de Selectores" class="sidebar">
+            <p class="title">
+              <b>Elecci&oacute;n de Selectores</b>
+            </p>
+            <p>
+              La elecci&oacute;n de buenos selectores es un punto importante cuando se desea mejorar el rendimiento del c&oacute;digo. Una peque&ntilde;a especificidad — por ejemplo, incluir el tipo de elemento (como <code class="code">div</code>) cuando se realiza una selecci&oacute;n por el nombre de clase — puede ayudar bastante. Por eso, es recomendable darle algunas "pistas" a jQuery sobre en que lugar del documento puede encontrar lo que desea seleccionar. Por otro lado, demasiada especificidad puede ser perjudicial. Un selector como <code class="code">#miTabla thead tr th.especial</code> es un exceso, lo mejor ser&iacute;a utilizar <code class="code">#miTabla th.especial</code>.
+            </p>
+            <p>
+              jQuery ofrece muchos selectores basados en atributos, que permiten realizar selecciones basadas en el contenido de los atributos utilizando simplificaciones de expresiones regulares.
+            </p>
+            <pre class="brush: js">
+// encontrar todos los &lt;a&gt; cuyo atributo rel terminan en "thinger"
+$("a[rel$='thinger']");
+</pre>
+            <p>
+              Estos tipos de selectores pueden resultar &uacute;tiles pero tambi&eacute;n ser muy lentos. Cuando sea posible, es recomendable realizar la selecci&oacute;n utilizando IDs, nombres de clases y nombres de etiquetas.
+            </p>
+            <p>
+              Si desea conocer m&aacute;s sobre este asunto, <a href="http://paulirish.com/perf" class="ulink">Paul Irish realiz&oacute; una gran presentaci&oacute;n sobre mejoras de rendimiento en JavaScript</a> (en ingles), la cual posee varias diapositivas centradas en selectores.
+            </p>
+          </div>
+          <div title="Comprobar Selecciones" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Comprobar Selecciones
+              </h3>
+            </div>
+            <p>
+              Una vez realizada la selecci&oacute;n de los elementos, querr&aacute; conocer si dicha selecci&oacute;n entreg&oacute; alg&uacute;n resultado. Para ello, pueda que escriba algo as&iacute;:
+            </p>
+            <pre class="brush: js">
+if ($('div.foo')) { ... }
+</pre>
+            <p>
+			  Sin embargo esta forma no funcionar&aacute;. Cuando se realiza una selecci&oacute;n utilizando <code class="code">$()</code>, siempre es devuelto un objeto, y si se lo eval&uacute;a, &eacute;ste siempre devolver&aacute; <code class="code">true</code>. Incluso si la selecci&oacute;n no contiene ning&uacute;n elemento, el c&oacute;digo dentro del bloque <code class="code">if</code> se ejecutar&aacute;.
+            </p>
+            <p>
+			  En lugar de utilizar el c&oacute;digo mostrado, lo que se debe hacer es preguntar por la cantidad de elementos que posee la selecci&oacute;n que se ejecut&oacute;. Esto es posible realizarlo utilizando la propiedad JavaScript <code class="code">length</code>. Si la respuesta es 0, la condici&oacute;n evaluar&aacute; falso, caso contrario (m&aacute;s de 0 elementos), la condici&oacute;n ser&aacute; verdadera.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Evaluar si una selecci&oacute;n posee elementos</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+if ($('div.foo').length) { ... }
+</pre>
+              </div>
+            </div>
+          </div>
+          <div class="titlepage">
+            <h3 class="title">
+              Guardar Selecciones
+            </h3>
+          </div>
+          <p>
+			Cada vez que se hace una selecci&oacute;n, una gran cantidad de c&oacute;digo es ejecutado. jQuery no guarda el resultado por si solo, por lo tanto, si va a realizar una selecci&oacute;n que luego se har&aacute; de nuevo, deber&aacute; salvar la selecci&oacute;n en una variable.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Guardar selecciones en una variable</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+var $divs = $('div');
+</pre>
+            </div>
+          </div>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+			En el ejemplo “Guardar selecciones en una variable”, la variable comienza con el signo de d&oacute;lar. Contrariamente a otros lenguajes de programaci&oacute;n, en JavaScript este signo no posee ning&uacute;n significado especial &mdash; es solamente otro car&aacute;cter. Sin embargo aqu&iacute; se utilizar&aacute; para indicar que dicha variable posee un objeto jQuery. Esta pr&aacute;ctica &mdash; una especie de <a
+            href="http://es.wikipedia.org/wiki/Notaci%C3%B3n_h%C3%BAngara"
+            class="ulink">Notaci&oacute;n H&uacute;ngara</a> &mdash; es solo una convenci&oacute;n y no es obligatoria.
+          </p>
+          </div>
+          <p>
+			Una vez que la selecci&oacute;n es guardada en la variable, se la puede utilizar en conjunto con los m&eacute;todos de jQuery y el resultado ser&aacute; igual que utilizando la selecci&oacute;n original.
+          </p>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+			La selecci&oacute;n obtiene s&oacute;lo los elementos que est&aacute;n en la p&aacute;gina cuando se realiz&oacute; dicha acci&oacute;n. Si luego se a&ntilde;aden elementos al documento, ser&aacute; necesario repetir la selecci&oacute;n &oacute; a&ntilde;adir los elementos nuevos a la selecci&oacute;n guardada en la variable. En otras palabras, las selecciones guardadas no se actualizan "m&aacute;gicamente" cuando el DOM de modifica.
+          </p>
+          </div>
+          <div title="Refining &amp; Filtering Selections" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Refinamiento y Filtrado de Selecciones
+              </h3>
+            </div>
+            <p>
+			  A veces, puede obtener una selecci&oacute;n que contiene m&aacute;s de lo que necesita; en este caso, es necesario refinar dicha selecci&oacute;n. jQuery ofrece varios m&eacute;todos para poder obtener exactamente lo que desea.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Refinamiento de selecciones</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('div.foo').has('p');          // el elemento div.foo contiene elementos &lt;p&gt;
+$('h1').not('.bar');            // el elemento h1 no posse la clase 'bar'
+$('ul li').filter('.current');  // un item de una lista desordenada que posse la clase 'current'
+$('ul li').first();             // el primer item de una lista desordenada
+$('ul li').eq(5);               // el sexto item de una lista desordenada 
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Selecting Form Elements" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Selecci&oacute;n de Elementos de un Formulario
+              </h3>
+            </div>
+            <p>
+              jQuery ofrece varios pseudo-selectores que ayudan a encontrar elementos dentro de los formularios, &eacute;stos son especialmente &uacute;tiles ya que dependiendo de los estados de cada elemento o su tipo, puede ser dif&iacute;cil distinguirlos utilizando selectores CSS est&aacute;ndar.
+            </p>
+            <div class="variablelist">
+              <dl>
+                <dt>
+                  <span class="term">:button</span>
+                </dt>
+                <dd>
+                  <p>
+                    Selecciona elementos <code class="code">&lt;button&gt;</code> y con el atributo <code class="code">type="button"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:checkbox</span>
+                </dt>
+                <dd>
+                  <p>
+                    Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="checkbox"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:checked</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> del tipo <code class="code">checkbox</code> seleccionados
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:disabled</span>
+                </dt>
+                <dd>
+                  <p>
+                    Selecciona elementos del formulario que est&aacute;n deshabitados
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:enabled</span>
+                </dt>
+                <dd>
+                  <p>
+                    Selecciona elementos del formulario que est&aacute;n habilitados
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:file</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="file"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:image</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="image"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:input</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code>, <code class="code">&lt;textarea&gt;</code> y <code class="code">&lt;select&gt;</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:password</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="password"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:radio</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="radio"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:reset</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="reset"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:selected</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;options&gt;</code> que est&aacute;n seleccionados
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:submit</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="submit"</code>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">:text</span>
+                </dt>
+                <dd>
+                  <p>
+					Selecciona elementos <code class="code">&lt;input&gt;</code> con el atributo <code class="code">type="text"</code>
+                  </p>
+                </dd>
+              </dl>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Utilizando pseudo-selectores en elementos de formularios</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('#myForm :input'); // obtiene todos los elementos inputs dentro del formulario #myForm
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Trabajar con Selecciones" class="section">
+            <h2 class="title">
+              Trabajar con Selecciones
+            </h2>
+            <p>
+              Once you have a selection, you can call methods on the selection. Methods generally come in two different flavors: getters and setters. Getters return a property of the first selected element; setters set a property on all selected elements.
+              Una vez realizada la selecci&oacute;n de los elementos, es posible utilizarlos en conjunto con diferentes m&eacute;todos. &eacute;stos, generalmente, son de dos tipos: obtenedores (en ingl&eacute;s <span class="emphasis"><em>getters</em></span>) y establecedores (en ingl&eacute;s <span class="emphasis"><em>setters</em></span>). Los m&eacute;todos obtenedores devuelven una propiedad del elemento seleccionado; mientras que los m&eacute;todos establecedores fijan una propiedad a todos los elementos seleccionados.
+            </p>
+            <div class="titlepage">
+              <h3 class="title">
+                Encadenamiento
+              </h3>
+            </div>
+            <p>
+              Si en una selecci&oacute;n se realiza una llamada a un m&eacute;todo, y &eacute;ste devuelve un objeto jQuery, es posible seguir un "encadenado" de m&eacute;todos en el objeto.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Encadenamiento</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('#content').find('h3').eq(2).html('nuevo texto para el tercer elemento h3');
+</pre>
+              </div>
+            </div>
+            <p>
+              Por otro lado, si se est&aacute; escribiendo un encadenamiento de m&eacute;todos que incluyen muchos pasos, es posible escribirlos l&iacute;nea por l&iacute;nea, haciendo que el c&oacute;digo luzca m&aacute;s agradable para leer.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Formateo de c&oacute;digo encadenado</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('#content')
+    .find('h3')
+    .eq(2)
+    .html('nuevo texto para el tercer elemento h3');
+</pre>
+              </div>
+            </div>
+            <p>
+              Si desea volver a la selecci&oacute;n original en el medio del encadenado, jQuery ofrece el m&eacute;todo <code class="code">$.fn.end</code> para poder hacerlo.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Restablecer la selecci&oacute;n original utilizando el m&eacute;todo <code class="code">$.fn.end</code></b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('#content')
+    .find('h3')
+    .eq(2)
+        .html('nuevo texto para el tercer elemento h3')
+    .end() // reestablece la selecci&oacute;n a todos los elementos h3 en #content
+    .eq(0)
+        .html('nuevo texto para el primer elemento h3');
+</pre>
+              </div>
+            </div>
+            <div class="note">
+            <h3 class="title">
+              Nota
+            </h3>
+            <p>
+              El encadenamiento es muy poderoso y es una caracter&iacute;stica que muchas librer&iacute;as JavaScript han adoptado desde que jQuery se hizo popular. Sin embargo, debe ser utilizado con cuidado. Un encadenamiento de m&eacute;todos extensivo pueden hacer un c&oacute;digo extremadamente dif&iacute;cil de modificar y depurar. No existe una regla que indique que tan largo o corto debe ser el encadenado &mdash; pero es recomendable que tenga en cuenta este consejo.
+            </p>
+            </div>
+            <div title="Obtenedores (Getters) & Establecedores (Setters)" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Obtenedores (Getters) & Establecedores (Setters)
+                </h3>
+              </div>
+              <p>
+                jQuery "sobrecarga" sus m&eacute;todos, en otras palabras, el m&eacute;todo para establecer un valor posee el mismo nombre que el m&eacute;todo para obtener un valor. Cuando un m&eacute;todo es utilizado para establecer un valor, es llamado m&eacute;todo establecedor (en ingl&eacute;s <span class="emphasis"><em>setter</em></span>). En cambio, cuando un m&eacute;todo es utilizado para obtener (o leer) un valor, es llamado obtenedor (en ingl&eacute;s <span class="emphasis"><em>getter</em></span>).
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>El m&eacute;todo <code class="code">$.fn.html</code> utilizado como establecedor</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+$('h1').html('hello world');
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>El m&eacute;todo html utilizado como obtenedor</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+$('h1').html();
+</pre>
+                </div>
+              </div>
+              <p>
+                Los m&eacute;todos establecedores devuelven un objeto jQuery, permitiendo continuar con la llamada de m&aacute;s m&eacute;todos en la misma selecci&oacute;n, mientras que los m&eacute;todos obtenedores devuelven el valor por el cual se consult&oacute;, pero no permiten seguir llamando a m&aacute;s m&eacute;todos en dicho valor.
+              </p>
+            </div>
+          </div>
+          <h2 class="title">
+            CSS, Estilos, & Dimensiones
+          </h2>
+          <p>
+            jQuery incluye una manera &uacute;til de obtener y establecer propiedades CSS a los elementos.
+          </p>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, la propiedad CSS <code class="code">font-size</code> deber&aacute; ser expresada como <code class="code">fontSize</code>.
+          </p>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Obtener propiedades CSS</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('h1').css('fontSize'); // devuelve una cadena de caracteres como "19px"
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Establecer propiedades CSS</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('h1').css('fontSize', '100px'); // establece una propiedad individual CSS
+$('h1').css({ 'fontSize' : '100px', 'color' : 'red' }); // establece m&uacute;ltiples propiedades CSS
+</pre>
+            </div>
+          </div>
+          <p class="remark">
+            <i><span class="remark">Notar que el estilo del argumento utilizado en la segunda l&iacute;nea del ejemplo &mdash; es un objeto que contiene m&uacute;ltiples propiedades. Esta es una forma com&uacute;n de pasar m&uacute;ltiples argumentos a una funci&oacute;n, y muchos m&eacute;todos establecedores de la librer&iacute;a aceptan objetos para fijar varias propiedades de una sola vez.</span></i>
+          </p>
+          <div title="Utilizar Clases para Aplicar Estilos CSS" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Utilizar Clases para Aplicar Estilos CSS
+              </h3>
+            </div>
+            <p>
+              Para obtener valores de los estilos aplicados a un elemento, el m&eacute;todo <code class="code">$.fn.css</code> es muy &uacute;til, sin embargo, su utilizaci&oacute;n como m&eacute;todo establecedor se debe evitar (ya que, para aplicar estilos a un elemento, se puede hacer directamente desde CSS). En su lugar, lo ideal, es escribir reglas CSS que se apliquen a clases que describan los diferentes estados visuales de los elementos y luego cambiar la clase del elemento para aplicar el estilo que se desea mostrar.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Trabajar con clases</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var $h1 = $('h1');
+
+$h1.addClass('big');
+$h1.removeClass('big');
+$h1.toggleClass('big');
+
+if ($h1.hasClass('big')) { ... }
+</pre>
+              </div>
+            </div>
+            <p>
+              Las clases tambi&eacute;n pueden ser &uacute;tiles para guardar informaci&oacute;n del estado de un elemento, por ejemplo, para indicar que un elemento fue seleccionado.
+            </p>
+          </div>
+          <div title="Dimensiones" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Dimensiones
+              </h3>
+            </div>
+            <p>
+              jQuery ofrece una variedad de m&eacute;todos para obtener y modificar valores de dimensiones y posici&oacute;n de un elemento.
+            </p>
+            <p>
+              El c&oacute;digo mostrado en el ejemplo "M&eacute;todos b&aacute;sicos sobre Dimensiones" es solo un breve resumen de las funcionalidades relaciones a dimensiones en jQuery; para un completo detalle puede consultar <a href="http://api.jquery.com/category/dimensions/" class="ulink">http://api.jquery.com/category/dimensions/</a>.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>M&eacute;todos b&aacute;sicos sobre Dimensiones</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('h1').width('50px');   // establece el ancho de todos los elementos H1
+$('h1').width();         // obtiene el ancho del primer elemento H1
+
+$('h1').height('50px');  // establece el alto de todos los elementos H1
+$('h1').height();        // obtiene el alto del primer elemento H1
+
+$('h1').position();      // devuelve un objeto conteniendo informaci&oacute;n sobre la posici&oacute;n
+                         // del primer elemento relativo al
+                         // "offset" (posici&oacute;n) de su elemento padre
+</pre>
+              </div>
+            </div>
+          </div>
+          <div title="Atributos" class="section">
+            <h2 class="title">
+              Atributos
+            </h2>
+            <p>
+              Los atributos de los elementos HTML que conforman una aplicaci&oacute;n pueden contener informaci&oacute;n &uacute;til, por eso es importante poder establecer y obtener esa informaci&oacute;n.
+            </p>
+            <p>
+              El m&eacute;todo <code class="code">$.fn.attr</code> act&uacute;a tanto como m&eacute;todo establecedor como obtenedor. Adem&aacute;s, al igual que el m&eacute;todo <code class="code">$.fn.css</code>, cuando se lo utiliza como m&eacute;todo establecedor, puede aceptar un conjunto de palabra clave-valor &oacute; un objeto conteniendo m&aacute;s conjuntos.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Establecer atributos</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('a').attr('href', 'allMyHrefsAreTheSameNow.html');
+$('a').attr({
+    'title' : 'all titles are the same too',
+    'href' : 'somethingNew.html'
+});
+</pre>
+              </div>
+            </div>
+            <p class="remark">
+              <i><span class="remark">En el ejemplo, el objeto pasado como argumento est&aacute; escrito en varias l&iacute;neas. Como se explic&oacute; anteriormente, los espacios en blanco no importan en JavaScript, por lo cual, es libre de utilizarlos para hacer el c&oacute;digo m&aacute;s legible. En entornos de producci&oacute;n, se pueden utilizar herramientas de minificaci&oacute;n, los cuales quitan los espacios en blanco (entre otras cosas) y comprimen el archivo final.</span></i>
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Obtener atributos</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('a').attr('href');  // devuelve el atributo href perteneciente al primer elemento &lt;a&gt; del documento
+</pre>
+              </div>
+            </div>
+          </div>
+          <h2 class="title">
+            Recorrer el DOM
+          </h2>
+          <p>
+            Una vez obtenida la selecci&oacute;n, es posible encontrar otros elementos utilizando a la misma selecci&oacute;n.
+          </p>
+          <p>
+            En <a href="http://api.jquery.com/category/traversing/" class="ulink">http://api.jquery.com/category/traversing/</a> puede encontrar una completa documentaci&oacute;n sobre los m&eacute;todos de recorrido de DOM (en ingl&eacute;s <span class="emphasis"><em>traversing</em></span>) que posee jQuery.
+          </p>
+          <div class="note">
+          <h3 class="title">
+            Nota
+          </h3>
+          <p>
+            Debe ser cuidadoso en recorrer largas distancias en un documento &mdash; recorridos complejos obligan que la estructura del documento sea siempre la misma, algo que es dif&iacute;cil de garantizar. Uno -o dos- pasos para el recorrido esta bien, pero generalmente hay que evitar atravesar desde un contenedor a otro.
+          </p>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Moverse a trav&eacute;s del DOM utilizando m&eacute;todos de recorrido</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('h1').next('p');                            // seleccionar el inmediato y pr&oacute;ximo elemento &lt;p&gt; con respecto a H1
+$('div:visible').parent();                    // seleccionar el elemento contenedor a un div visible
+$('input[name=first_name]').closest('form');  // seleccionar el elemento &lt;form&gt; m&aacute;s cercano a un input
+$('#myList').children();                      // seleccionar todos los elementos hijos de #myList
+$('li.selected').siblings();                  // seleccionar todos los items hermanos del elemento &lt;li&gt;
+</pre>
+            </div>
+          </div>
+          <p>
+            Tambi&eacute;n es posible interactuar con la selecci&oacute;n utilizando el m&eacute;todo <code class="code">$.fn.each</code>. Dicho m&eacute;todo interact&uacute;a con todos los elementos obtenidos en la selecci&oacute;n y ejecuta una funci&oacute;n por cada uno. La funci&oacute;n recibe como argumento el &iacute;ndice del elemento actual y al mismo elemento. De forma predeterminada, dentro de la funci&oacute;n, se puede hacer referencia al elemento DOM a trav&eacute;s de la declaraci&oacute;n <code class="code">this</code>.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Interactuar en una selecci&oacute;n</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+$('#myList li').each(function(idx, el) {
+    console.log(
+        'El elemento ' + idx +
+        'contiene el siguiente HTML: ' +
+        $(el).html()
+    );
+});
+</pre>
+            </div>
+          </div>
+          <div title="Manipulaci&oacute;n de Elementos" class="section">
+            <h2 class="title">
+              Manipulaci&oacute;n de Elementos
+            </h2>
+            <p>
+              Una vez realizada la selecci&oacute;n de los elementos que desea utilizar, "la diversi&oacute;n comienza". Es posible cambiar, mover, remover y duplicar elementos. Tambi&eacute;n crear nuevos a trav&eacute;s de una sintaxis simple.
+            </p>
+            <p>
+              La documentaci&oacute;n completa sobre los m&eacute;todos de manipulaci&oacute;n puede encontrarla en <a href="http://api.jquery.com/category/manipulation/" class="ulink">http://api.jquery.com/category/manipulation/</a>.
+            </p>
+            <div class="titlepage">
+              <h3 class="title">
+                Obtener y Establecer Informaci&oacute;n en Elementos
+              </h3>
+            </div>
+            <p>
+              Existen muchas formas por las cuales de puede modificar un elemento. Entre las tareas m&aacute;s comunes est&aacute;n las de cambiar el HTML interno o alg&uacute;n atributo del mismo. Para este tipo de tareas, jQuery ofrece m&eacute;todos simples, funcionales en todos los navegadores modernos. Incluso es posible obtener informaci&oacute;n sobre los elementos utilizando los mismos m&eacute;todos pero en su forma de m&eacute;todo obtenedor.
+            </p>
+            <div class="note">
+            <h3 class="title">
+              Nota
+            </h3>
+            <p>
+              Realizar cambios en los elementos, es un trabajo trivial, pero hay debe recordar que el cambio afectar&aacute; a <span class="emphasis"><em>todos</em></span> los elementos en la selecci&oacute;n, por lo que, si desea modificar un s&oacute;lo elemento, tiene que estar seguro de especificarlo en la selecci&oacute;n antes de llamar al m&eacute;todo establecedor.
+            </p>
+            </div>
+            <div class="note">
+            <h3 class="title">
+              Nota
+            </h3>
+            <p>
+              Cuando los m&eacute;todos act&uacute;an como obtenedores, por lo general, solamente trabajan con el primer elemento de la selecci&oacute;n. Adem&aacute;s no devuelven un objeto jQuery, por lo cual no es posible encadenar m&aacute;s m&eacute;todos en el mismo. Una excepci&oacute;n es el m&eacute;todo <code class="code">$.fn.text</code>, el cual permite obtener el texto de los elementos de la selecci&oacute;n.
+            </p>
+            </div>
+            <div class="variablelist">
+              <dl>
+                <dt>
+                  <span class="term">$.fn.html</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el contenido HTML de un elemento.
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.text</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el contenido en texto del elemento; en caso se pasarle como argumento c&oacute;digo HTML, este es despojado.
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.attr</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el valor de un determinado atributo.
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.width</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el ancho en pixeles del primer elemento de la selecci&oacute;n como un entero.
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.height</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el alto en pixeles del primer elemento de la selecci&oacute;n como un entero.
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.position</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene un objeto con informaci&oacute;n sobre la posici&oacute;n del primer elemento de la selecci&oacute;n, relativo al primer elemento padre posicionado. <span class="emphasis"><em>Este m&eacute;todo es solo obtenedor.</em></span>
+                  </p>
+                </dd>
+                <dt>
+                  <span class="term">$.fn.val</span>
+                </dt>
+                <dd>
+                  <p>
+                    Obtiene o establece el valor (<span class="emphasis"><em>value</em></span>) en elementos de formularios.
+                  </p>
+                </dd>
+              </dl>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Cambiar el HTML de un elemento</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('#myDiv p:first')
+    .html('Nuevo &lt;strong&gt;primer&lt;/strong&gt; p&aacute;rrafo');
+</pre>
+              </div>
+            </div>
+            <div title="Mover, Copiar y Remover Elementos" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Mover, Copiar y Remover Elementos
+                </h3>
+              </div>
+              <p>
+                Existen varias maneras para mover elementos a trav&eacute;s del DOM; las cuales se pueden separar en dos enfoques:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    Querer colocar el/los elementos seleccionados de forma relativa a otro elemento
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Querer colocar un elemento relativo a el/los elementos seleccionados.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Por ejemplo, jQuery provee los m&eacute;todos <code class="code">$.fn.insertAfter</code> y <code class="code">$.fn.after</code>. El m&eacute;todo <code class="code">$.fn.insertAfter</code> coloca a el/los elementos seleccionados despu&eacute;s del elemento que se haya pasado como argumento; mientras que el m&eacute;todo <code class="code">$.fn.after</code> coloca al elemento pasado como argumento despu&eacute;s del elemento seleccionado. Otros m&eacute;todos tambi&eacute;n siguen este patr&oacute;n: <code class="code">$.fn.insertBefore</code> y <code class="code">$.fn.before</code>; <code class="code">$.fn.appendTo</code> y <code class="code">$.fn.append</code>; y <code class="code">$.fn.prependTo</code> y <code class="code">$.fn.prepend</code>.
+              </p>
+              <p>
+                La utilizaci&oacute;n de uno u otro m&eacute;todo depender&aacute; de los elementos que tenga seleccionados y el tipo de referencia que se quiera guardar con respecto al elemento que se esta moviendo.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Mover elementos utilizando diferentes enfoques</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+// hacer que el primer item de la lista sea el &uacute;ltimo
+var $li = $('#myList li:first').appendTo('#myList');
+
+// otro enfoque para el mismo problema
+$('#myList').append($('#myList li:first'));
+
+// debe tener en cuenta que no hay forma de acceder a la
+// lista de items que se ha movido, ya que devuelve
+// la lista en s&iacute;
+</pre>
+                </div>
+              </div>
+              <div class="titlepage">
+                <h4 class="title">
+                  Clonar Elementos
+                </h4>
+              </div>
+              <p>
+                Cuando se utiliza un m&eacute;todo como <code class="code">$.fn.appendTo</code>, lo que se est&aacute; haciendo es mover al elemento; pero a veces en lugar de eso, se necesita mover un duplicado del mismo elemento. En este caso, es posible utilizar el m&eacute;todo <code class="code">$.fn.clone</code>.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Obtener una copia del elemento</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+// copiar el primer elemento de la lista y moverlo al final de la misma
+$('#myList li:first').clone().appendTo('#myList');
+</pre>
+                </div>
+              </div>
+              <div class="note">
+              <h3 class="title">
+                Nota
+              </h3>
+              <p>
+                Si se necesita copiar informaci&oacute;n y eventos relacionados al elemento, se debe pasar <code class="code">true</code> como argumento de <code class="code">$.fn.clone</code>.
+              </p>
+              </div>
+              <div class="titlepage">
+                <h4 class="title">
+                  Remover elementos
+                </h4>
+              </div>
+              <p>
+                Existen dos formas de remover elementos de una p&aacute;gina: Utilizando <code class="code">$.fn.remove</code> &oacute; <code class="code">$.fn.detach</code>. Cuando desee remover de forma permanente al elemento, utilize el m&eacute;todo <code class="code">$.fn.remove</code>. Por otro lado, el m&eacute;todo $.fn.detach tambi&eacute;n remueve el elemento, pero mantiene la informaci&oacute;n y eventos asociados al mismo, siendo &uacute;til en el caso que necesite reinsertar el elemento en el documento.
+              </p>
+              <div class="note">
+              <h3 class="title">
+                Nota
+              </h3>
+              <p>
+                El m&eacute;todo <code class="code">$.fn.detach</code> es muy &uacute;til cuando se esta manipulando de forma severa un elemento, ya que es posible eliminar al elemento, trabajarlo en el c&oacute;digo y luego restaurarlo en la p&aacute;gina nuevamente. Esta forma tiene como beneficio no tocar el DOM mientras se est&aacute; modificando la informaci&oacute;n y eventos del elemento.
+              </p>
+              </div>
+              <p>
+                Por otro lado, si se desea mantener al elemento pero se necesita eliminar su contenido, es posible utiliza el m&eacute;todo <code class="code">$.fn.empty</code>, el cual "vaciar&aacute;" el contenido HTML del elemento.
+              </p>
+            </div>
+            <div class="titlepage">
+              <h3 class="title">
+                Crear Nuevos Elementos
+              </h3>
+            </div>
+            <p>
+              jQuery provee una forma f&aacute;cil y elegante para crear nuevos elementos a trav&eacute;s del mismo m&eacute;todo <code class="code">$()</code> que se utiliza para realizar selecciones.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Crear nuevos elementos</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('&lt;p&gt;Un nuevo p&aacute;rrafo&lt;/p&gt;');
+$('&lt;li class="new"&gt;nuevo item de la lista&lt;/li&gt;');
+</pre>
+              </div>
+            </div>
+            <div class="example">
+              <p class="title">
+                <b>Crear un nuevo elemento con atributos utilizando un objeto</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('&lt;a/&gt;', {
+    html : 'Un &lt;strong&gt;nuevo&lt;/strong&gt; enlace',
+    'class' : 'new',
+    href : 'foo.html'
+});
+</pre>
+              </div>
+            </div>
+            <p class="remark">
+              <i><span class="remark">Note que en el objeto que se pasa como argumento, la propiedad class est&aacute; entre comillas, mientras que la propiedad href y html no lo est&aacute;n. Por lo general, los nombres de propiedades no deben estar entre comillas, excepto en el caso que se utilice como nombre una palabra reservada (como es el caso de class).</span></i>
+            </p>
+            <p>
+              Cuando se crea un elemento, &eacute;ste no es a&ntilde;adido inmediatamente a la p&aacute;gina, sino que se debe hacerlo en conjunto con un m&eacute;todo.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Crear un nuevo elemento en la p&aacute;gina</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+var $myNewElement = $('&lt;p&gt;Nuevo elemento&lt;/p&gt;');
+$myNewElement.appendTo('#content');
+
+$myNewElement.insertAfter('ul:last'); // eliminar&aacute; al elemento &lt;p&gt; existente en #content
+$('ul').last().after($myNewElement.clone());  // clonar al elemento &lt;p&gt; para tener las dos versiones
+</pre>
+              </div>
+            </div>
+            <p class="remark">
+              <i><span class="remark">Estrictamente hablando, no es necesario guardar al elemento creado en una variable &mdash; es posible llamar al m&eacute;todo para a&ntilde;adir el elemento directamente despu&eacute;s de $(). Sin embargo, la mayor&iacute;a de las veces se desear&aacute; hacer referencia al elemento a&ntilde;adido, por lo cual, si se guarda en una variable no es necesario seleccionarlo despu&eacute;s.</span></i>
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Crear y a&ntilde;adir al mismo tiempo un elemento a la p&aacute;gina</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('ul').append('&lt;li&gt;item de la lista&lt;/li&gt;');
+</pre>
+              </div>
+            </div>
+            <div class="note">
+            <h3 class="title">
+              Nota
+            </h3>
+            <p>
+              La sintaxis para a&ntilde;adir nuevos elementos a la p&aacute;gina es muy f&aacute;cil de utilizar, pero es tentador olvidar que hay un costo enorme de rendimiento al agregar elementos al DOM de forma repetida. Si esta a&ntilde;adiendo muchos elementos al mismo contenedor, en lugar de a&ntilde;adir cada elemento uno por vez, lo mejor es concatenar todo el HTML en una &uacute;nica cadena de caracteres para luego anexarla al contenedor. Una posible soluci&oacute;n es utilizar un arreglo que posea todos los elementos, luego reunirlos utilizando <code class="code">join</code> y finalmente anexarla.
+            </p>
+            <pre class="brush: js">
+var myItems = [], $myList = $('#myList');
+
+for (var i=0; i&lt;100; i++) {
+    myItems.push('&lt;li&gt;item ' + i + '&lt;/li&gt;');
+}
+
+$myList.append(myItems.join(''));
+</pre>
+            </div>
+            <div title="Manipulating Attributes" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Manipulaci&oacute;n de Atributos
+                </h3>
+              </div>
+              <p>
+                Las capacidades para la manipulaci&oacute;n de atributos que ofrece la librer&iacute;a son extensos. La realizaci&oacute;n de cambios b&aacute;sicos son simples, sin embargo el m&eacute;todo <code class="code">$.fn.attr</code> permite manipulaciones m&aacute;s complejas.
+              </p>
+              <div class="example">
+                <p class="title">
+                  <b>Manipular un simple atributo</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+$('#myDiv a:first').attr('href', 'newDestination.html');
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Manipular m&uacute;ltiples atributos</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+$('#myDiv a:first').attr({
+    href : 'newDestination.html',
+    rel : 'super-special'
+});
+</pre>
+                </div>
+              </div>
+              <div class="example">
+                <p class="title">
+                  <b>Utilizar una funci&oacute;n para determinar el valor del nuevo atributo</b>
+                </p>
+                <div class="example-contents">
+                  <pre class="brush: js">
+$('#myDiv a:first').attr({
+    rel : 'super-special',
+    href : function(idx, href) {
+        return '/new/' + href;
+    }
+});
+
+$('#myDiv a:first').attr('href', function(idx, href) {
+    return '/new/' + href;
+});
+</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div title="Ejercicios" class="section">
+            <h2 class="title">
+              Ejercicios
+            </h2>
+            <div title="Selecting" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Selecciones
+                </h3>
+              </div>
+              <p>
+                Abra el archivo <code class="filename">/exercises/index.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/sandbox.js</code> &oacute; trabaje directamente con Firebug para cumplir los siguientes puntos:
+              </p>
+              <div class="orderedlist">
+                <ol class="orderedlist">
+                  <li>
+                    <p>
+                      Seleccionar todos los elementos div que poseen la clase "module".
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Especificar tres selecciones que puedan seleccionar el tercer &iacute;tem de la lista desordenada #myList. ¿Cu&aacute;l es el mejor para utilizar? ¿Porqu&eacute;?
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar el elemento <code class="code">label</code> del elemento <code class="code">input</code> utilizando un selector de atributo.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Averiguar cuantos elementos en la p&aacute;gina est&aacute;n ocultos (ayuda: <code class="code">.length</code>)
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Averiguar cuantas im&aacute;genes en la p&aacute;gina poseen el atributo <code class="code">alt</code>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar todas las filas impares del cuerpo de la tabla.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div title="Recorrer el DOM" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Recorrer el DOM
+                </h3>
+              </div>
+              <p>
+                Abra el archivo <code class="filename">/exercises/index.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/sandbox.js</code> &oacute; trabaje directamente con Firebug para cumplir los siguientes puntos:
+              </p>
+              <div class="orderedlist">
+                <ol class="orderedlist">
+                  <li>
+                    <p>
+                      Seleccionar todas las im&aacute;genes en la p&aacute;gina; registrar en la consola el atributo <code class="code">alt</code> de cada imagen.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar el elemento <code class="code">input</code>, luego dirigirse hacia el formulario y a&ntilde;adirle una clase al mismo.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar el &iacute;tem que posee la clase "current" dentro de la lista #myList y remover dicha clase en el elemento; luego a&ntilde;adir la clase "current" al siguiente &iacute;tem de la lista.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar el elemento <code class="code">select</code> dentro de #specials; luego dirigirse hacia el bot&oacute;n <code class="code">submit</code>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      Seleccionar el primer &iacute;tem de la lista en el elemento #slideshow; a&ntilde;adirle la clase "current" al mismo y luego a&ntilde;adir la clase "disabled" a los elementos hermanos.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div title="Manipulaci&oacute;n" class="section">
+              <div class="titlepage">
+                <h3 class="title">
+                  Manipulaci&oacute;n
+                </h3>
+              </div>
+              <p>
+                Abra el archivo <code class="filename">/exercises/index.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/sandbox.js</code> &oacute; trabaje directamente con Firebug para cumplir los siguientes puntos:
+              </p>
+              <div class="orderedlist">
+                <ol class="orderedlist">
+                  <li>
+                    <p>
+                      A&ntilde;adir 5 nuevos &iacute;tems al final de la lista desordenada #myList. Ayuda:
+                    </p>
+                    <pre class="brush: js">
+for (var i = 0; i&lt;5; i++) { ... }
+</pre>
+                  </li>
+                  <li>
+                    <p>
+                      Remover los &iacute;tems impares de la lista.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      A&ntilde;adir otro elemento <code class="code">h2</code> y otro p&aacute;rrafo al &uacute;ltimo <code class="code">div.module</code>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      A&ntilde;adir otra opci&oacute;n al elemento select; darle a la opci&oacute;n a&ntilde;adida el valor <span class="emphasis"><em>"Wednesday"</em></span>.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      A&ntilde;adir un nuevo <code class="code">div.module</code> a la p&aacute;gina despu&eacute;s del &uacute;ltimo; luego a&ntilde;adir una copia de una de las im&aacute;genes existentes dentro del nuevo <code class="code">div</code>.
+                    </p>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>

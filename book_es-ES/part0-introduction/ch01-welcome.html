@@ -1,0 +1,244 @@
+      <div title="Bienvenido" class="chapter">
+        <div class="titlepage">
+          <div>
+            <div>
+              <h2 class="title">
+                Bienvenido
+              </h2>
+            </div>
+          </div>
+        </div>
+        <p>
+          jQuery se est&aacute; convirtiendo r&aacute;pidamente en una herramienta que todo desarrollador de interfaces web deber&iacute;a de conocer. El prop&oacute;sito de este libro es proveer un resumen de la librer&iacute;a, de tal forma que para cuando lo haya terminado de leer, ser&aacute; capaz de realizar tareas b&aacute;sicas utilizando jQuery y tendr&aacute; una s&oacute;lida base para continuar el aprendizaje. El libro fue dise&ntilde;ado para ser utilizado como material en un sal&oacute;n de clases, pero tambi&eacute;n puede ser &uacute;til para estudiarlo de forma individual.
+        </p>
+        <p>
+          La modalidad de trabajo es la siguiente: En primer lugar se dedicar&aacute; tiempo a comprender un concepto para luego realizar un ejercicio relacionado. Algunos de los ejercicios pueden llegar a ser triviales, mientras que otros no tanto. El objetivo es aprender a resolver de manera f&aacute;cil lo que normalmente se resolver&iacute;a con jQuery. Las soluciones a todos los ejercicios est&aacute;n incluidas en el mismo material de aprendizaje.
+        </p>
+        <div title="Obtener el Material de Aprendizaje" class="section">
+          <h2 class="title">
+            Obtener el Material de Aprendizaje
+          </h2>
+          <p>
+            El material de aprendizaje y el c&oacute;digo fuente de los ejemplos que se utilizan en el libro est&aacute;n hospedados en <a href="http://github.com/rmurphey/jqfundamentals" class="ulink">un repositorio de Github</a>. Desde all&iacute; es posible descargar un archivo .zip o .tar con el c&oacute;digo para utilizar en un servidor web. 
+          </p>
+		  <p>
+		   Si usted suele utilizar <a href="http://git-scm.com/" class="ulink">Git</a>, es bienvenido de clonar o modificar el repositorio.
+		  </p>
+        </div>
+        <div title="Software" class="section">
+          <h2 class="title">
+            Software
+          </h2>
+          <p>
+            Para trabajar con los contenidos del libro, necesitar&aacute; las siguientes herramientas:
+          </p>
+          <ul>
+            <li>
+              <p>
+                Navegador web Firefox
+              </p>
+            </li>
+            <li>
+              <p>
+                La extensi&oacute;n Firebug, para Firefox
+              </p>
+            </li>
+            <li>
+              <p>
+                Un editor de textos planos (como Notepad++ para Windows, gedit/Kate para Linux &oacute; TextMate para Mac OS X)
+              </p>
+            </li>
+            <li>
+              <p>
+                Para las secciones dedicadas a Ajax: Un servidor local (como WAMP o MAMP) &oacute; un cliente FTP/SSH para acceder a un servidor remoto.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div title="A&ntilde;adir JavaScript a una P&aacute;gina" class="section">
+          <h2 class="title">
+            A&ntilde;adir JavaScript a una P&aacute;gina
+          </h2>
+          <p>
+            Existen dos formas de insertar c&oacute;digo JavaScript dentro de una p&aacute;gina: escribiendo c&oacute;digo en la misma (en ingles inline) &oacute; a trav&eacute;s de un archivo externo utilizando la etiqueta script. El orden en el cual se incluye el c&oacute;digo es importante: un c&oacute;digo que depende de otro debe ser incluido despu&eacute;s del que referencia (Ejemplo: Si la funci&oacute;n B depende de A, el orden debe ser A,B y no B,A).
+          </p>
+          <p>
+            Para mejorar el rendimiento de la p&aacute;gina, el c&oacute;digo JavaScript debe ser incluido al final del HTML. Adem&aacute;s, cuando se trabaja en un ambiente de producci&oacute;n con m&uacute;ltiples archivos JavaScript, &eacute;stos deben ser combinados en un solo archivo.
+          </p>
+          <div class="example">
+            <p class="title">
+              <b>Ejemplo de c&oacute;digo JavaScript en l&iacute;nea</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+&lt;script&gt;
+console.log('hello');
+&lt;/script&gt;
+</pre>
+            </div>
+          </div>
+          <div class="example">
+            <p class="title">
+              <b>Ejemplo de inclusi&oacute;n de un archivo externo JavaScript</b>
+            </p>
+            <div class="example-contents">
+              <pre class="brush: js">
+&lt;script src='/js/jquery.js'&gt;&lt;/script&gt;
+</pre>
+            </div>
+          </div>
+        </div>
+        <div title="Depuraci&oacute;n del C&oacute;digo JavaScript" class="section">
+          <h2 class="title">
+            Depuraci&oacute;n del C&oacute;digo JavaScript
+          </h2>
+          <p>
+            La utilizaci&oacute;n de una herramienta de depuraci&oacute;n es esencial para trabajar con JavaScript. Firefox provee un depurador a trav&eacute;s de la extensi&oacute;n Firebug; mientras que Safari y Chrome ya traen uno integrado.
+          </p>
+          <p>
+            Cada depurador ofrece:
+          </p>
+          <ul>
+            <li>
+              <p>
+                Un editor multi-linea para experimentar con JavaScript;
+              </p>
+            </li>
+            <li>
+              <p>
+                Un inspector para revisar el c&oacute;digo generado en la p&aacute;gina;
+              </p>
+            </li>
+            <li>
+              <p>
+                Un visualizador de red o recursos, para examinar las peticiones que se realizan.
+              </p>
+            </li>
+          </ul>
+          <p>
+            Cuando usted este escribiendo c&oacute;digo JavaScript, podr&aacute; utilizar alguno de los siguientes m&eacute;todos para enviar mensajes a la consola del depurador:
+          </p>
+          <ul>
+            <li>
+              <code class="code">console.log()</code> para enviar y registrar mensajes generales;
+            </li>
+            <li>
+              <code class="code">console.dir()</code> para registrar un objeto y visualizar sus propiedades;
+            </li>
+            <li>
+              <code class="code">console.warn()</code> para registrar mensajes de alerta;
+            </li>
+            <li>
+              <code class="code">console.error()</code> para registrar mensajes de error;
+            </li>
+          </ul>
+          <p>
+            Existen otros m&eacute;todos para utilizar desde la consola, pero estos pueden variar seg&uacute;n el navegador. La consola adem&aacute;s provee la posibilidad de establecer puntos de interrupci&oacute;n y observar expresiones en el c&oacute;digo con el fin de facilitar su depuraci&oacute;n.
+          </p>
+        </div>
+        <div title="Ejercicios" class="section">
+          <h2 class="title">
+            Ejercicios
+          </h2>
+          <p>
+            La mayor&iacute;a de los cap&iacute;tulos concluyen con uno o m&aacute;s ejercicios. En algunos, podr&aacute; trabajar directamente con Firebug; en otros deber&aacute; escribir c&oacute;digo JavaScript luego de incluir la librer&iacute;a jQuery en el documento.
+          </p>
+          <p>
+            A&uacute;n as&iacute;, para completar ciertos ejercicios, necesitar&aacute; consultar la documentaci&oacute;n oficial de jQuery. Aprender a encontrar respuestas, es una parte importante del proceso de aprendizaje.
+          </p>
+          <p>
+            Estas son algunas sugerencias para hacer frente a los problemas:
+          </p>
+          <ul>
+            <li>
+              <p>
+                En primer lugar, aseg&uacute;rese de entender bien el problema que est&aacute; tratando de resolver.
+              </p>
+            </li>
+            <li>
+              <p>
+                Luego, averigüe a qu&eacute; elementos tendr&aacute; que acceder con el fin de resolver el problema, y determine c&oacute;mo accederlos. Puede utilizar Firebug para verificar que esta obteniendo el resultado esperado.
+              </p>
+            </li>
+            <li>
+              <p>
+                Finalmente, averigüe qu&eacute; necesita hacer con esos elementos para resolver el problema. Puede ser &uacute;til, antes de comenzar, escribir comentarios explicando lo que va a realizar.
+              </p>
+            </li>
+          </ul>
+          <p>
+            No tenga miedo de cometer errores. Tampoco trate en el primer intento escribir de forma perfecta su c&oacute;digo. Cometer errores y experimentar con soluciones es parte del proceso de aprendizaje y lo ayudar&aacute; a que sea un mejor desarrollador.
+          </p>
+          <p>
+			Podr&aacute; encontrar en la carpeta <code class="filename">/solutions</code> ejemplos de soluciones a los ejercicios del libro.
+          </p>
+        </div>
+        <h2 class="title">
+          Convenciones Utilizadas en el Libro
+        </h2>
+        <p>
+          Existen una serie de convenciones utilizadas en el libro:
+        </p>
+        <p>
+          Los m&eacute;todos que pueden ser llamados desde el objeto jQuery, ser&aacute;n referenciados como <code class="code">$.fn.nombreDelMetodo</code>. Los m&eacute;todos que existen en el espacio de nombres (en ingl&eacute;s <span class="emphasis"><em>namespace</em></span>) de jQuery pero que no pueden ser llamados desde el objeto jQuery ser&aacute;n referenciados como <code class="code">$.nombreDelMetodo</code>. Si esto no significa mucho para usted, no se preocupe — ser&aacute; m&aacute;s claro a medida que vaya progresando en el libro.
+        </p>
+        <div class="example">
+          <p class="title">
+            <b>Ejemplo de un c&oacute;digo</b>
+          </p>
+          <div class="example-contents">
+            <pre class="brush: js">
+// el c&oacute;digo de ejemplo aparecer&aacute; de esta forma
+</pre>
+          </div>
+        </div>
+        <p class="remark">
+          <i><span class="remark">Las remarcaciones aparecer&aacute;n de esta forma.</span></i>
+        </p>
+        <div class="note">
+        <h3 class="title">
+          Nota
+        </h3>
+        <p>
+          Las notas sobre alg&uacute;n tema aparecer&aacute;n de esta forma.
+        </p>
+        </div>
+        <div title="Material de Referencia" class="section">
+          <h2 class="title">
+            Material de Referencia
+          </h2>
+          <p>
+            Existe una gran cantidad de art&iacute;culos que se ocupan de alg&uacute;n aspecto de jQuery. Algunos son excelentes pero otros, francamente, son err&oacute;neos. Cuando lea un art&iacute;culo sobre jQuery, este seguro que se est&aacute; abarcando la misma versi&oacute;n de la librer&iacute;a que est&aacute; utilizando, y res&iacute;stase a la tentaci&oacute;n de copiar y pegar el c&oacute;digo — t&oacute;mese un tiempo para poder entenderlo.
+          </p>
+          <p>
+			A continuaci&oacute;n se listan una serie de excelentes recursos para utilizar durante el aprendizaje. El m&aacute;s importante de todos es el c&oacute;digo fuente de jQuery, el cual contiene (en su formato sin comprimir) una completa documentaci&oacute;n a trav&eacute;s de comentarios. La librer&iacute;a no es una caja negra — el entendimiento de ella ir&aacute; increment&aacute;ndose exponencialmente si la revisa de vez en cuando — y es muy recomendable que la guarde en los favoritos de su navegador para tenerla como gu&iacute;a de referencia.
+          </p>
+          <ul>
+            <li>
+              <p>
+                <a href="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js" class="ulink">El c&oacute;digo fuente de jQuery</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="http://api.jquery.com" class="ulink">Documentaci&oacute;n de jQuery</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="http://forum.jquery.com/" class="ulink">Foro de jQuery</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="http://delicious.com/rdmey/jquery-class" class="ulink">Favoritos en Delicious</a>
+              </p>
+            </li>
+            <li>
+              <p>
+                <a href="http://docs.jquery.com/Discussion#Chat_.2F_IRC_Channel" class="ulink">Canal IRC #jquery en Freenode</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
