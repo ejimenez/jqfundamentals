@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fundamentos de jQuery: Material de aprendizaje #
 Este repositorio contiene material didáctico en constante evolución para poder aprender los Fundamentos de jQuery. Dicho material incluye un libro web con ejercicios y soluciones.
 
