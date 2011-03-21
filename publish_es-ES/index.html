@@ -546,7 +546,7 @@ baz &amp;&amp; foo;   // devuelve 1, el cual es verdadero (true)
               El operador <code class="code">||</code> (OR l&oacute;gico) devuelve el valor del primer operando, si &eacute;ste es verdadero; caso contrario devuelve el segundo operando. Si ambos operandos son falsos devuelve falso (<span class="emphasis"><em>false</em></span>). El operador <code class="code">&&</code> (AND l&oacute;gico) devuelve el valor del primer operando si &eacute;ste es falso; caso contrario devuelve el segundo operando. Cuando ambos valores son verdaderos devuelve verdadero (<span class="emphasis"><em>true</em></span>), sino devuelve falso.
             </p>
             <p>
-			  Puede consultar la secci&oacute;n <a title="Elementos Verdaderos y Falsos" href="#javascript-basics.sections.truthy-falsy" class="xref">"Elementos Verdaderos y Falsos"</a> para m&aacute;s detalles sobre que valores se eval&uacute;an como <code class="code">true</code> y cuales se eval&uacute;an como <code class="code">false</code>.
+			  Puede consultar la secci&oacute;n <a title="Elementos Verdaderos y Falsos" href="#Elementos Verdaderos y Falsos" class="xref">"Elementos Verdaderos y Falsos"</a> para m&aacute;s detalles sobre que valores se eval&uacute;an como <code class="code">true</code> y cuales se eval&uacute;an como <code class="code">false</code>.
             </p>
             <div class="note">
             <h3 class="title">
@@ -648,7 +648,7 @@ if (bar) {
           </p>
           </div>
 
-          <div title="Elementos Verdaderos y Falsos" class="section">
+          <div title="Elementos Verdaderos y Falsos" id="Elementos Verdaderos y Falsos" class="section">
             <div class="titlepage">
               <h3 class="title">
                 Elementos Verdaderos y Falsos
@@ -975,174 +975,174 @@ for (var i = 0; i &lt; 10; i++) {
               JavaScript posee un n&uacute;mero de "palabras reservadas", o palabras que son especiales dentro del mismo lenguaje. Debe utilizar estas palabras cuando las necesite para su uso espec&iacute;fico.
             </p>
             <ul>
-              <li>
-                <code class="code">break</code>
-              </li>
-              <li>
-                <code class="code">case</code>
-              </li>
-              <li>
-                <code class="code">catch</code>
-              </li>
-              <li>
-                <code class="code">continue</code>
-              </li>
-              <li>
-                <code class="code">default</code>
-              </li>
-              <li>
-                <code class="code">delete</code>
-              </li>
-              <li>
-                <code class="code">do</code>
-              </li>
-              <li>
-                <code class="code">else</code>
-              </li>
-              <li>
-                <code class="code">finally</code>
-              </li>
-              <li>
-                <code class="code">for</code>
-              </li>
-              <li>
-                <code class="code">function</code>
-              </li>
-              <li>
-                <code class="code">if</code>
-              </li>
-              <li>
-                <code class="code">in</code>
-              </li>
-              <li>
-                <code class="code">instanceof</code>
-              </li>
-              <li>
-                <code class="code">new</code>
-              </li>
-              <li>
-                <code class="code">return</code>
-              </li>
-              <li>
-                <code class="code">switch</code>
-              </li>
-              <li>
-                <code class="code">this</code>
-              </li>
-              <li>
-                <code class="code">throw</code>
-              </li>
-              <li>
-                <code class="code">try</code>
-              </li>
-              <li>
-                <code class="code">typeof</code>
-              </li>
-              <li>
-                <code class="code">var</code>
-              </li>
-              <li>
-                <code class="code">void</code>
-              </li>
-              <li>
-                <code class="code">while</code>
-              </li>
-              <li>
-                <code class="code">with</code>
-              </li>
-              <li>
-                <code class="code">abstract</code>
-              </li>
-              <li>
-                <code class="code">boolean</code>
-              </li>
-              <li>
-                <code class="code">byte</code>
-              </li>
-              <li>
-                <code class="code">char</code>
-              </li>
-              <li>
-                <code class="code">class</code>
-              </li>
-              <li>
-                <code class="code">const</code>
-              </li>
-              <li>
-                <code class="code">debugger</code>
-              </li>
-              <li>
-                <code class="code">double</code>
-              </li>
-              <li>
-                <code class="code">enum</code>
-              </li>
-              <li>
-                <code class="code">export</code>
-              </li>
-              <li>
-                <code class="code">extends</code>
-              </li>
-              <li>
-                <code class="code">final</code>
-              </li>
-              <li>
-                <code class="code">float</code>
-              </li>
-              <li>
-                <code class="code">goto</code>
-              </li>
-              <li>
-                <code class="code">implements</code>
-              </li>
-              <li>
-                <code class="code">import</code>
-              </li>
-              <li>
-                <code class="code">int</code>
-              </li>
-              <li>
-                <code class="code">interface</code>
-              </li>
-              <li>
-                <code class="code">long</code>
-              </li>
-              <li>
-                <code class="code">native</code>
-              </li>
-              <li>
-                <code class="code">package</code>
-              </li>
-              <li>
-                <code class="code">private</code>
-              </li>
-              <li>
-                <code class="code">protected</code>
-              </li>
-              <li>
-                <code class="code">public</code>
-              </li>
-              <li>
-                <code class="code">short</code>
-              </li>
-              <li>
-                <code class="code">static</code>
-              </li>
-              <li>
-                <code class="code">super</code>
-              </li>
-              <li>
-                <code class="code">synchronized</code>
-              </li>
-              <li>
-                <code class="code">throws</code>
-              </li>
-              <li>
-                <code class="code">transient</code>
-              </li>
-              <li>
-                <code class="code">volatile</code>
-              </li>
+                <li>
+                  <code class="code">abstract</code>
+                </li>
+                <li>
+                  <code class="code">boolean</code>
+                </li>
+                <li>
+                  <code class="code">break</code>
+                </li>
+                <li>
+                  <code class="code">byte</code>
+                </li>
+                <li>
+                  <code class="code">case</code>
+                </li>
+                <li>
+                  <code class="code">catch</code>
+                </li>
+                <li>
+                  <code class="code">char</code>
+                </li>
+                <li>
+                  <code class="code">class</code>
+                </li>
+                <li>
+                  <code class="code">const</code>
+                </li>
+                <li>
+                  <code class="code">continue</code>
+                </li>
+                <li>
+                  <code class="code">debugger</code>
+                </li>
+                <li>
+                  <code class="code">default</code>
+                </li>
+                <li>
+                  <code class="code">delete</code>
+                </li>
+                <li>
+                  <code class="code">do</code>
+                </li>
+                <li>
+                  <code class="code">double</code>
+                </li>
+                <li>
+                  <code class="code">else</code>
+                </li>
+                <li>
+                  <code class="code">enum</code>
+                </li>
+                <li>
+                  <code class="code">export</code>
+                </li>
+                <li>
+                  <code class="code">extends</code>
+                </li>
+                <li>
+                  <code class="code">final</code>
+                </li>
+                <li>
+                  <code class="code">finally</code>
+                </li>
+                <li>
+                  <code class="code">float</code>
+                </li>
+                <li>
+                  <code class="code">for</code>
+                </li>
+                <li>
+                  <code class="code">function</code>
+                </li>
+                <li>
+                  <code class="code">goto</code>
+                </li>
+                <li>
+                  <code class="code">if</code>
+                </li>
+                <li>
+                  <code class="code">implements</code>
+                </li>
+                <li>
+                  <code class="code">import</code>
+                </li>
+                <li>
+                  <code class="code">in</code>
+                </li>
+                <li>
+                  <code class="code">instanceof</code>
+                </li>
+                <li>
+                  <code class="code">int</code>
+                </li>
+                <li>
+                  <code class="code">interface</code>
+                </li>
+                <li>
+                  <code class="code">long</code>
+                </li>
+                <li>
+                  <code class="code">native</code>
+                </li>
+                <li>
+                  <code class="code">new</code>
+                </li>
+                <li>
+                  <code class="code">package</code>
+                </li>
+                <li>
+                  <code class="code">private</code>
+                </li>
+                <li>
+                  <code class="code">protected</code>
+                </li>
+                <li>
+                  <code class="code">public</code>
+                </li>
+                <li>
+                  <code class="code">return</code>
+                </li>
+                <li>
+                  <code class="code">short</code>
+                </li>
+                <li>
+                  <code class="code">static</code>
+                </li>
+                <li>
+                  <code class="code">super</code>
+                </li>
+                <li>
+                  <code class="code">switch</code>
+                </li>
+                <li>
+                  <code class="code">synchronized</code>
+                </li>
+                <li>
+                  <code class="code">this</code>
+                </li>
+                <li>
+                  <code class="code">throw</code>
+                </li>
+                <li>
+                  <code class="code">throws</code>
+                </li>
+                <li>
+                  <code class="code">transient</code>
+                </li>
+                <li>
+                  <code class="code">try</code>
+                </li>
+                <li>
+                  <code class="code">typeof</code>
+                </li>
+                <li>
+                  <code class="code">var</code>
+                </li>
+                <li>
+                  <code class="code">void</code>
+                </li>
+                <li>
+                  <code class="code">volatile</code>
+                </li>
+                <li>
+                  <code class="code">while</code>
+                </li>
+                <li>
+                  <code class="code">with</code>
+                </li>
             </ul>
           </div>
           <div title="Arreglos" class="section">
@@ -2359,7 +2359,7 @@ $('h1').html();
             Nota
           </h3>
           <p>
-            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, la propiedad CSS <code class="code">font-size</code> deber&aacute; ser expresada como <code class="code">fontSize</code>.
+            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un método, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al método <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> ó con el guión del medio) funcionarán.
           </p>
           </div>
           <div class="example">
@@ -2369,6 +2369,7 @@ $('h1').html();
             <div class="example-contents">
               <pre class="brush: js">
 $('h1').css('fontSize'); // devuelve una cadena de caracteres como "19px"
+$('h1').css('font-size'); // tambi&eacute;n funciona
 </pre>
             </div>
           </div>
@@ -3336,7 +3337,7 @@ jQuery.noConflict();
               jQuery ofrece m&eacute;todos para la mayor&iacute;a de los eventos &mdash; entre ellos <code class="code">$.fn.click</code>, <code
               class="code">$.fn.focus</code>, <code
               class="code">$.fn.blur</code>, <code
-              class="code">$.fn.change</code>, etc. Estos &uacute;ltimos son formas reducidas del m&eacute;todo <code class="code">$.fn.bind</code> de jQuery. El m&eacute;todo bind es &uacute;til para vincular (en ingl&eacute;s <span class="emphasis"><em>binding</em></span>) la misma funci&oacute;n de controlador a m&uacute;ltiples eventos, para cuando se desea proveer informaci&oacute;n al controlador de evento &oacute; cuando se est&aacute; trabajando con eventos personalizados.
+              class="code">$.fn.change</code>, etc. Estos &uacute;ltimos son formas reducidas del m&eacute;todo <code class="code">$.fn.bind</code> de jQuery. El m&eacute;todo bind es &uacute;til para vincular (en ingl&eacute;s <span class="emphasis"><em>binding</em></span>) la misma funci&oacute;n de controlador a m&uacute;ltiples eventos, para cuando se desea proveer informaci&oacute;n al controlador de evento, cuando se est&aacute; trabajando con eventos personalizados &oacute; cuando se desea pasar un objeto a m&uacute;ltiples eventos y controladores.
             </p>
             <div class="example">
               <p class="title">
@@ -3463,7 +3464,40 @@ $('p').unbind('.myNamespace'); // desvincula todos los eventos con el espacio de
               </div>
             </div>
           </div>
-          <div title="Inside the Event Handling Function" class="section">
+		  <!--Falta traducir
+		  <div title="Binding Multiple Events" class="section">
+            <div class="titlepage">
+              <h3 class="title">
+                Binding Multiple Events
+              </h3>
+            </div>
+            <p>
+              Quite often elements in your application will be bound to multiple events, each having a different function for handing the event. In these cases you can pass an object into <code class="code">$.fn.bind</code> with one or more key/value pairs, with the key being the event name and the value being the function to handle the event.
+            </p>
+            <div class="example">
+              <p class="title">
+                <b>Binding Multiple Events</b>
+              </p>
+              <div class="example-contents">
+                <pre class="brush: js">
+$('p').bind({
+	'click': function() { console.log('clicked!'); },
+	'mouseover': function() { console.log('hovered!'); }
+});
+</pre>
+              </div>
+            </div>
+          </div>
+					<div class="note">
+          <h3 class="title">
+            Note
+          </h3>
+          <p>
+            The option to pass an object of multiple events and handlers to <code class="code">$.fn.bind</code> was introduced in jQuery 1.4.4.
+          </p>
+          </div>
+		  Fin falta traducir -->
+          <div title="El Objeto del Evento" class="section">
             <h2 class="title">
               El Objeto del Evento
             </h2>
@@ -4336,7 +4370,7 @@ $('h1').show(300).delay(1000).hide(300);
               <pre class="brush: js">
 var response;
 $.get('foo.php', function(r) { response = r; });
-console.log(response); // indefinido(undefined)
+console.log(response); // indefinido (undefined)
 </pre>
               <p>
                 En su lugar, es necesario especificar una funci&oacute;n de devoluci&oacute;n de llamada; dicha funci&oacute;n se ejecutar&aacute; cuando la petici&oacute;n se haya realizado de forma correcta ya que es en ese momento cuando la respuesta del servidor esta lista.
@@ -4713,7 +4747,7 @@ $('#newContent').load('/foo.html');
                 </p>
                 <div class="example-contents">
                   <pre class="brush: js">
-$('#newContent').load('/foo.html <span class="bold"><strong>#myDiv h1:first</strong></span>', function(html) {
+$('#newContent').load('/foo.html #myDiv h1:first', function(html) {
   alert('Contenido actualizado');
 });
 </pre>

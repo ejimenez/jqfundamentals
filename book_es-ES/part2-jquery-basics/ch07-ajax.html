@@ -139,7 +139,7 @@
               <pre class="brush: js">
 var response;
 $.get('foo.php', function(r) { response = r; });
-console.log(response); // indefinido(undefined)
+console.log(response); // indefinido (undefined)
 </pre>
               <p>
                 En su lugar, es necesario especificar una funci&oacute;n de devoluci&oacute;n de llamada; dicha funci&oacute;n se ejecutar&aacute; cuando la petici&oacute;n se haya realizado de forma correcta ya que es en ese momento cuando la respuesta del servidor esta lista.
@@ -516,7 +516,7 @@ $('#newContent').load('/foo.html');
                 </p>
                 <div class="example-contents">
                   <pre class="brush: js">
-$('#newContent').load('/foo.html <span class="bold"><strong>#myDiv h1:first</strong></span>', function(html) {
+$('#newContent').load('/foo.html #myDiv h1:first', function(html) {
   alert('Contenido actualizado');
 });
 </pre>

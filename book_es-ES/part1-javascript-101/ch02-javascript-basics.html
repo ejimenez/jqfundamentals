@@ -205,7 +205,7 @@ baz &amp;&amp; foo;   // devuelve 1, el cual es verdadero (true)
               El operador <code class="code">||</code> (OR l&oacute;gico) devuelve el valor del primer operando, si &eacute;ste es verdadero; caso contrario devuelve el segundo operando. Si ambos operandos son falsos devuelve falso (<span class="emphasis"><em>false</em></span>). El operador <code class="code">&&</code> (AND l&oacute;gico) devuelve el valor del primer operando si &eacute;ste es falso; caso contrario devuelve el segundo operando. Cuando ambos valores son verdaderos devuelve verdadero (<span class="emphasis"><em>true</em></span>), sino devuelve falso.
             </p>
             <p>
-			  Puede consultar la secci&oacute;n <a title="Elementos Verdaderos y Falsos" href="#javascript-basics.sections.truthy-falsy" class="xref">"Elementos Verdaderos y Falsos"</a> para m&aacute;s detalles sobre que valores se eval&uacute;an como <code class="code">true</code> y cuales se eval&uacute;an como <code class="code">false</code>.
+			  Puede consultar la secci&oacute;n <a title="Elementos Verdaderos y Falsos" href="#Elementos Verdaderos y Falsos" class="xref">"Elementos Verdaderos y Falsos"</a> para m&aacute;s detalles sobre que valores se eval&uacute;an como <code class="code">true</code> y cuales se eval&uacute;an como <code class="code">false</code>.
             </p>
             <div class="note">
             <h3 class="title">
@@ -307,7 +307,7 @@ if (bar) {
           </p>
           </div>
 
-          <div title="Elementos Verdaderos y Falsos" class="section">
+          <div title="Elementos Verdaderos y Falsos" id="Elementos Verdaderos y Falsos" class="section">
             <div class="titlepage">
               <h3 class="title">
                 Elementos Verdaderos y Falsos
@@ -634,174 +634,174 @@ for (var i = 0; i &lt; 10; i++) {
               JavaScript posee un n&uacute;mero de "palabras reservadas", o palabras que son especiales dentro del mismo lenguaje. Debe utilizar estas palabras cuando las necesite para su uso espec&iacute;fico.
             </p>
             <ul>
-              <li>
-                <code class="code">break</code>
-              </li>
-              <li>
-                <code class="code">case</code>
-              </li>
-              <li>
-                <code class="code">catch</code>
-              </li>
-              <li>
-                <code class="code">continue</code>
-              </li>
-              <li>
-                <code class="code">default</code>
-              </li>
-              <li>
-                <code class="code">delete</code>
-              </li>
-              <li>
-                <code class="code">do</code>
-              </li>
-              <li>
-                <code class="code">else</code>
-              </li>
-              <li>
-                <code class="code">finally</code>
-              </li>
-              <li>
-                <code class="code">for</code>
-              </li>
-              <li>
-                <code class="code">function</code>
-              </li>
-              <li>
-                <code class="code">if</code>
-              </li>
-              <li>
-                <code class="code">in</code>
-              </li>
-              <li>
-                <code class="code">instanceof</code>
-              </li>
-              <li>
-                <code class="code">new</code>
-              </li>
-              <li>
-                <code class="code">return</code>
-              </li>
-              <li>
-                <code class="code">switch</code>
-              </li>
-              <li>
-                <code class="code">this</code>
-              </li>
-              <li>
-                <code class="code">throw</code>
-              </li>
-              <li>
-                <code class="code">try</code>
-              </li>
-              <li>
-                <code class="code">typeof</code>
-              </li>
-              <li>
-                <code class="code">var</code>
-              </li>
-              <li>
-                <code class="code">void</code>
-              </li>
-              <li>
-                <code class="code">while</code>
-              </li>
-              <li>
-                <code class="code">with</code>
-              </li>
-              <li>
-                <code class="code">abstract</code>
-              </li>
-              <li>
-                <code class="code">boolean</code>
-              </li>
-              <li>
-                <code class="code">byte</code>
-              </li>
-              <li>
-                <code class="code">char</code>
-              </li>
-              <li>
-                <code class="code">class</code>
-              </li>
-              <li>
-                <code class="code">const</code>
-              </li>
-              <li>
-                <code class="code">debugger</code>
-              </li>
-              <li>
-                <code class="code">double</code>
-              </li>
-              <li>
-                <code class="code">enum</code>
-              </li>
-              <li>
-                <code class="code">export</code>
-              </li>
-              <li>
-                <code class="code">extends</code>
-              </li>
-              <li>
-                <code class="code">final</code>
-              </li>
-              <li>
-                <code class="code">float</code>
-              </li>
-              <li>
-                <code class="code">goto</code>
-              </li>
-              <li>
-                <code class="code">implements</code>
-              </li>
-              <li>
-                <code class="code">import</code>
-              </li>
-              <li>
-                <code class="code">int</code>
-              </li>
-              <li>
-                <code class="code">interface</code>
-              </li>
-              <li>
-                <code class="code">long</code>
-              </li>
-              <li>
-                <code class="code">native</code>
-              </li>
-              <li>
-                <code class="code">package</code>
-              </li>
-              <li>
-                <code class="code">private</code>
-              </li>
-              <li>
-                <code class="code">protected</code>
-              </li>
-              <li>
-                <code class="code">public</code>
-              </li>
-              <li>
-                <code class="code">short</code>
-              </li>
-              <li>
-                <code class="code">static</code>
-              </li>
-              <li>
-                <code class="code">super</code>
-              </li>
-              <li>
-                <code class="code">synchronized</code>
-              </li>
-              <li>
-                <code class="code">throws</code>
-              </li>
-              <li>
-                <code class="code">transient</code>
-              </li>
-              <li>
-                <code class="code">volatile</code>
-              </li>
+                <li>
+                  <code class="code">abstract</code>
+                </li>
+                <li>
+                  <code class="code">boolean</code>
+                </li>
+                <li>
+                  <code class="code">break</code>
+                </li>
+                <li>
+                  <code class="code">byte</code>
+                </li>
+                <li>
+                  <code class="code">case</code>
+                </li>
+                <li>
+                  <code class="code">catch</code>
+                </li>
+                <li>
+                  <code class="code">char</code>
+                </li>
+                <li>
+                  <code class="code">class</code>
+                </li>
+                <li>
+                  <code class="code">const</code>
+                </li>
+                <li>
+                  <code class="code">continue</code>
+                </li>
+                <li>
+                  <code class="code">debugger</code>
+                </li>
+                <li>
+                  <code class="code">default</code>
+                </li>
+                <li>
+                  <code class="code">delete</code>
+                </li>
+                <li>
+                  <code class="code">do</code>
+                </li>
+                <li>
+                  <code class="code">double</code>
+                </li>
+                <li>
+                  <code class="code">else</code>
+                </li>
+                <li>
+                  <code class="code">enum</code>
+                </li>
+                <li>
+                  <code class="code">export</code>
+                </li>
+                <li>
+                  <code class="code">extends</code>
+                </li>
+                <li>
+                  <code class="code">final</code>
+                </li>
+                <li>
+                  <code class="code">finally</code>
+                </li>
+                <li>
+                  <code class="code">float</code>
+                </li>
+                <li>
+                  <code class="code">for</code>
+                </li>
+                <li>
+                  <code class="code">function</code>
+                </li>
+                <li>
+                  <code class="code">goto</code>
+                </li>
+                <li>
+                  <code class="code">if</code>
+                </li>
+                <li>
+                  <code class="code">implements</code>
+                </li>
+                <li>
+                  <code class="code">import</code>
+                </li>
+                <li>
+                  <code class="code">in</code>
+                </li>
+                <li>
+                  <code class="code">instanceof</code>
+                </li>
+                <li>
+                  <code class="code">int</code>
+                </li>
+                <li>
+                  <code class="code">interface</code>
+                </li>
+                <li>
+                  <code class="code">long</code>
+                </li>
+                <li>
+                  <code class="code">native</code>
+                </li>
+                <li>
+                  <code class="code">new</code>
+                </li>
+                <li>
+                  <code class="code">package</code>
+                </li>
+                <li>
+                  <code class="code">private</code>
+                </li>
+                <li>
+                  <code class="code">protected</code>
+                </li>
+                <li>
+                  <code class="code">public</code>
+                </li>
+                <li>
+                  <code class="code">return</code>
+                </li>
+                <li>
+                  <code class="code">short</code>
+                </li>
+                <li>
+                  <code class="code">static</code>
+                </li>
+                <li>
+                  <code class="code">super</code>
+                </li>
+                <li>
+                  <code class="code">switch</code>
+                </li>
+                <li>
+                  <code class="code">synchronized</code>
+                </li>
+                <li>
+                  <code class="code">this</code>
+                </li>
+                <li>
+                  <code class="code">throw</code>
+                </li>
+                <li>
+                  <code class="code">throws</code>
+                </li>
+                <li>
+                  <code class="code">transient</code>
+                </li>
+                <li>
+                  <code class="code">try</code>
+                </li>
+                <li>
+                  <code class="code">typeof</code>
+                </li>
+                <li>
+                  <code class="code">var</code>
+                </li>
+                <li>
+                  <code class="code">void</code>
+                </li>
+                <li>
+                  <code class="code">volatile</code>
+                </li>
+                <li>
+                  <code class="code">while</code>
+                </li>
+                <li>
+                  <code class="code">with</code>
+                </li>
             </ul>
           </div>
           <div title="Arreglos" class="section">

@@ -528,7 +528,7 @@ $('h1').html();
             Nota
           </h3>
           <p>
-            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, la propiedad CSS <code class="code">font-size</code> deber&aacute; ser expresada como <code class="code">fontSize</code>.
+            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un método, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al método <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> ó con el guión del medio) funcionarán.
           </p>
           </div>
           <div class="example">
@@ -538,6 +538,7 @@ $('h1').html();
             <div class="example-contents">
               <pre class="brush: js">
 $('h1').css('fontSize'); // devuelve una cadena de caracteres como "19px"
+$('h1').css('font-size'); // tambi&eacute;n funciona
 </pre>
             </div>
           </div>
