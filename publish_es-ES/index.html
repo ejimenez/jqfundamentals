@@ -1795,11 +1795,11 @@ for (var i=0; i&lt;5; i++) {
               </div>
             </div>
             <p>
-              Las clausuras también pueden ser utilizadas para resolver problemas con la palabra clave <code class="code">this</code>, la cual es única en cada alcance.
+              Las clausuras tambi&eacute;n pueden ser utilizadas para resolver problemas con la palabra clave <code class="code">this</code>, la cual es &uacute;nica en cada alcance.
             </p>
             <div class="example">
               <p class="title">
-                <b>Utilizar una clausura para acceder simultáneamente a instancias de objetos internos y externos.</b>
+                <b>Utilizar una clausura para acceder simult&aacute;neamente a instancias de objetos internos y externos.</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
@@ -1828,7 +1828,7 @@ outerObj.outerFunction();
               </div>
             </div>
             <p>
-              Este mecanismo puede ser útil cuando trabaje con funciones de devolución de llamadas (en inglés <span class="emphasis"><em>callbacks</em></span>). Sin embargo, en estos casos, es preferible que utilice <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a> ya que permite evitar cualquier sobrecarga asociada con el alcance (<span class="emphasis"><em>scope</em></span>).
+              Este mecanismo puede ser &uacute;til cuando trabaje con funciones de devoluci&oacute;n de llamadas (en ingl&eacute;s <span class="emphasis"><em>callbacks</em></span>). Sin embargo, en estos casos, es preferible que utilice <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a> ya que permite evitar cualquier sobrecarga asociada con el alcance (<span class="emphasis"><em>scope</em></span>).
             </p>
           </div>
         </div> 
@@ -3476,25 +3476,24 @@ $('p').unbind('.myNamespace'); // desvincula todos los eventos con el espacio de
               </div>
             </div>
           </div>
-		  <!--Falta traducir
-		  <div title="Binding Multiple Events" class="section">
+		  <div title="Vinculaci&oacute;n de M&uacute;ltiples Eventos" class="section">
             <div class="titlepage">
               <h3 class="title">
-                Binding Multiple Events
+                Vinculaci&oacute;n de M&uacute;ltiples Eventos
               </h3>
             </div>
             <p>
-              Quite often elements in your application will be bound to multiple events, each having a different function for handing the event. In these cases you can pass an object into <code class="code">$.fn.bind</code> with one or more key/value pairs, with the key being the event name and the value being the function to handle the event.
+              Muy a menudo, elementos en una aplicaci&oacute;n estar&aacute;n vinculados a m&uacute;ltiples eventos, cada uno con una funci&oacute;n diferente. En estos casos, es posible pasar un objeto dentro de <code class="code">$.fn.bind</code> con uno o m&aacute;s pares de nombres claves/valores. Cada nombre clave ser&aacute; el nombre del evento mientras que cada valor ser&aacute; la funci&oacute;n a ejecutar cuando ocurra el evento.
             </p>
             <div class="example">
               <p class="title">
-                <b>Binding Multiple Events</b>
+                <b>Vincular m&uacute;ltiples eventos a un elemento</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
 $('p').bind({
-	'click': function() { console.log('clicked!'); },
-	'mouseover': function() { console.log('hovered!'); }
+	'click': function() { console.log('clickeado'); },
+	'mouseover': function() { console.log('sobrepasado'); }
 });
 </pre>
               </div>
@@ -3502,13 +3501,12 @@ $('p').bind({
           </div>
 					<div class="note">
           <h3 class="title">
-            Note
+            Nota
           </h3>
           <p>
-            The option to pass an object of multiple events and handlers to <code class="code">$.fn.bind</code> was introduced in jQuery 1.4.4.
+            La opci&oacute;n de pasar un objeto con m&uacute;ltiples eventos y funciones a <code class="code">$.fn.bind</code> fue introducido en jQuery 1.4.4.
           </p>
           </div>
-		  Fin falta traducir -->
           <div title="El Objeto del Evento" class="section">
             <h2 class="title">
               El Objeto del Evento
