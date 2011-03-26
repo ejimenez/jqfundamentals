@@ -3,34 +3,48 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1" >
     <meta charset="utf-8">
+    <meta property="og:title" content="Fundamentos de jQuery - Libro de jQuery en espa&ntilde;ol"/>
+    <meta property="og:image" content="http://librojquery.com/css/jquery_logo.png"/>
     <title>
-      Fundamentos de jQuery
+      Fundamentos de jQuery - Libro de jQuery en espa&ntilde;ol
     </title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/shCore.css">
 		<link rel="stylesheet" type="text/css" href="css/shThemeRDark.css">
   </head>
   <body>
-    <div title="jQuery Fundamentals" class="book">
-
+    <div title="Fundamentos de jQuery" class="book">
       <div id="titlepage">
         <div>
           <div>
             <h1 class="title">
-              Fundamentos de jQuery
+              <a title="Fundamentos de jQuery" href="http://librojquery.com/">Fundamentos de jQuery</a>
             </h1>
+            <div class="social">
+            	<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Flibrojquery.com%2F&amp;layout=button_count&amp;show_faces=false&amp;width=80&amp;action=like&amp;font&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:80px; height:21px;" allowTransparency="true"></iframe>
+            	<a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="dzignus" data-lang="es">Tweet</a>
+            </div>
+            <div class="clear"></div>
           </div>
           <div>
             <div class="author">
               <h3 class="author">
-                Por <a href="http://www.rebeccamurphey.com" class="ulink">Rebecca Murphey</a>
+                Textos originales por <a href="http://www.rebeccamurphey.com" class="ulink">Rebecca Murphey</a>
               </h3>
             </div>
+          </div>
+          <div class="translators">
+              <h3 class="translator">
+                <span class="orgname">Traducido y adaptado a espa&ntilde;ol por <a href="http://dzign.us/" class="ulink">Leandro D'Onofrio</a>.</span>
+              </h3>
+               <h3 class="corrections">
+                <span class="orgname">Correcciones por <a href="http://ar.linkedin.com/in/gustavoaragon/" class="ulink">Gustavo Ra&uacute;l Arag&oacute;n</a> y <a href="#" class="ulink">Pablo Maronna</a>.</span>
+              </h3>
           </div>
           <div>
             <div class="othercredit">
               <h3 class="othercredit">
-                <span class="orgname"><a href="http://github.com/rmurphey/jqfundamentals" class="ulink">http://github.com/rmurphey/jqfundamentals</a></span>
+              	<a href="http://github.com/rmurphey/jqfundamentals" class="ulink">Repositorio original</a> | <a href="https://github.com/dzignus/jqfundamentals" class="ulink">Repositorio en espa&ntilde;ol</a>
               </h3>
             </div>
           </div>
@@ -43,31 +57,11 @@
           </div>
           <div>
           <div>
-            <div class="othercredit">
-              <h3 class="othercredit">
-                <span class="orgname">Traducido a espa&ntilde;ol por <a href="http://dzign.us/" class="ulink">Leandro D'Onofrio.</a></span>
-              </h3>
-            </div>
-          </div>
-          <div>
-          <div>
-            <div class="othercredit">
-              <h3 class="othercredit">
-                <span class="orgname">Correcciones por <a href="#" class="ulink">Gustavo Ra&uacute;l Arag&oacute;n</a> y <a href="#" class="ulink">Pablo Maronna</a>.</span>
-              </h3>
-            </div>
-          </div>
-          <div>
-            <p class="copyright">
-              Copyright © 2011
-            </p>
-          </div>
-          <div>
-            <div title="Legal Notice" class="legalnotice">
-              <p>				
-				Material licenciado por Rebecca Murphey bajo la licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" class="ulink">Creative Commons Attribution-Share Alike 3.0 United States</a>. Usted es libre de copiarlo, distribuirlo, transmitirlo y modificarlo, siempre y cuando haga referencia a <a href="http://github.com/rmurphey/jqfundamentals" class="ulink">este repositorio</a> y atribuya la autor&iacute;a original a Rebecca Murphey. Si altera, transforma o crea una obra derivada, deber&aacute; distribuir el resultado bajo una licencia igual, similar o compatible. Cualquiera de las condiciones mencionadas pueden no aplicarse si obtiene permisos del autor. Para cualquier reutilizaci&oacute;n o distribuci&oacute;n, deber&aacute; dejar en claro la licencia la mejor manera para hacerlo es a trav&eacute;s de un enlace hacia la licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" class="ulink">Creative Commons Attribution-Share Alike 3.0 United States</a>.
-			  </p>
-            </div>
+            <div title="Aviso Legal" class="legalnotice">
+          		<p>
+          			Bajo licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" class="ulink">Creative Commons Attribution-Share Alike 3.0 United States</a>. 
+          		</p>
+          	</div>
           </div>
         </div>
       </div> <!-- end titlepage -->
@@ -290,6 +284,28 @@ console.log('hello');
         <p>
           Las notas sobre alg&uacute;n tema aparecer&aacute;n de esta forma.
         </p>
+        </div>
+        <div title="Notas de la Traducci&oacute;n" class="section">
+          <h2 class="title">
+            Notas de la Traducci&oacute;n
+          </h2>
+          <ul>
+            <li>
+              <p>
+                Debido a que el material tiene como fin el aprendizaje y la ense&ntilde;anza, el mismo se encuentra traducido a espa&ntilde;ol formal (usted).
+              </p>
+            </li>
+            <li>
+              <p>
+                Muchos conceptos t&eacute;cnicos se los nombra en su versi&oacute;n traducida a espa&ntilde;ol, sin embargo, cuando se hace referencia a alguno, entre parentesis se nombra su versi&oacute;n en ingl&eacute;s para tener de referencia.
+              </p>
+            </li>
+            <li>
+              <p>
+                Los ejemplos y soluciones a ejercicios no est&aacute;n completamente traducidos. Esto es debido a que, cuando est&eacute; trabajando en un proyecto real, el c&oacute;digo que encuentre en otros sitios probablemente est&eacute; en ingl&eacute;s. A&uacute;n as&iacute;, se han traducido los comentarios incorporados en los c&oacute;digos de ejemplos y algunos textos particulares.
+              </p>
+            </li>
+          </ul>
         </div>
         <div title="Material de Referencia" class="section">
           <h2 class="title">
@@ -7190,6 +7206,20 @@ $('#remove').click(function(e) {
 
 
        </div>
+      <div>
+        <p class="copyright">
+          Copyright © 2011
+        </p>
+      </div>
+      <div>
+        <div title="Aviso Legal" class="legalnotice">
+          <p>				
+			Material licenciado por Rebecca Murphey bajo la licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" class="ulink">Creative Commons Attribution-Share Alike 3.0 United States</a>. Usted es libre de copiarlo, distribuirlo, transmitirlo y modificarlo, siempre y cuando haga referencia a <a href="http://github.com/rmurphey/jqfundamentals" class="ulink">este repositorio</a> y atribuya la autor&iacute;a original a Rebecca Murphey. Si altera, transforma o crea una obra derivada, deber&aacute; distribuir el resultado bajo una licencia igual, similar o compatible. Cualquiera de las condiciones mencionadas pueden no aplicarse si obtiene permisos del autor. Para cualquier reutilizaci&oacute;n o distribuci&oacute;n, deber&aacute; dejar en claro la licencia la mejor manera para hacerlo es a trav&eacute;s de un enlace hacia la licencia <a href="http://creativecommons.org/licenses/by-sa/3.0/us/" class="ulink">Creative Commons Attribution-Share Alike 3.0 United States</a>.
+		  </p>
+        </div>
+      </div>
+      
+      <a id="feedback" href="https://github.com/dzignus/jqfundamentals/wiki/Correcciones">Correcciones</a>
 
 	<script type="text/javascript">
 	
@@ -7207,7 +7237,8 @@ $('#remove').click(function(e) {
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>
   <script src="js/shCore.js"></script>
   <script src="js/shBrushJScript.js"></script>
-
+  <script src="http://platform.twitter.com/widgets.js"></script>
+  
   <script>
   $(function() {
 
