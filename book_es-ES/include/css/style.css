@@ -28,11 +28,14 @@ p {
 
 h1.title {
   font-size:250%;
-  float: left;
-  width: 500px;
 }
 
-h1.title a{
+h1.maintitle {
+  float: left;
+  width: 550px;
+}
+
+h1.maintitle a{
   color: #000;
 }
 

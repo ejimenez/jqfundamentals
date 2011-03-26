@@ -1422,7 +1422,7 @@ for (var i=0; i&lt;5; i++) {
             </div>
             <div class="example">
               <p class="title">
-                <b>Establecer el valor de <code class="code">i</code> utilizando un Closure</b>
+                <b>Establecer el valor de <code class="code">i</code> utilizando una clausura</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
@@ -1437,34 +1437,32 @@ for (var i=0; i&lt;5; i++) {
 </pre>
               </div>
             </div>
-			<!--Traducir-->
-			<!--
             <p>
-              Closures can also be used to resolve issues with the <code class="code">this</code> keyword, which is unique to each scope:
+              Las clausuras también pueden ser utilizadas para resolver problemas con la palabra clave <code class="code">this</code>, la cual es única en cada alcance.
             </p>
             <div class="example">
               <p class="title">
-                <b>Using a closure to access inner and outer object instances simultaneously</b>
+                <b>Utilizar una clausura para acceder simultáneamente a instancias de objetos internos y externos.</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
 var outerObj = {
-    myName : 'outer',
+    myName : 'externo',
     outerFunction : function () {
 
-        // provide a reference to outerObj through innerFunction's closure
+        // provee una referencia al mismo objeto outerObj para utilizar dentro de innerFunction
         var self = this;
 
         var innerObj = {
-            myName : 'inner',
+            myName : 'interno',
             innerFunction : function () {
-                console.log(self.myName, this.myName); // logs 'outer inner'
+                console.log(self.myName, this.myName); // registra 'externo interno'
             }
         };
 
         innerObj.innerFunction();
 
-        console.log(this.myName); // logs 'outer'
+        console.log(this.myName); // registra 'externo'
     }
 };
 
@@ -1473,8 +1471,7 @@ outerObj.outerFunction();
               </div>
             </div>
             <p>
-              This mechanism can be particularly useful when dealing with callbacks, though in those cases, it is often better to use <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a>, which will avoid any overhead associated with scope traversal.
-            </p>-->
-			<!--Fin Traducir-->
+              Este mecanismo puede ser útil cuando trabaje con funciones de devolución de llamadas (en inglés <span class="emphasis"><em>callbacks</em></span>). Sin embargo, en estos casos, es preferible que utilice <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a> ya que permite evitar cualquier sobrecarga asociada con el alcance (<span class="emphasis"><em>scope</em></span>).
+            </p>
           </div>
         </div>
