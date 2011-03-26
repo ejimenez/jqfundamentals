@@ -28,6 +28,18 @@ p {
 
 h1.title {
   font-size:250%;
+  float: left;
+  width: 500px;
+}
+
+h1.title a{
+  color: #000;
+}
+
+.social{
+	float: right;
+	width: auto;
+	margin: 35px 0 0 0;
 }
 
 h1, h2, h3, h4, h5 {
@@ -64,7 +76,43 @@ p.toc {
   font-size:90%;
 }
 
+#toc{
+	border-top: 1px solid #CCCCCC;
+	margin: 30px 0 0 0;
+	padding: 12px 0 0 0;
+}
+
 #toc li, #loe li {
   color:#ce242a;
   cursor:pointer;
+}
+
+.translators{
+  background-color:#fe6;
+  padding:15px;
+}
+
+.translators .translator{
+	margin: 0 0 15px 0;
+}
+
+.translators .corrections{
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+#feedback {
+	display: block;
+	background: transparent url(feedback.png) no-repeat left top;
+	height: 145px;
+	width: 35px;
+	position: absolute;
+	left: 0;
+	top: 200px;
+	text-indent: -3000px;
+}
+
+.clear{
+	clear: both;
 }
