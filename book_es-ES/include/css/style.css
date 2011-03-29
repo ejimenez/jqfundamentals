@@ -32,7 +32,7 @@ h1.title {
 
 h1.maintitle {
   float: left;
-  width: 550px;
+  width: 535px;
 }
 
 h1.maintitle a{
@@ -103,17 +103,6 @@ p.toc {
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
-}
-
-#feedback {
-	display: block;
-	background: transparent url(feedback.png) no-repeat left top;
-	height: 145px;
-	width: 35px;
-	position: absolute;
-	left: 0;
-	top: 200px;
-	text-indent: -3000px;
 }
 
 .clear{
