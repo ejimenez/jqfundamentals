@@ -1363,7 +1363,7 @@ var myFunction = function() {
 };
 
 var f = myFunction();
-f();  // registra 'mundo' -- error
+f();  // registra 'world' -- error
 </pre>
               </div>
             </div>
@@ -1402,7 +1402,7 @@ bim();  // bim no esta definida para ser accesible fuera de la funci&oacute;n an
 			  Las clausuras (en ingl&eacute;s <span class="emphasis"><em>closures</em></span>) son una extensi&oacute;n del concepto de alcance (<span class="emphasis"><em>scope</em></span>) — funciones que tienen acceso a las variables que est&aacute;n disponibles dentro del &aacute;mbito en donde se cre&oacute; la funci&oacute;n. Si este concepto es confuso, no debe preocuparse: se entiende mejor a trav&eacute;s de ejemplos.
             </p>
             <p>
-			  En el ejemplo "Las funciones pueden "ver" los cambios en las variables antes de que la funci&oacute;n sea definida” se muestra la forma en que funciones tienen acceso a cambiar el valor de las variables. El mismo comportamiento sucede en funciones creadas dentro de bucles &mdash; la funci&oacute;n "observa" el cambio en la variable, incluso despu&eacute;s de que la funci&oacute;n sea definida, resultando que en todos los clicks aparezca un alerta mostrando el valor 5.
+			  En el ejemplo 2.47 se muestra la forma en que funciones tienen acceso para cambiar el valor de las variables. El mismo comportamiento sucede en funciones creadas dentro de bucles &mdash; la funci&oacute;n "observa" el cambio en la variable, incluso despu&eacute;s de que la funci&oacute;n sea definida, resultando que en todos los clicks aparezca una ventana de alerta mostrando el valor 5.
             </p>
             <div class="example">
               <p class="title">
@@ -1411,7 +1411,7 @@ bim();  // bim no esta definida para ser accesible fuera de la funci&oacute;n an
               <div class="example-contents">
                 <pre class="brush: js">
 /* esto no se comporta como se desea; */
-/* cada click mostrar&aacute; un alert con el valor 5 */
+/* cada click mostrar&aacute; una ventana de alerta con el valor 5 */
 for (var i=0; i&lt;5; i++) {
     $('&lt;p&gt;hacer click&lt;/p&gt;').appendTo('body').click(function() {
         alert(i);
@@ -1426,7 +1426,7 @@ for (var i=0; i&lt;5; i++) {
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
-/* soluci&oacute;n: “clausurar” el valor de i dentro de crearFuncion, de esta forma no cambia */
+/* soluci&oacute;n: “clausurar” el valor de i dentro de createFunction */
 var createFunction = function(i) {
     return function() { alert(i); };
 };
