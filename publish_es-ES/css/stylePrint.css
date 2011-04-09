@@ -1,0 +1,109 @@
+body {
+width:100%;
+font-family:Georgia, serif;
+margin:20px auto;
+}
+
+a {
+color:#ce242a;
+}
+
+div.chapter {
+padding:50px 0;
+}
+
+p {
+line-height:1.4em;
+}
+
+#titlepage {
+position:relative;
+margin: 0 0 500px 0;
+}
+
+.titlepage h2.title {
+font-size:200%;
+}
+
+h1.title {
+font-size:250%;
+}
+
+h1.maintitle {
+float:left;
+width:535px;
+}
+
+h1.maintitle a {
+color:#000;
+}
+
+.social {
+display: none;
+}
+
+h1,h2,h3,h4,h5 {
+font-family:Helvetica,Arial, sans-serif;
+}
+
+.example {
+margin:20px 0;
+}
+
+.example .example-contents {
+margin:0 0 10px;
+}
+
+.example .title {
+font-family:Helvetica, Arial, sans-serif;
+font-style:italic;
+font-size:90%;
+margin:20px 0 3px;
+}
+
+dt span.term {
+font-family:Helvetica, Arial, sans-serif;
+font-weight:700;
+}
+
+p.toc {
+display: none;
+}
+
+#toc {
+padding:12px 0 0;
+}
+
+#loe{
+margin: 0 0 300px 0;
+}
+
+#toc a, #loe a{
+text-decoration: none;
+color: #000;
+cursor: default;
+}
+
+.translators .translator {
+margin:0 0 15px;
+}
+
+.translators .corrections {
+font-size:14px;
+font-weight:400;
+margin:0;
+}
+
+.clear {
+clear:both;
+}
+
+.note{
+border:2px solid #FFEE66;
+padding:15px;
+}
+
+.translators {
+border:1px solid #000;
+padding:15px;
+}
