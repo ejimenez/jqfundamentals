@@ -11,7 +11,7 @@
           <p>
             Este cap&iacute;tulo cubre numerosas mejores pr&aacute;cticas de JavaScript y jQuery, sin un orden en particular. Muchas de estas pr&aacute;cticas est&aacute;n basadas en la presentaci&oacute;n <a href="http://paulirish.com/perf" class="ulink">jQuery Anti-Patterns for Performance</a> (en ingl&eacute;s) de Paul Irish.
           </p>
-          <div title="Guardar la Longitud en Bucles" class="sect1">
+          <div title="Guardar la Longitud en Bucles" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -32,7 +32,7 @@ for (var i = 0; i &lt; myLength; i++) {
 }
 </pre>
           </div>
-          <div title="A&ntilde;adir Nuevo Contenido por Fuera de un Bucle" class="sect1">
+          <div title="A&ntilde;adir Nuevo Contenido por Fuera de un Bucle" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -70,7 +70,7 @@ $.each(myArray, function(i, item) {
 $('#ballers').html(myHtml);
 </pre>
           </div>
-          <div title="No Repetirse" class="sect1">
+          <div title="No Repetirse" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -106,7 +106,7 @@ $.each($elems, function(i,elem) {
 });
 </pre>
           </div>
-          <div title="Cuidado con las Funciones An&oacute;nimas" class="sect1">
+          <div title="Cuidado con las Funciones An&oacute;nimas" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -152,7 +152,7 @@ var PI = {
 $(document).ready(PI.onReady);
 </pre>
           </div>
-          <div title="Optimizaci&oacute;n de Selectores" class="sect1">
+          <div title="Optimizaci&oacute;n de Selectores" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -236,7 +236,7 @@ $('.gender input:radio');  // mucho mejor
 </pre>
             </div>
           </div>
-          <div title="Utilizar la Delegaci&oacute;n de Eventos" class="sect1">
+          <div title="Utilizar la Delegaci&oacute;n de Eventos" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -264,7 +264,7 @@ $('li.trigger').live('click', handlerFn);
 $('#myList').delegate('li.trigger', 'click', handlerFn);
 </pre>
           </div>
-          <div title="Separar Elementos para Trabajar con Ellos" class="sect1">
+          <div title="Separar Elementos para Trabajar con Ellos" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -286,7 +286,7 @@ $table.detach();
 $parent.append(table);
 </pre>
           </div>
-          <div title="Utilizar Estilos en Cascada para Cambios de CSS en Varios Elementos" class="sect1">
+          <div title="Utilizar Estilos en Cascada para Cambios de CSS en Varios Elementos" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -306,7 +306,7 @@ $('&lt;style type="text/css"&gt;a.swedberg { color : #asd123 }&lt;/style&gt;')
     .appendTo('head');
 </pre>
           </div>
-          <div title="Utilizar $.data en Lugar de $.fn.data" class="sect1">
+          <div title="Utilizar $.data en Lugar de $.fn.data" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -327,7 +327,7 @@ $(elem).data(key,value);
 $.data(elem,key,value);
 </pre>
           </div>
-          <div title="No Actuar en Elementos no Existentes" class="sect1">
+          <div title="No Actuar en Elementos no Existentes" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -368,7 +368,7 @@ $('li.cartitems').doOnce(function(){
               Este consejo es especialmente aplicable para widgets de jQuery UI, los cuales poseen mucha carga incluso cuando la selecci&oacute;n no contiene elementos.
             </p>
           </div>
-          <div title="Definici&oacute;n de Variables" class="sect1">
+          <div title="Definici&oacute;n de Variables" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -399,7 +399,7 @@ var test = 1,
 (function(foo, bar) { ... })(1, 2);
 </pre>
           </div>
-          <div title="Condicionales" class="sect1">
+          <div title="Condicionales" class="section">
             <div class="titlepage">
               <div>
                 <div>
@@ -420,7 +420,7 @@ if (/^(foo|bar)$/.test(type)) { ... }
 if (({ foo : 1, bar : 1 })[type]) { ... }
 </pre>
           </div>
-          <div title="No Tratar a jQuery como si fuera una Caja Negra" class="sect1">
+          <div title="No Tratar a jQuery como si fuera una Caja Negra" class="section">
             <div class="titlepage">
               <div>
                 <div>
