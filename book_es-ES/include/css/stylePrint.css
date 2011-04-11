@@ -75,6 +75,7 @@ padding:12px 0 0;
 }
 
 #loe{
+/*margin: 0 0 500px 0;*/
 margin: 0 0 300px 0;
 }
 
@@ -100,6 +101,7 @@ clear:both;
 
 .note{
 border:2px solid #FFEE66;
+background: #FFEE66;
 padding:15px;
 }
 
