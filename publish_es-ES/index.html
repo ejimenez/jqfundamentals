@@ -80,12 +80,10 @@
 			</ul>
 		</div>
 
-		<div id="loe">
-			<h2>Listado de ejemplos</h2>
-			<ul>
-			<!-- JS-generated list of examples goes here -->
-			</ul>
-		</div>
+		<h2>Listado de ejemplos</h2>
+		<ul id="loe">
+		<!-- JS-generated list of examples goes here -->
+		</ul>
 		
 		        <div id="capitulo-1" title="Bienvenido" class="chapter">
         <div class="titlepage">
@@ -5027,7 +5025,7 @@ $.fn.myNewPlugin = function() {
 };
 </pre>
             <p>
-              Al igual que otros m&eacute;todos, <code class="code">each()</code> devuelve un objeto jQuery, permitiendo utilizar el encadenado de m&eacute;todos (<code class="code">$(...).css().attr()...</code>). Para no romper esta convensi&oacute;n, la extensi&oacute;n a crear deber&aacute; devolver el objeto <code class="code">this</code>, para permitir seguir con el encadenamiento. A continuaci&oacute;n se muestra un peque&ntilde;o ejemplo:
+              Al igual que otros m&eacute;todos, <code class="code">each()</code> devuelve un objeto jQuery, permitiendo utilizar el encadenado de m&eacute;todos (<code class="code">$(...).css().attr()...</code>). Para no romper esta convenci&oacute;n, la extensi&oacute;n a crear deber&aacute; devolver el objeto <code class="code">this</code>, para permitir seguir con el encadenamiento. A continuaci&oacute;n se muestra un peque&ntilde;o ejemplo:
             </p>
             <pre class="brush: js">
 (function($){
@@ -7248,37 +7246,36 @@ $('#remove').click(function(e) {
 	$(function() {
 	
 		var toc = $('#toc ul'),
-		loe = $('#loe ul');
+		loe = $('#loe'),
+		tocItems="", loeItems="";
 		
 		function makeLi(text, href) {
-			return $('<li><a href="' + href + '">' + text + '</a></li>');
+			return '<li><a href="' + href + '">' + text + '</a></li>';
 		}
-		
 		$('div.chapter').each(function(i) {
-		var chapter = $(this),
-		chapterNumber = i + 1;
-		
-		toc.append(
-			makeLi('Cap&iacute;tulo ' + chapterNumber + ': ' + chapter.attr('title'), '#capitulo-' + chapterNumber)
-		);
-		
-		chapter.find('div.example').each(function(j) {
-		var example = $(this),
-		  title = example.find('p.title'),
-		  exampleNumber = chapterNumber + '.' + (j+1),
-		  exampleName = title.text();
-		
-		loe.append(
-			makeLi('Ejemplo ' + exampleNumber + ': ' + exampleName, '#ejemplo-' + exampleNumber)
-		);
-		
-		example.attr('id', 'ejemplo-' + exampleNumber);
-			title.html('Ejemplo ' + exampleNumber + ': ' + exampleName);
+			var chapter = $(this),
+			chapterNumber = i + 1;
+
+			tocItems+=makeLi('Cap&iacute;tulo ' + chapterNumber + ': ' + chapter.attr('title'), '#capitulo-' + chapterNumber);
+
+			chapter.find('div.example').each(function(j) {
+			var example = $(this),
+			  title = example.find('p.title'),
+			  exampleNumber = chapterNumber + '.' + (j+1),
+			  exampleName = title.text();
+
+			loeItems += makeLi('Ejemplo ' + exampleNumber + ': ' + exampleName, '#ejemplo-' + exampleNumber);
+
+			example.attr('id', 'ejemplo-' + exampleNumber);
+				title.html('Ejemplo ' + exampleNumber + ': ' + exampleName);
+			});
+
+			chapter.prepend('<p class="toc"><a title="Volver al principio" href="#toc">Volver al principio</a></p>');
 		});
-		
-		chapter.prepend('<p class="toc"><a title="Volver al principio" href="#toc">Volver al principio</a></p>');
-		});
-		
+
+		toc.append(tocItems);
+		loe.append(loeItems);
+
 		SyntaxHighlighter.all();
 	
 	});
