@@ -6570,7 +6570,7 @@ require.def("my/shirt",
                   </div>
                 </div>
                 <p>
-                  En este ejemplo, el modulo my/shirt es creado. Este depende de my/cart y my/inventory. En el disco, los archivos est&aacute;n estructuras de la siguiente forma:
+                  En este ejemplo, el modulo my/shirt es creado. Este depende de my/cart y my/inventory. En el disco, los archivos est&aacute;n estructurados de la siguiente forma:
                 </p>
                 <pre class="brush: js">
 my/cart.js
@@ -6948,7 +6948,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      Se&ntilde;ala que la informaci&oacute;n del contenedor se esta actualizando y dispara la petici&oacute;n que busca los datos para el termino de b&uacute;squeda.
+                      Se&ntilde;ala que la informaci&oacute;n del contenedor se esta actualizando y dispara la petici&oacute;n que busca los datos para el t&eacute;rmino de b&uacute;squeda.
                     </p>
                   </dd>
                   <dt>
@@ -6964,7 +6964,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      Remueve el contenedor de la p&aacute;gina luego que el usuario confirme la acci&oacute;n. Dicha confirmaci&oacute;n puede omitirse si se pasa <code class="code">true</code> como segundo argumento del controlador de evento. El evento adem&aacute;s remueve el termino asociado con el contenedor de resultados del objeto global que contiene los t&eacute;rminos de b&uacute;squeda.
+                      Remueve el contenedor de la p&aacute;gina luego que el usuario confirme la acci&oacute;n. Dicha confirmaci&oacute;n puede omitirse si se pasa <code class="code">true</code> como segundo argumento del controlador de evento. El evento adem&aacute;s remueve el t&eacute;rmino asociado con el contenedor de resultados del objeto global que contiene los t&eacute;rminos de b&uacute;squeda.
                     </p>
                   </dd>
                   <dt>
@@ -7083,7 +7083,7 @@ $.fn.twitterResult.events = {
         $(this).remove();
 
         // indica que ya no se tendr&aacute;
-        // un panel para el termino
+        // un panel para el t&eacute;rmino
         search_terms[e.data.term] = 0;
     },
 
@@ -7112,7 +7112,7 @@ $.fn.twitterResult.events = {
                   </dt>
                   <dd>
                     <p>
-                      Recibe un termino de b&uacute;squeda y comprueba si ya no existe un contenedor de resultados para dicho termino. En caso de no existir, a&ntilde;ade un contenedor utilizando la plantilla de resultados, lo configura utilizando la extensi&oacute;n <code class="code">$.fn.twitterResult</code> (mostrada anteriormente) y luego ejecuta el evento <code class="code">refresh</code> con el fin de cargar correctamente los resultados. Finalmente, guarda el termino buscado para no tener volver a pedir los datos sobre la b&uacute;squeda.
+                      Recibe un t&eacute;rmino de b&uacute;squeda y comprueba si ya no existe un contenedor de resultados para dicho t&eacute;rmino. En caso de no existir, a&ntilde;ade un contenedor utilizando la plantilla de resultados, lo configura utilizando la extensi&oacute;n <code class="code">$.fn.twitterResult</code> (mostrada anteriormente) y luego ejecuta el evento <code class="code">refresh</code> con el fin de cargar correctamente los resultados. Finalmente, guarda el t&eacute;rmino buscado para no tener volver a pedir los datos sobre la b&uacute;squeda.
                     </p>
                   </dd>
                   <dt>
@@ -7131,7 +7131,7 @@ $.fn.twitterResult.events = {
               <pre class="brush: js">
 $('#twitter')
     .bind('getResults', function(e, term) {
-        // se comprueba que ya no exista una caja para el termino
+        // se comprueba que ya no exista una caja para el t&eacute;rmino
         if (!search_terms[term]) {
             var $this = $(this);
             var $template = $this.find('div.template');
@@ -7165,7 +7165,7 @@ $('#twitter')
                 Hasta ahora, se ha escrito una gran cantidad de c&oacute;digo que no realiza nada, lo cual no esta mal. Se han especificado todos los comportamientos que se desean para los elementos n&uacute;cleos y se ha creado un s&oacute;lido marco para la creaci&oacute;n r&aacute;pida de la interfaz.
               </p>
               <p>
-                A continuaci&oacute;n, se conecta la caja de b&uacute;squeda y el bot&oacute;n para cargar los "Temas de moda". En la caja de texto, se captura el termino ingresado y se pasa al mismo tiempo que se ejecuta el evento <code class="code">getResults</code>. Por otro lado, haciendo click en el bot&oacute;n para cargar los "Temas de moda", se ejecuta el evento <code class="code">getTrends</code>:
+                A continuaci&oacute;n, se conecta la caja de b&uacute;squeda y el bot&oacute;n para cargar los "Temas de moda". En la caja de texto, se captura el t&eacute;rmino ingresado y se pasa al mismo tiempo que se ejecuta el evento <code class="code">getResults</code>. Por otro lado, haciendo click en el bot&oacute;n para cargar los "Temas de moda", se ejecuta el evento <code class="code">getTrends</code>:
               </p>
               <pre class="brush: js">
 $('form').submit(function(e) {
@@ -7193,10 +7193,10 @@ $('#remove').click(function(e) {
 });
 </pre>
             </div>
-            <div title="Conclusion" class="section">
+            <div title="Conclusi&oacute;n" class="section">
               <div class="titlepage">
                 <h4 class="title">
-                  Conclusion
+                  Conclusi&oacute;n
                 </h4>
               </div>
               <p>
