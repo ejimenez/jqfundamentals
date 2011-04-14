@@ -13,7 +13,7 @@
               $(document).ready()
             </h2>
             <p>
-              No es posible interactuar con el contenido de una p&aacute;gina hasta que el documento no se encuentre preparado para su manipulaci&oacute;n. jQuery permite detectar dicho estado a trav&eacute;s de la declaraci&oacute;n <code class="code">$(document).ready()</code> de forma tal que el bloque se ejecutar&aacute; s&oacute;lo una vez que la p&aacute;gina este disponible.
+              No es posible interactuar de forma segura con el contenido de una p&aacute;gina hasta que el documento no se encuentre preparado para su manipulaci&oacute;n. jQuery permite detectar dicho estado a trav&eacute;s de la declaraci&oacute;n <code class="code">$(document).ready()</code> de forma tal que el bloque se ejecutar&aacute; s&oacute;lo una vez que la p&aacute;gina este disponible.
             </p>
             <div class="example">
               <p class="title">
@@ -47,7 +47,7 @@ $(function() {
             </p>
             <div class="example">
               <p class="title">
-                <b>Pasar una funci&oacute;n nombrado en lugar de una funci&oacute;n an&oacute;nima</b>
+                <b>Pasar una funci&oacute;n nombrada en lugar de una funci&oacute;n an&oacute;nima</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
@@ -68,7 +68,7 @@ $(document).ready(readyFn);
 			El concepto m&aacute;s b&aacute;sico de jQuery es el de "seleccionar algunos elementos y realizar acciones con ellos". La librer&iacute;a soporta gran parte de los selectores CSS3 y varios m&aacute;s no estandarizados. En <a href="http://api.jquery.com/category/selectors/" class="ulink">http://api.jquery.com/category/selectors/</a> se puede encontrar una completa referencia sobre los selectores de la librer&iacute;a.
           </p>
           <p>
-            A continuaci&oacute;n se muestran algunos ejemplos con t&eacute;cnicas de selecci&oacute;n de elementos:
+            A continuaci&oacute;n se muestran algunas t&eacute;cnicas comunes para la selecci&oacute;n de elementos:
           </p>
           <div class="example">
             <p class="title">
@@ -130,7 +130,7 @@ $('div:animated');      // seleccionar todos los elementos actualmente animados
             Nota
           </h3>
           <p>
-			Cuando se utilizan los pseudo-selectores <code class="code">:visible</code> y <code class="code">:hidden</code>, jQuery comprueba la visibilidad actual del elemento pero no si &eacute;ste posee asignados los estilos CSS <code class="code">visibility</code> o <code class="code">display</code> — en otras palabras, verifica si <span class="emphasis"><em>el alto y ancho f&iacute;sico del elemento</em></span> es mayor a cero. Sin embargo, esta comprobaci&oacute;n no funciona con los elementos <code class="code">&lt;tr&gt;</code>; en este caso, jQuery comprueba si se est&aacute; aplicando el estilo <code class="code">display</code> y va a considerar al elemento como oculto si posee asignado el valor <code class="code">none</code>. Adem&aacute;s, los elementos que a&uacute;n no fueron a&ntilde;adidos al DOM er&aacute;n tratados como ocultos, incluso si tienen aplicados estilos indicando que deben ser visibles (En la secci&oacute;n Manipulaci&oacute;n de este manual, se explica como crear y a&ntilde;adir elementos al DOM)
+			Cuando se utilizan los pseudo-selectores <code class="code">:visible</code> y <code class="code">:hidden</code>, jQuery comprueba la visibilidad actual del elemento pero no si &eacute;ste posee asignados los estilos CSS <code class="code">visibility</code> o <code class="code">display</code> — en otras palabras, verifica si <span class="emphasis"><em>el alto y ancho f&iacute;sico del elemento</em></span> es mayor a cero. Sin embargo, esta comprobaci&oacute;n no funciona con los elementos <code class="code">&lt;tr&gt;</code>; en este caso, jQuery comprueba si se est&aacute; aplicando el estilo <code class="code">display</code> y va a considerar al elemento como oculto si posee asignado el valor <code class="code">none</code>. Adem&aacute;s, los elementos que a&uacute;n no fueron a&ntilde;adidos al DOM ser&aacute;n tratados como ocultos, incluso si tienen aplicados estilos indicando que deben ser visibles (En la secci&oacute;n Manipulaci&oacute;n de este manual, se explica como crear y a&ntilde;adir elementos al DOM)
           </p>
           <p>
 			Como referencia, este es el fragmento de c&oacute;digo que utiliza jQuery para determinar cuando un elemento es visible o no. Se incorporaron los comentarios para que quede m&aacute;s claro su entendimiento:
@@ -527,7 +527,7 @@ $('h1').html();
             Nota
           </h3>
           <p>
-            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un método, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al método <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> ó con el guión del medio) funcionarán.
+            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un m&eacute;todo, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al m&eacute;todo <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> &oacute; con el gui&oacute;n del medio) funcionar&aacute;n.
           </p>
           </div>
           <div class="example">

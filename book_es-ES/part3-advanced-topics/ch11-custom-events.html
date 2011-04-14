@@ -103,7 +103,7 @@ $('.switch, .clapper').click(function() {
 &lt;div id="master_switch"&gt;&lt;/div&gt;
 </pre>
           <p>
-            Si existe alguna l&aacute;mpara prendida en la casa, es posible apagarlas a trav&eacute;s del interruptor general, de igual forma si existen luces apagadas, es posible prenderlas con dicho interruptor. Para realizar esta tarea, se agregan dos eventos personalizados m&aacute;s a la l&aacute;mpara: <code class="code">turnOn</code> y <code class="code">turnOff</code>. A trav&eacute;s de una l&oacute;gica, en el evento <code class="code">changeState</code> se decide que evento personalizado utilizar:
+            Si existe alguna l&aacute;mpara prendida en la casa, es posible apagarlas a trav&eacute;s del interruptor general, de igual forma si existen luces apagadas, es posible prenderlas con dicho interruptor. Para realizar esta tarea, se agregan dos eventos personalizados m&aacute;s a la l&aacute;mpara: <code class="code">turnOn</code> y <code class="code">turnOff</code>. A trav&eacute;s de una l&oacute;gica en el evento <code class="code">changeState</code> se decide qu&eacute; evento personalizado utilizar:
           </p>
           <pre class="brush: js">
 $('.lightbulb')
@@ -135,14 +135,14 @@ $('#master_switch').click(function() {
 });
 </pre>
           <p>
-            Notar como el comportamiento del interruptor general se a vinculado al interruptor general mientras que los comportamientos de las l&aacute;mparas contin&uacute;an vinculadas a ellas.
+            Note como el comportamiento del interruptor general se ha vinculado al interruptor general mientras que el comportamiento de las l&aacute;mparas pertenece a las l&aacute;mparas.
           </p>
           <div class="note">
           <h3 class="title">
             Nota
           </h3>
           <p>
-            Si esta acostumbrado a la programaci&oacute;n orientada a objetos, puede resultar &uacute;til pensar a los eventos personalizados como m&eacute;todos de objetos. En t&eacute;rminos generales, el objeto al que pertenece el m&eacute;todo se crea a partir del selector jQuery. Vincular el evento personalizado <code class="code">changeState</code> a todos los elementos <code class="code">$(‘.light’)</code> es similar a tener una clase llamada <code class="code">Light</code> con un m&eacute;todo <code class="code">changeState</code>, y luego instanciar nuevos objetos <code class="code">Light</code> por cada elemento.
+            Si esta acostumbrado a la programaci&oacute;n orientada a objetos, puede resultar &uacute;til pensar de los eventos personalizados como m&eacute;todos de objetos. En t&eacute;rminos generales, el objeto al que pertenece el m&eacute;todo se crea a partir del selector jQuery. Vincular el evento personalizado <code class="code">changeState</code> a todos los elementos <code class="code">$(‘.light’)</code> es similar a tener una clase llamada <code class="code">Light</code> con un m&eacute;todo <code class="code">changeState</code>, y luego instanciar nuevos objetos <code class="code">Light</code> por cada elemento.
           </p>
           </div>
           <div title="Recapitulaci&oacute;n: $.fn.bind y $.fn.trigger" class="sidebar">
@@ -233,7 +233,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                 Existen dos tipos de elementos en los cuales actuar: los contenedores de resultados y el contenedor <span class="emphasis"><em>Twitter</em></span>.
               </p>
               <p>
-                Los contenedores de resultados son el coraz&oacute;n de la aplicaci&oacute;n. Se crear&aacute; una extensi&oacute;n para preparar cada contenedor una vez que &eacute;ste se agrega al contenedor <span class="emphasis"><em>Twitter</em></span>. Adem&aacute;s, entre otras cosas, la extensi&oacute;n vincular&aacute; los eventos personalizados por cada contenedor y a&ntilde;adir&aacute; en la parte superior derecha de cada contenedor botones que ejecutar&aacute;n acciones. Cada contenedor de resultados tendr&aacute; los siguientes eventos personalizado
+                Los contenedores de resultados son el coraz&oacute;n de la aplicaci&oacute;n. Se crear&aacute; una extensi&oacute;n para preparar cada contenedor una vez que &eacute;ste se agrega al contenedor <span class="emphasis"><em>Twitter</em></span>. Adem&aacute;s, entre otras cosas, la extensi&oacute;n vincular&aacute; los eventos personalizados por cada contenedor y a&ntilde;adir&aacute; en la parte superior derecha de cada contenedor botones que ejecutar&aacute;n acciones. Cada contenedor de resultados tendr&aacute; los siguientes eventos personalizados:
               </p>
               <div class="variablelist">
                 <dl>
@@ -266,7 +266,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      A&ntilde;ade una clase al contenedor, la cual ocultar&aacute; el resultado a trav&eacute;s de CSS. Adem&aacute;s cambiar&aacute; el bot&oacute;n de colapsar a expandir.
+                      A&ntilde;ade una clase al contenedor, la cual ocultar&aacute; el resultado a trav&eacute;s de CSS. Adem&aacute;s cambiar&aacute; el bot&oacute;n de "Colapsar" a "Expandir".
                     </p>
                   </dd>
                   <dt>
@@ -274,13 +274,13 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      Remueve la clase del contenedor que a&ntilde;ade el evento <span class="emphasis"><em>collapse</em></span>. Adem&aacute;s cambiar&aacute; el bot&oacute;n de expandir a colapsar.
+                      Remueve la clase del contenedor que a&ntilde;ade el evento <span class="emphasis"><em>collapse</em></span>. Adem&aacute;s cambiar&aacute; el bot&oacute;n de "Expandir" a "Colapsar".
                     </p>
                   </dd>
                 </dl>
               </div>
               <p>
-               Adem&aacute;s, la extensi&oacute;n es responsable de a&ntilde;adir los botones de acciones al contenedor, vinculando un evento <code class="code">click</code> a cada bot&oacute;n y utilizando la clase de cada &iacute;tem para determinar que evento personalizado ser&aacute; ejecutado en cada contenedor de resultados.
+               Adem&aacute;s, la extensi&oacute;n es responsable de a&ntilde;adir los botones de acciones al contenedor, vinculando un evento <code class="code">click</code> a cada bot&oacute;n y utilizando la clase de cada &iacute;tem para determinar qu&eacute; evento personalizado ser&aacute; ejecutado en cada contenedor de resultados.
               </p>
               <pre class="brush: js">
 $.fn.twitterResult = function(settings) {
@@ -500,7 +500,7 @@ $('#remove').click(function(e) {
               	Una vez que los comportamientos se han descripto, se convierte en algo trivial ejecutarlos desde cualquier lugar, lo que permite la r&aacute;pida creaci&oacute;n y experimentaci&oacute;n de opciones de interfaz. Finalmente, los eventos personalizados tambi&eacute;n permiten mejorar la lectura del c&oacute;digo y su mantenimiento, haciendo claro la relaci&oacute;n entre un elemento y su comportamiento.
               </p>
               <p>
-                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events.html</code> y <code class="filename">demos/js/custom-events.js</code> del paquete.
+                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events/custom-events.html</code> y <code class="filename">demos/custom-events/js/custom-events.js</code> del material que componenten este libro.
               </p>
             </div>
           </div>
