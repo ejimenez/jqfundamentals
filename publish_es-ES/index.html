@@ -43,7 +43,7 @@
 					<span class="orgname">Traducido y adaptado a espa&ntilde;ol por <a href="http://dzign.us/" class="ulink">Leandro D'Onofrio</a>.</span>
 				</h3>
 				<h3 class="corrections">
-					<span class="orgname">Correcciones por <a href="http://ar.linkedin.com/in/gustavoaragon/" class="ulink">Gustavo Ra&uacute;l Arag&oacute;n</a>, <a href="http://www.linkedin.com/pub/pablo-andr%C3%A9s-maronna/10/713/373" class="ulink">Pablo Maronna</a>, <a href="http://www.linkedin.com/pub/denis-ciccale/2b/6b7/868" class="ulink">Denis Ciccale</a>  y <a href="https://github.com/dzignus/jqfundamentals/wiki/Otras-personas-que-tambi%C3%A9n-ayudaron-con-el-material" class="ulink">otras personas</a>.</span>
+					<span class="orgname">Correcciones por <a href="http://ar.linkedin.com/in/gustavoaragon/" class="ulink">Gustavo Ra&uacute;l Arag&oacute;n</a>, <a href="http://www.linkedin.com/pub/pablo-andr%C3%A9s-maronna/10/713/373" class="ulink">Pablo Maronna</a>, <a href="http://es.linkedin.com/in/denisciccale" class="ulink">Denis Ciccale</a>  y <a href="https://github.com/dzignus/jqfundamentals/wiki/Otras-personas-que-tambi%C3%A9n-ayudaron-con-el-material" class="ulink">otras personas</a>.</span>
 				</h3>
 			</div>
           
@@ -302,7 +302,7 @@ console.log('hello');
             </li>
             <li>
               <p>
-                Muchos conceptos t&eacute;cnicos son nombrados en su versi&oacute;n traducida a espa&ntilde;ol. Sin embargo, para tener de referencia, también se explica como es llamado en ingl&eacute;s.
+                Muchos conceptos t&eacute;cnicos son nombrados en su versi&oacute;n traducida a espa&ntilde;ol. Sin embargo, para tener de referencia, tambi&eacute;n se explica como es llamado en ingl&eacute;s.
               </p>
             </li>
             <li>
@@ -378,7 +378,7 @@ console.log('hello');
               jQuery se encuentra escrito en JavaScript, un lenguaje de programaci&oacute;n muy rico y expresivo. 
             </p>
             <p>
-              El cap&iacute;tulo est&aacute; orientado a personas sin experiencia en el lenguaje, abarcando conceptos b&aacute;sicos y problemas frecuentes que pueden presentarse al trabajar con el mismo. Por otro lado, la secci&oacute;n puede ser beneficiosa en quienes utilicen otros lenguajes de programaci&oacute;n para entender las peculiaridades de JavaScript.
+              El cap&iacute;tulo est&aacute; orientado a personas sin experiencia en el lenguaje, abarcando conceptos b&aacute;sicos y problemas frecuentes que pueden presentarse al trabajar con el mismo. Por otro lado, la secci&oacute;n puede ser beneficiosa para quienes utilicen otros lenguajes de programaci&oacute;n para entender las peculiaridades de JavaScript.
             </p>
             <p>
               Si usted esta interesado en aprender el lenguaje m&aacute;s en profundidad, puede leer el libro <em class="citetitle">JavaScript: The Good Parts</em> escrito por Douglas Crockford.
@@ -629,11 +629,11 @@ foo &lt;= baz;   // devuelve verdadero (true)
             C&oacute;digo Condicional
           </h2>
           <p>
-            A veces se desea ejecutar un bloque de c&oacute;digo bajo ciertas condiciones. Los flujos de control — a trav&eacute;s de la utilizaci&oacute;n de las declaraciones <code class="code">if</code> y <code class="code">else</code> permiten hacerlo.
+            A veces se desea ejecutar un bloque de c&oacute;digo bajo ciertas condiciones. Control del flujo — a trav&eacute;s de la utilizaci&oacute;n de las declaraciones <code class="code">if</code> y <code class="code">else</code> permiten hacerlo.
           </p>
           <div class="example">
             <p class="title">
-              <b>Flujos de control</b>
+              <b>Control del flujo</b>
             </p>
             <div class="example-contents">
               <pre class="brush: js">
@@ -676,7 +676,7 @@ if (bar) {
               </h3>
             </div>
             <p>
-              En orden de utilizar los flujos de control correctamente, es importante entender qu&eacute; tipos de valores son "verdaderos" y cuales "falsos". A veces, algunos valores pueden parecer una cosa pero al final terminan siendo otra.
+              Para controlar el flujo adecuadamente, es importante entender qu&eacute; tipos de valores son "verdaderos" y cuales "falsos". A veces, algunos valores pueden parecer una cosa pero al final terminan siendo otra.
             </p>
             <div class="example">
               <p class="title">
@@ -1623,7 +1623,7 @@ var hello = myNamespace.myObject.sayHello;
 hello();  // registra 'Hola, mi nombre es undefined'
 </pre>
           <p>
-            Para que no ocurran estos errores, es necesario hacer referencia en la variable al objeto en donde el m&eacute;todo es invocado:
+            Para que no ocurran estos errores, es necesario hacer referencia al objeto en donde el m&eacute;todo es invocado:
           </p>
           <pre class="brush: js">
 var myNamespace = {
@@ -1833,7 +1833,7 @@ outerObj.outerFunction();
               </div>
             </div>
             <p>
-              Este mecanismo puede ser &uacute;til cuando trabaje con funciones de devoluci&oacute;n de llamadas (en ingl&eacute;s <span class="emphasis"><em>callbacks</em></span>). Sin embargo, en estos casos, es preferible que utilice <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a> ya que permite evitar cualquier sobrecarga asociada con el alcance (<span class="emphasis"><em>scope</em></span>).
+              Este mecanismo puede ser &uacute;til cuando trabaje con funciones de devoluci&oacute;n de llamadas (en ingl&eacute;s <span class="emphasis"><em>callbacks</em></span>). Sin embargo, en estos casos, es preferible que utilice <a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function/bind" class="ulink">Function.bind</a> ya que evitará cualquier sobrecarga asociada con el alcance (<span class="emphasis"><em>scope</em></span>).
             </p>
           </div>
         </div> 
@@ -1862,7 +1862,7 @@ outerObj.outerFunction();
               $(document).ready()
             </h2>
             <p>
-              No es posible interactuar con el contenido de una p&aacute;gina hasta que el documento no se encuentre preparado para su manipulaci&oacute;n. jQuery permite detectar dicho estado a trav&eacute;s de la declaraci&oacute;n <code class="code">$(document).ready()</code> de forma tal que el bloque se ejecutar&aacute; s&oacute;lo una vez que la p&aacute;gina este disponible.
+              No es posible interactuar de forma segura con el contenido de una p&aacute;gina hasta que el documento no se encuentre preparado para su manipulaci&oacute;n. jQuery permite detectar dicho estado a trav&eacute;s de la declaraci&oacute;n <code class="code">$(document).ready()</code> de forma tal que el bloque se ejecutar&aacute; s&oacute;lo una vez que la p&aacute;gina este disponible.
             </p>
             <div class="example">
               <p class="title">
@@ -1896,7 +1896,7 @@ $(function() {
             </p>
             <div class="example">
               <p class="title">
-                <b>Pasar una funci&oacute;n nombrado en lugar de una funci&oacute;n an&oacute;nima</b>
+                <b>Pasar una funci&oacute;n nombrada en lugar de una funci&oacute;n an&oacute;nima</b>
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
@@ -1917,7 +1917,7 @@ $(document).ready(readyFn);
 			El concepto m&aacute;s b&aacute;sico de jQuery es el de "seleccionar algunos elementos y realizar acciones con ellos". La librer&iacute;a soporta gran parte de los selectores CSS3 y varios m&aacute;s no estandarizados. En <a href="http://api.jquery.com/category/selectors/" class="ulink">http://api.jquery.com/category/selectors/</a> se puede encontrar una completa referencia sobre los selectores de la librer&iacute;a.
           </p>
           <p>
-            A continuaci&oacute;n se muestran algunos ejemplos con t&eacute;cnicas de selecci&oacute;n de elementos:
+            A continuaci&oacute;n se muestran algunas t&eacute;cnicas comunes para la selecci&oacute;n de elementos:
           </p>
           <div class="example">
             <p class="title">
@@ -1979,7 +1979,7 @@ $('div:animated');      // seleccionar todos los elementos actualmente animados
             Nota
           </h3>
           <p>
-			Cuando se utilizan los pseudo-selectores <code class="code">:visible</code> y <code class="code">:hidden</code>, jQuery comprueba la visibilidad actual del elemento pero no si &eacute;ste posee asignados los estilos CSS <code class="code">visibility</code> o <code class="code">display</code> — en otras palabras, verifica si <span class="emphasis"><em>el alto y ancho f&iacute;sico del elemento</em></span> es mayor a cero. Sin embargo, esta comprobaci&oacute;n no funciona con los elementos <code class="code">&lt;tr&gt;</code>; en este caso, jQuery comprueba si se est&aacute; aplicando el estilo <code class="code">display</code> y va a considerar al elemento como oculto si posee asignado el valor <code class="code">none</code>. Adem&aacute;s, los elementos que a&uacute;n no fueron a&ntilde;adidos al DOM er&aacute;n tratados como ocultos, incluso si tienen aplicados estilos indicando que deben ser visibles (En la secci&oacute;n Manipulaci&oacute;n de este manual, se explica como crear y a&ntilde;adir elementos al DOM)
+			Cuando se utilizan los pseudo-selectores <code class="code">:visible</code> y <code class="code">:hidden</code>, jQuery comprueba la visibilidad actual del elemento pero no si &eacute;ste posee asignados los estilos CSS <code class="code">visibility</code> o <code class="code">display</code> — en otras palabras, verifica si <span class="emphasis"><em>el alto y ancho f&iacute;sico del elemento</em></span> es mayor a cero. Sin embargo, esta comprobaci&oacute;n no funciona con los elementos <code class="code">&lt;tr&gt;</code>; en este caso, jQuery comprueba si se est&aacute; aplicando el estilo <code class="code">display</code> y va a considerar al elemento como oculto si posee asignado el valor <code class="code">none</code>. Adem&aacute;s, los elementos que a&uacute;n no fueron a&ntilde;adidos al DOM ser&aacute;n tratados como ocultos, incluso si tienen aplicados estilos indicando que deben ser visibles (En la secci&oacute;n Manipulaci&oacute;n de este manual, se explica como crear y a&ntilde;adir elementos al DOM)
           </p>
           <p>
 			Como referencia, este es el fragmento de c&oacute;digo que utiliza jQuery para determinar cuando un elemento es visible o no. Se incorporaron los comentarios para que quede m&aacute;s claro su entendimiento:
@@ -2376,7 +2376,7 @@ $('h1').html();
             Nota
           </h3>
           <p>
-            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un método, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al método <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> ó con el guión del medio) funcionarán.
+            Las propiedades CSS que incluyen como separador un gui&oacute;n del medio, en JavaScript deben ser transformadas a su estilo <em class="firstterm">CamelCase</em>. Por ejemplo, cuando se la utiliza como propiedad de un m&eacute;todo, el estilo CSS <code class="code">font-size</code> deber&aacute; ser expresado como <code class="code">fontSize</code>. Sin embargo, esta regla no es aplicada cuando se pasa el nombre de la propiedad CSS al m&eacute;todo <code class="code">$.fn.css</code> &mdash; en este caso, los dos formatos (en <em class="firstterm">CamelCase</em> &oacute; con el gui&oacute;n del medio) funcionar&aacute;n.
           </p>
           </div>
           <div class="example">
@@ -5589,7 +5589,7 @@ $.widget( "nmk.progressbar", {
                 </h3>
               </div>
               <p>
-                Para este ejercicio, la tarea es identificar, descargar e implementar una extensi&oacute;n que permita ordenar la tabla existente en la p&aacute;gina index.html. Cuando este listo, todas las columnas de la tabla deben poder ser ordenables.
+                Para este ejercicio, la tarea es identificar, descargar e implementar una extensi&oacute;n que permita ordenar la tabla existente en la p&aacute;gina index.html. Cuando esté listo, todas las columnas de la tabla deben poder ser ordenables.
               </p>
             </div>
             <div title="Escribir una Extensi&oacute;n Para Cambiar el Color de Fondo en Tablas" class="section">
@@ -5620,7 +5620,7 @@ $('#myTable').stripe('#cccccc');
 		</div>
 	  </div>
 	</div>
-	<div title="Esta secci&oacute;n está en progreso" class="article">
+	<div title="Esta secci&oacute;n est&aacute; en progreso" class="article">
 	  <div class="titlepage">
 		<div>
 		  <div>
@@ -5702,7 +5702,7 @@ $('#ballers')[0].appendChild(frag);
 var myHtml = '';
 
 $.each(myArray, function(i, item) {
-    html += '&lt;li&gt;' + item + '&lt;/li&gt;';
+    myHtml += '&lt;li&gt;' + item + '&lt;/li&gt;';
 });
 $('#ballers').html(myHtml);
 </pre>
@@ -6677,7 +6677,7 @@ webapp/scripts/jquery.beta.js
                 </h3>
               </div>
               <p>
-                Abra el archivo <code class="filename">/exercises/portlets.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/portlets.js</code> para el ejercicio, el cual consiste en crear una funci&oacute;n creadora de portlet que utilice el patr&oacute;n modular, de tal manera que el siguiente c&oacute;digo funcione:
+                Abra el archivo <code class="filename">/exercises/portlets.html</code> en el navegador. Realice el ejercicio utilizando el archivo <code class="filename">/exercises/js/portlets.js</code>. El ejercicio consiste en crear una funci&oacute;n creadora de portlet que utilice el patr&oacute;n modular, de tal manera que el siguiente c&oacute;digo funcione:
               </p>
               <pre class="brush: js">
 var myPortlet = Portlet({
@@ -6689,7 +6689,7 @@ var myPortlet = Portlet({
 myPortlet.$element.appendTo('body');
 </pre>
               <p>
-                Cada portlet deber&aacute; ser un <code class="code">div</code> con un titulo, un &aacute;rea de contenido, un bot&oacute;n para abrir/cerrar el portlet, un bot&oacute;n para removerlo y otro para actualizarlo. El portlet devuelto por la funci&oacute;n deber&aacute; tener la siguiente API p&uacute;blica:
+                Cada portlet deber&aacute; ser un <code class="code">div</code> con un t&iacute;tulo, un &aacute;rea de contenido, un bot&oacute;n para abrir/cerrar el portlet, un bot&oacute;n para removerlo y otro para actualizarlo. El portlet devuelto por la funci&oacute;n deber&aacute; tener la siguiente API p&uacute;blica:
               </p>
               <pre class="brush: js">
 myPortlet.open(); // fuerza a abrir
@@ -6807,7 +6807,7 @@ $('.switch, .clapper').click(function() {
 &lt;div id="master_switch"&gt;&lt;/div&gt;
 </pre>
           <p>
-            Si existe alguna l&aacute;mpara prendida en la casa, es posible apagarlas a trav&eacute;s del interruptor general, de igual forma si existen luces apagadas, es posible prenderlas con dicho interruptor. Para realizar esta tarea, se agregan dos eventos personalizados m&aacute;s a la l&aacute;mpara: <code class="code">turnOn</code> y <code class="code">turnOff</code>. A trav&eacute;s de una l&oacute;gica, en el evento <code class="code">changeState</code> se decide que evento personalizado utilizar:
+            Si existe alguna l&aacute;mpara prendida en la casa, es posible apagarlas a trav&eacute;s del interruptor general, de igual forma si existen luces apagadas, es posible prenderlas con dicho interruptor. Para realizar esta tarea, se agregan dos eventos personalizados m&aacute;s a la l&aacute;mpara: <code class="code">turnOn</code> y <code class="code">turnOff</code>. A trav&eacute;s de una l&oacute;gica en el evento <code class="code">changeState</code> se decide qu&eacute; evento personalizado utilizar:
           </p>
           <pre class="brush: js">
 $('.lightbulb')
@@ -6839,14 +6839,14 @@ $('#master_switch').click(function() {
 });
 </pre>
           <p>
-            Notar como el comportamiento del interruptor general se a vinculado al interruptor general mientras que los comportamientos de las l&aacute;mparas contin&uacute;an vinculadas a ellas.
+            Note como el comportamiento del interruptor general se ha vinculado al interruptor general mientras que el comportamiento de las l&aacute;mparas pertenece a las l&aacute;mparas.
           </p>
           <div class="note">
           <h3 class="title">
             Nota
           </h3>
           <p>
-            Si esta acostumbrado a la programaci&oacute;n orientada a objetos, puede resultar &uacute;til pensar a los eventos personalizados como m&eacute;todos de objetos. En t&eacute;rminos generales, el objeto al que pertenece el m&eacute;todo se crea a partir del selector jQuery. Vincular el evento personalizado <code class="code">changeState</code> a todos los elementos <code class="code">$(‘.light’)</code> es similar a tener una clase llamada <code class="code">Light</code> con un m&eacute;todo <code class="code">changeState</code>, y luego instanciar nuevos objetos <code class="code">Light</code> por cada elemento.
+            Si esta acostumbrado a la programaci&oacute;n orientada a objetos, puede resultar &uacute;til pensar de los eventos personalizados como m&eacute;todos de objetos. En t&eacute;rminos generales, el objeto al que pertenece el m&eacute;todo se crea a partir del selector jQuery. Vincular el evento personalizado <code class="code">changeState</code> a todos los elementos <code class="code">$(‘.light’)</code> es similar a tener una clase llamada <code class="code">Light</code> con un m&eacute;todo <code class="code">changeState</code>, y luego instanciar nuevos objetos <code class="code">Light</code> por cada elemento.
           </p>
           </div>
           <div title="Recapitulaci&oacute;n: $.fn.bind y $.fn.trigger" class="sidebar">
@@ -6937,7 +6937,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                 Existen dos tipos de elementos en los cuales actuar: los contenedores de resultados y el contenedor <span class="emphasis"><em>Twitter</em></span>.
               </p>
               <p>
-                Los contenedores de resultados son el coraz&oacute;n de la aplicaci&oacute;n. Se crear&aacute; una extensi&oacute;n para preparar cada contenedor una vez que &eacute;ste se agrega al contenedor <span class="emphasis"><em>Twitter</em></span>. Adem&aacute;s, entre otras cosas, la extensi&oacute;n vincular&aacute; los eventos personalizados por cada contenedor y a&ntilde;adir&aacute; en la parte superior derecha de cada contenedor botones que ejecutar&aacute;n acciones. Cada contenedor de resultados tendr&aacute; los siguientes eventos personalizado
+                Los contenedores de resultados son el coraz&oacute;n de la aplicaci&oacute;n. Se crear&aacute; una extensi&oacute;n para preparar cada contenedor una vez que &eacute;ste se agrega al contenedor <span class="emphasis"><em>Twitter</em></span>. Adem&aacute;s, entre otras cosas, la extensi&oacute;n vincular&aacute; los eventos personalizados por cada contenedor y a&ntilde;adir&aacute; en la parte superior derecha de cada contenedor botones que ejecutar&aacute;n acciones. Cada contenedor de resultados tendr&aacute; los siguientes eventos personalizados
               </p>
               <div class="variablelist">
                 <dl>
@@ -6970,7 +6970,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      A&ntilde;ade una clase al contenedor, la cual ocultar&aacute; el resultado a trav&eacute;s de CSS. Adem&aacute;s cambiar&aacute; el bot&oacute;n de colapsar a expandir.
+                      A&ntilde;ade una clase al contenedor, la cual ocultar&aacute; el resultado a trav&eacute;s de CSS. Adem&aacute;s cambiar&aacute; el bot&oacute;n de “Colapsar” a “Expandir”.
                     </p>
                   </dd>
                   <dt>
@@ -6978,13 +6978,13 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      Remueve la clase del contenedor que a&ntilde;ade el evento <span class="emphasis"><em>collapse</em></span>. Adem&aacute;s cambiar&aacute; el bot&oacute;n de expandir a colapsar.
+                      Remueve la clase del contenedor que a&ntilde;ade el evento <span class="emphasis"><em>collapse</em></span>. Adem&aacute;s cambiar&aacute; el bot&oacute;n de “Expandir” a “Colapsar”.
                     </p>
                   </dd>
                 </dl>
               </div>
               <p>
-               Adem&aacute;s, la extensi&oacute;n es responsable de a&ntilde;adir los botones de acciones al contenedor, vinculando un evento <code class="code">click</code> a cada bot&oacute;n y utilizando la clase de cada &iacute;tem para determinar que evento personalizado ser&aacute; ejecutado en cada contenedor de resultados.
+               Adem&aacute;s, la extensi&oacute;n es responsable de a&ntilde;adir los botones de acciones al contenedor, vinculando un evento <code class="code">click</code> a cada bot&oacute;n y utilizando la clase de cada &iacute;tem para determinar qu&eacute; evento personalizado ser&aacute; ejecutado en cada contenedor de resultados.
               </p>
               <pre class="brush: js">
 $.fn.twitterResult = function(settings) {
@@ -7204,7 +7204,7 @@ $('#remove').click(function(e) {
               	Una vez que los comportamientos se han descripto, se convierte en algo trivial ejecutarlos desde cualquier lugar, lo que permite la r&aacute;pida creaci&oacute;n y experimentaci&oacute;n de opciones de interfaz. Finalmente, los eventos personalizados tambi&eacute;n permiten mejorar la lectura del c&oacute;digo y su mantenimiento, haciendo claro la relaci&oacute;n entre un elemento y su comportamiento.
               </p>
               <p>
-                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events.html</code> y <code class="filename">demos/js/custom-events.js</code> del paquete.
+                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events/custom-events.html</code> y <code class="filename">demos/custom-events/js/custom-events.js</code> del paquete.
               </p>
             </div>
           </div>
