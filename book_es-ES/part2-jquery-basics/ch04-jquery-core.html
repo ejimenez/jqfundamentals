@@ -195,7 +195,7 @@ jQuery.isArray(myValue); // verdadero (true)
               El M&eacute;todo Data
             </h2>
             <p>
-              A menudo encontrar&aacute; que existe informaci&oacute;n acerca de un elemento que necesita guardar. En JavaScript es posible hacerlo a&ntilde;adiendo propiedades al DOM del elemento, pero esta pr&aacute;ctica conlleva enfrentarse a p&eacute;rdidas de memoria (en ingl&eacute;s <span class="emphasis"><em>memory leaks</em></span>) en algunos navegadores. jQuery ofrece una manera sencilla para poder guardar informaci&oacute;n relacionada a un elemento, y la misma librer&iacute;a se ocupa de manejar los problemas que pueden surgir por falta de memoria.
+              A menudo encontrar&aacute; que existe informaci&oacute;n acerca de un elemento que necesita guardar. En JavaScript es posible hacerlo a&ntilde;adiendo propiedades al DOM del elemento, pero esta pr&aacute;ctica conlleva enfrentarse a p&eacute;rdidas de memoria (en ingl&eacute;s <span class="emphasis"><em>memory leaks</em></span>) en algunos navegadores. jQuery ofrece una manera sencilla para poder guardar informaci&oacute;n relacionada a un elemento, y la misma biblioteca se ocupa de manejar los problemas que pueden surgir por falta de memoria.
             </p>
             <div class="example">
               <p class="title">
@@ -250,15 +250,15 @@ $firstLi.data('contentDiv').html('nuevo contenido');
               El objetivo de <code class="code">$.support</code> es determinar qu&eacute; caracter&iacute;sticas soporta el navegador web.
             </p>
             <p>
-              El objeto <code class="code">$.browser</code> permite detectar el tipo de navegador y su versi&oacute;n. Dicho objeto est&aacute; en desuso (aunque en el corto plazo no est&aacute; planificada su eliminaci&oacute;n del n&uacute;cleo de la librer&iacute;a) y se recomienda utilizar al objeto <code class="code">$.support</code> para estos prop&oacute;sitos.
+              El objeto <code class="code">$.browser</code> permite detectar el tipo de navegador y su versi&oacute;n. Dicho objeto est&aacute; en desuso (aunque en el corto plazo no est&aacute; planificada su eliminaci&oacute;n del n&uacute;cleo de la biblioteca) y se recomienda utilizar al objeto <code class="code">$.support</code> para estos prop&oacute;sitos.
             </p>
           </div>
-          <div title="Evitar Conflictos con Otras Librer&iacute;as JavaScript" class="section">
+          <div title="Evitar Conflictos con Otras Bibliotecas JavaScript" class="section">
             <h2 class="title">
-              Evitar Conflictos con Otras Librer&iacute;as JavaScript
+              Evitar Conflictos con Otras Bibliotecas JavaScript
             </h2>
             <p>
-              Si esta utilizando jQuery en conjunto con otras librer&iacute;as JavaScript que tambi&eacute;n utilizan la variable <code class="code">$</code>, pueden ocurrir conflictos. Para poder solucionar estos conflictos, es necesario poner a jQuery en su modo "no-conflicto" inmediatamente despu&eacute;s que &eacute;sta se cargue en la p&aacute;gina y antes del c&oacute;digo que necesitamos ejecutar.
+              Si esta utilizando jQuery en conjunto con otras bibliotecas JavaScript que tambi&eacute;n utilizan la variable <code class="code">$</code>, pueden ocurrir conflictos. Para poder solucionar estos conflictos, es necesario poner a jQuery en su modo "no-conflicto" inmediatamente despu&eacute;s que &eacute;sta se cargue en la p&aacute;gina y antes del c&oacute;digo que necesitamos ejecutar.
             </p>
             <p>
               Cuando se pone a jQuery en modo "no-conflicto", se tiene la opci&oacute;n de asignar un nombre para reemplazar a <code class="code">$</code>.
@@ -269,14 +269,14 @@ $firstLi.data('contentDiv').html('nuevo contenido');
               </p>
               <div class="example-contents">
                 <pre class="brush: js">
-&lt;script src="prototype.js"&gt;&lt;/script&gt;             // la librer&iacute;a prototype tambi&eacute;n utiliza $
+&lt;script src="prototype.js"&gt;&lt;/script&gt;             // la biblioteca prototype tambi&eacute;n utiliza $
 &lt;script src="jquery.js"&gt;&lt;/script&gt;                // se carga jquery en la p&aacute;gina
 &lt;script&gt;var $j = jQuery.noConflict();&lt;/script&gt;   // se inicializa el modo "no-conflicto"
 </pre>
               </div>
             </div>
             <p>
-              Tambi&eacute;n es posible seguir utilizando <code class="code">$</code> conteniendo el c&oacute;digo en una funci&oacute;n an&oacute;nima autoejecutable; &eacute;ste un patr&oacute;n est&aacute;ndar para la creaci&oacute;n de extensiones para la librer&iacute;a, ya que <code class="code">$</code> queda encerrada dentro del alcance de la misma funci&oacute;n an&oacute;nima.
+              Tambi&eacute;n es posible seguir utilizando <code class="code">$</code> conteniendo el c&oacute;digo en una funci&oacute;n an&oacute;nima autoejecutable; &eacute;ste un patr&oacute;n est&aacute;ndar para la creaci&oacute;n de extensiones para la biblioteca, ya que <code class="code">$</code> queda encerrada dentro del alcance de la misma funci&oacute;n an&oacute;nima.
             </p>
             <div class="example">
               <p class="title">
