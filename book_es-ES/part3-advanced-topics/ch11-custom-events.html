@@ -49,7 +49,7 @@
 &lt;/div&gt;
 </pre>
           <p>
-            Ejecutando el <span class="emphasis"><em>clapper</em></span> o alguno de los interruptores, el estado de la lampara cambia. A los interruptores o al <span class="emphasis"><em>clapper</em></span> no le interesan si la l&aacute;mpara esta prendida o apagada, tan solo quieren cambiar su estad
+            Ejecutando el <span class="emphasis"><em>clapper</em></span> o alguno de los interruptores, el estado de la lampara cambia. A los interruptores o al <span class="emphasis"><em>clapper</em></span> no le interesan si la l&aacute;mpara esta prendida o apagada, tan solo quieren cambiar su estado
           </p>
           <p>
             Sin la utilizaci&oacute;n de eventos personalizados, es posible escribir la rutina de la siguiente manera:
@@ -65,7 +65,7 @@ $('.switch, .clapper').click(function() {
 });
 </pre>
           <p>
-            Por otro lado, utilizando eventos personalizados, el c&oacute;digo queda:
+            Por otro lado, utilizando eventos personalizados, el c&oacute;digo queda as&iacute;:
           </p>
           <pre class="brush: js">
 $('.lightbulb').bind('changeState', function(e) {
@@ -258,7 +258,7 @@ $(document).trigger('myCustomEvent', [ 'bim', 'baz' ]);
                   </dt>
                   <dd>
                     <p>
-                      Remueve el contenedor de la p&aacute;gina luego que el usuario confirme la acci&oacute;n. Dicha confirmaci&oacute;n puede omitirse si se pasa <code class="code">true</code> como segundo argumento del controlador de evento. El evento adem&aacute;s remueve el t&eacute;rmino asociado con el contenedor de resultados del objeto global que contiene los t&eacute;rminos de b&uacute;squeda.
+                      Remueve el contenedor de la p&aacute;gina luego de que el usuario confirme la acci&oacute;n. Dicha confirmaci&oacute;n puede omitirse si se pasa <code class="code">true</code> como segundo argumento del controlador de evento. El evento adem&aacute;s remueve el t&eacute;rmino asociado con el contenedor de resultados del objeto global que contiene los t&eacute;rminos de b&uacute;squeda.
                     </p>
                   </dd>
                   <dt>
@@ -473,7 +473,7 @@ $('#get_trends').click(function() {
 });
 </pre>
               <p>
-                A&ntilde;adiendo botones con un ID apropiado, es posible remover, colapsar, expandir y refrescar todos los contenedores de resultados al mismo tiempo. Para el bot&oacute;n que remueve el contenedor, notar que se esta pasa <code class="code">true</code> al controlador de evento como segundo argumento, indicando que no se desea una confirmaci&oacute;n del usuario para remover el contenedor.
+                A&ntilde;adiendo botones con un ID apropiado, es posible remover, colapsar, expandir y refrescar todos los contenedores de resultados al mismo tiempo. Para el bot&oacute;n que remueve el contenedor, notar que se esta pasando <code class="code">true</code> al controlador del evento como segundo argumento, indicando que no se desea una confirmaci&oacute;n del usuario para remover el contenedor.
               </p>
               <pre class="brush: js">
 $.each(['refresh', 'expand', 'collapse'], function(i, ev) {
@@ -497,10 +497,10 @@ $('#remove').click(function(e) {
                 Los eventos personalizados ofrecen una nueva manera de pensar el c&oacute;digo: ellos ponen el &eacute;nfasis en el objetivo de un comportamiento, no en el elemento que lo activa. Si se toma el tiempo desde el principio para explicar las piezas de su aplicaci&oacute;n, as&iacute; como los comportamientos que esas piezas necesitan exhibir, los eventos personalizados proveen una manera poderosa para "hablar" con esas piezas, ya sea de una en una o en masa.
               </p>
               <p>
-              	Una vez que los comportamientos se han descripto, se convierte en algo trivial ejecutarlos desde cualquier lugar, lo que permite la r&aacute;pida creaci&oacute;n y experimentaci&oacute;n de opciones de interfaz. Finalmente, los eventos personalizados tambi&eacute;n permiten mejorar la lectura del c&oacute;digo y su mantenimiento, haciendo claro la relaci&oacute;n entre un elemento y su comportamiento.
+              	Una vez que los comportamientos se han descripto, se convierte en algo trivial ejecutarlos desde cualquier lugar, lo que permite la r&aacute;pida creaci&oacute;n y experimentaci&oacute;n de opciones de interfaz. Finalmente, los eventos personalizados tambi&eacute;n permiten mejorar la lectura del c&oacute;digo y su mantenimiento, haciendo clara la relaci&oacute;n entre un elemento y su comportamiento.
               </p>
               <p>
-                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events/custom-events.html</code> y <code class="filename">demos/custom-events/js/custom-events.js</code> del material que componenten este libro.
+                Puede ver la aplicaci&oacute;n completa en los archivos <code class="filename">demos/custom-events/custom-events.html</code> y <code class="filename">demos/custom-events/js/custom-events.js</code> del material que componen este libro.
               </p>
             </div>
           </div>
