@@ -3275,10 +3275,10 @@ $firstLi.data('contentDiv').html('nuevo contenido');
               Evitar Conflictos con Otras Bibliotecas JavaScript
             </h2>
             <p>
-              Si esta utilizando jQuery en conjunto con otras bibliotecas JavaScript que tambi&eacute;n utilizan la variable <code class="code">$</code>, pueden ocurrir conflictos. Para poder solucionar estos conflictos, es necesario poner a jQuery en su modo "no-conflicto" inmediatamente despu&eacute;s que &eacute;sta se cargue en la p&aacute;gina y antes del c&oacute;digo que necesitamos ejecutar.
+              Si esta utilizando jQuery en conjunto con otras bibliotecas JavaScript, las cuales tambi&eacute;n utilizan la variable <code class="code">$</code>, pueden llegar a ocurrir una serie de errores. Para poder solucionarlos, es necesario poner a jQuery en su modo "no-conflicto". Esto se debe realizar inmediatamente despu&eacute;s que jQuery se cargue en la p&aacute;gina y antes del c&oacute;digo que se va a ejecutar.
             </p>
             <p>
-              Cuando se pone a jQuery en modo "no-conflicto", se tiene la opci&oacute;n de asignar un nombre para reemplazar a <code class="code">$</code>.
+              Cuando se pone a jQuery en modo "no-conflicto", la biblioteca ofrece la opci&oacute;n de asignar un nombre para reemplazar a la variable <code class="code">$</code>.
             </p>
             <div class="example">
               <p class="title">
@@ -3293,7 +3293,7 @@ $firstLi.data('contentDiv').html('nuevo contenido');
               </div>
             </div>
             <p>
-              Tambi&eacute;n es posible seguir utilizando <code class="code">$</code> conteniendo el c&oacute;digo en una funci&oacute;n an&oacute;nima autoejecutable; &eacute;ste un patr&oacute;n est&aacute;ndar para la creaci&oacute;n de extensiones para la biblioteca, ya que <code class="code">$</code> queda encerrada dentro del alcance de la misma funci&oacute;n an&oacute;nima.
+              Tambi&eacute;n es posible seguir utilizando <code class="code">$</code> conteniendo el c&oacute;digo en una funci&oacute;n an&oacute;nima autoejecutable. &Eacute;ste es un patr&oacute;n est&aacute;ndar para la creaci&oacute;n de extensiones para la biblioteca, ya que <code class="code">$</code> queda encerrada dentro del alcance de la misma funci&oacute;n an&oacute;nima.
             </p>
             <div class="example">
               <p class="title">
